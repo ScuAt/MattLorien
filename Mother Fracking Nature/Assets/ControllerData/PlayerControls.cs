@@ -50,6 +50,34 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Player2Actions"",
+            ""id"": ""66f36656-16c4-4ac0-bb3f-7e47391e1db7"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""505a8b33-5818-42ae-8919-8b1bc6ebe80f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""88364598-ddfb-4a3d-ace2-8373c89bf1af"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -57,6 +85,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
+        // Player2Actions
+        m_Player2Actions = asset.FindActionMap("Player2Actions", throwIfNotFound: true);
+        m_Player2Actions_Move = m_Player2Actions.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -145,7 +176,44 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // Player2Actions
+    private readonly InputActionMap m_Player2Actions;
+    private IPlayer2ActionsActions m_Player2ActionsActionsCallbackInterface;
+    private readonly InputAction m_Player2Actions_Move;
+    public struct Player2ActionsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public Player2ActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player2Actions_Move;
+        public InputActionMap Get() { return m_Wrapper.m_Player2Actions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Player2ActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer2ActionsActions instance)
+        {
+            if (m_Wrapper.m_Player2ActionsActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_Player2ActionsActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_Player2ActionsActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_Player2ActionsActionsCallbackInterface.OnMove;
+            }
+            m_Wrapper.m_Player2ActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+            }
+        }
+    }
+    public Player2ActionsActions @Player2Actions => new Player2ActionsActions(this);
     public interface IPlayerActionsActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IPlayer2ActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
     }

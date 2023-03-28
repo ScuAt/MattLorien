@@ -41,4 +41,27 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="ctx"></param>
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
+    /// <summary>
+    /// When players start game and run into these circles they will be assigned the correct script for their role and the trigger will dissapear
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        //enables the correct script for the attacker
+        if (collision.tag == "AssignAttacker")
+        {
+            Debug.Log("You are the attacker");
+            gameObject.GetComponent<AttackerBehaviour>().enabled = true;
+            //destroys the object you are colliding with for this instance the assigning circle
+            Destroy(collision.gameObject);
+        }
+        //enables the correct script for the defender
+        if (collision.tag == "AssignDefender")
+        {
+            Debug.Log("You are the defender");
+            gameObject.GetComponent<DefenderBehaviour>().enabled = true;
+            //destroys the object you are colliding with
+            Destroy(collision.gameObject);
+        }
+    }
 }
