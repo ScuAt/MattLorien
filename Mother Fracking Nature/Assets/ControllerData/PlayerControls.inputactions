@@ -13,30 +13,11 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                }
-            ],
-            "bindings": [
+                },
                 {
-                    "name": "",
-                    "id": "29baad8c-75bb-4f7b-813c-209e84e807d2",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player2Actions",
-            "id": "66f36656-16c4-4ac0-bb3f-7e47391e1db7",
-            "actions": [
-                {
-                    "name": "Move",
+                    "name": "Rotate",
                     "type": "Value",
-                    "id": "505a8b33-5818-42ae-8919-8b1bc6ebe80f",
+                    "id": "075eeee0-f0cb-40b8-9b05-023f15f78e04",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -46,12 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "88364598-ddfb-4a3d-ace2-8373c89bf1af",
+                    "id": "3be790e0-e08e-41fb-befb-cec3f036db45",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1eab5bda-586c-46d8-954a-c765dd59886a",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

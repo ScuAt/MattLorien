@@ -35,30 +35,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
+                },
                 {
-                    ""name"": """",
-                    ""id"": ""29baad8c-75bb-4f7b-813c-209e84e807d2"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Player2Actions"",
-            ""id"": ""66f36656-16c4-4ac0-bb3f-7e47391e1db7"",
-            ""actions"": [
-                {
-                    ""name"": ""Move"",
+                    ""name"": ""Rotate"",
                     ""type"": ""Value"",
-                    ""id"": ""505a8b33-5818-42ae-8919-8b1bc6ebe80f"",
+                    ""id"": ""075eeee0-f0cb-40b8-9b05-023f15f78e04"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -68,12 +49,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""88364598-ddfb-4a3d-ace2-8373c89bf1af"",
+                    ""id"": ""3be790e0-e08e-41fb-befb-cec3f036db45"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1eab5bda-586c-46d8-954a-c765dd59886a"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -85,9 +77,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
-        // Player2Actions
-        m_Player2Actions = asset.FindActionMap("Player2Actions", throwIfNotFound: true);
-        m_Player2Actions_Move = m_Player2Actions.FindAction("Move", throwIfNotFound: true);
+        m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -148,11 +138,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Move;
+    private readonly InputAction m_PlayerActions_Rotate;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
+        public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -165,6 +157,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
+                @Rotate.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -172,49 +167,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
-
-    // Player2Actions
-    private readonly InputActionMap m_Player2Actions;
-    private IPlayer2ActionsActions m_Player2ActionsActionsCallbackInterface;
-    private readonly InputAction m_Player2Actions_Move;
-    public struct Player2ActionsActions
-    {
-        private @PlayerControls m_Wrapper;
-        public Player2ActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player2Actions_Move;
-        public InputActionMap Get() { return m_Wrapper.m_Player2Actions; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player2ActionsActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayer2ActionsActions instance)
-        {
-            if (m_Wrapper.m_Player2ActionsActionsCallbackInterface != null)
-            {
-                @Move.started -= m_Wrapper.m_Player2ActionsActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_Player2ActionsActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_Player2ActionsActionsCallbackInterface.OnMove;
-            }
-            m_Wrapper.m_Player2ActionsActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-            }
-        }
-    }
-    public Player2ActionsActions @Player2Actions => new Player2ActionsActions(this);
     public interface IPlayerActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
-    }
-    public interface IPlayer2ActionsActions
-    {
-        void OnMove(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

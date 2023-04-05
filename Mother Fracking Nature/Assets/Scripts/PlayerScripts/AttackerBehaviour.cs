@@ -12,10 +12,12 @@ using UnityEngine;
 
 public class AttackerBehaviour : PlayerBehaviour
 {
+    public Sprite Guy;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = Guy;
     }
 
     // Update is called once per frame
