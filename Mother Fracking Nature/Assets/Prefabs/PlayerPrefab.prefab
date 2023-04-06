@@ -182,6 +182,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8a62cd0b-92ad-4c96-9139-cb3d50705cf5
     m_ActionName: AttackerActions/Attack[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cf5cdd1a-d6df-4632-8f80-e8a23f3f6af3
+    m_ActionName: DefenderActions/Trap[/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 93946c32-fead-4e38-8381-a56a1fdfbd85
+    m_ActionName: AttackerActions/Ability[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -221,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  weaponData: {fileID: 11400000, guid: 3ccca8abffd31824d9a32eee715b2b48, type: 2}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
 --- !u!114 &-2756980718256294724
 MonoBehaviour:
@@ -235,4 +244,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  trapData: {fileID: 11400000, guid: 72c6c78591bb113419fc8d6e79aca3b6, type: 2}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}

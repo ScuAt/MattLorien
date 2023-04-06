@@ -83,6 +83,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Trap"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf5cdd1a-d6df-4632-8f80-e8a23f3f6af3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -94,6 +103,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b4b9dda-2bcd-48ee-a940-51b206e032a0"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Trap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -111,6 +131,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability"",
+                    ""type"": ""Button"",
+                    ""id"": ""93946c32-fead-4e38-8381-a56a1fdfbd85"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -122,6 +151,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71ec8978-c96d-4cb2-a4b0-4f8f39507600"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -137,9 +177,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
+        m_DefenderActions_Trap = m_DefenderActions.FindAction("Trap", throwIfNotFound: true);
         // AttackerActions
         m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
         m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
+        m_AttackerActions_Ability = m_AttackerActions.FindAction("Ability", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -241,11 +283,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_DefenderActions;
     private IDefenderActionsActions m_DefenderActionsActionsCallbackInterface;
     private readonly InputAction m_DefenderActions_Block;
+    private readonly InputAction m_DefenderActions_Trap;
     public struct DefenderActionsActions
     {
         private @PlayerControls m_Wrapper;
         public DefenderActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Block => m_Wrapper.m_DefenderActions_Block;
+        public InputAction @Trap => m_Wrapper.m_DefenderActions_Trap;
         public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +302,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Block.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnBlock;
                 @Block.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnBlock;
                 @Block.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnBlock;
+                @Trap.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnTrap;
+                @Trap.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnTrap;
+                @Trap.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnTrap;
             }
             m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -265,6 +312,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Block.started += instance.OnBlock;
                 @Block.performed += instance.OnBlock;
                 @Block.canceled += instance.OnBlock;
+                @Trap.started += instance.OnTrap;
+                @Trap.performed += instance.OnTrap;
+                @Trap.canceled += instance.OnTrap;
             }
         }
     }
@@ -274,11 +324,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_AttackerActions;
     private IAttackerActionsActions m_AttackerActionsActionsCallbackInterface;
     private readonly InputAction m_AttackerActions_Attack;
+    private readonly InputAction m_AttackerActions_Ability;
     public struct AttackerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public AttackerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Attack => m_Wrapper.m_AttackerActions_Attack;
+        public InputAction @Ability => m_Wrapper.m_AttackerActions_Ability;
         public InputActionMap Get() { return m_Wrapper.m_AttackerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -291,6 +343,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAttack;
+                @Ability.started -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAbility;
+                @Ability.performed -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAbility;
+                @Ability.canceled -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAbility;
             }
             m_Wrapper.m_AttackerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -298,6 +353,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Ability.started += instance.OnAbility;
+                @Ability.performed += instance.OnAbility;
+                @Ability.canceled += instance.OnAbility;
             }
         }
     }
@@ -310,9 +368,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IDefenderActionsActions
     {
         void OnBlock(InputAction.CallbackContext context);
+        void OnTrap(InputAction.CallbackContext context);
     }
     public interface IAttackerActionsActions
     {
         void OnAttack(InputAction.CallbackContext context);
+        void OnAbility(InputAction.CallbackContext context);
     }
 }

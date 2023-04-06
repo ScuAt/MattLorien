@@ -14,16 +14,20 @@ using UnityEngine.InputSystem;
 
 public class DefenderBehaviour : PlayerBehaviour
 {
+    //initializes trapdata scriptable object into our defender
+    [SerializeField] private TrapData trapData;
+
     public Sprite Lady;
 
-    InputActionAsset inputAsset;
+    InputActionAsset inputAsset3;
     InputActionMap defenderActions;
     InputAction block;
+    InputAction place;
 
     private void Awake()
     {
-        inputAsset = this.GetComponent<PlayerInput>().actions;
-        defenderActions = inputAsset.FindActionMap("DefenderActions");
+        inputAsset3 = this.GetComponent<PlayerInput>().actions;
+        defenderActions = inputAsset3.FindActionMap("DefenderActions");
     }
 
   
@@ -31,11 +35,13 @@ public class DefenderBehaviour : PlayerBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputAsset3 = this.GetComponent<PlayerInput>().actions;
 
         block = defenderActions.FindAction("Block");
-
         block.performed += ctx => Block();
+
+        place = defenderActions.FindAction("Trap");
+        place.performed += ctx => trapData.PlaceTrap(); //pulling function from trapData scriptable object
 
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Lady;
     }

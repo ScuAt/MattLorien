@@ -13,26 +13,32 @@ using UnityEngine.InputSystem;
 
 public class AttackerBehaviour : PlayerBehaviour
 {
+    //initializes weapondata scriptable object into our attacker
+    [SerializeField] private WeaponData weaponData;
+
     public Sprite Guy;
 
-    InputActionAsset inputAsset;
+    InputActionAsset inputAsset2;
     InputActionMap attackerActions;
     InputAction attack;
+    InputAction ability;
 
     private void Awake()
     {
-        inputAsset = this.GetComponent<PlayerInput>().actions;
-        attackerActions = inputAsset.FindActionMap("AttackerActions");
+        inputAsset2 = this.GetComponent<PlayerInput>().actions;
+        attackerActions = inputAsset2.FindActionMap("AttackerActions");
     }
     // Start is called before the first frame update
     void Start()
     {
         speed = 7;
-        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputAsset2 = this.GetComponent<PlayerInput>().actions;
 
         attack = attackerActions.FindAction("Attack");
-        
-        attack.performed += ctx => Attack();
+        attack.performed += ctx => weaponData.Attack(); //pulling function from weaponData scriptable object
+
+        ability = attackerActions.FindAction("Ability");
+        ability.performed += ctx => weaponData.Ability(); //pulling function from weaponData scriptable object
        
 
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Guy;
@@ -59,8 +65,5 @@ public class AttackerBehaviour : PlayerBehaviour
         attackerActions.Disable();
     }
 
-    private void Attack()
-    {
-        Debug.Log("Attacking");
-    }
+  
 }
