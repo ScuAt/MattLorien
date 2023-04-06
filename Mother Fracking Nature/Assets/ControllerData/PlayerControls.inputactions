@@ -48,6 +48,62 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DefenderActions",
+            "id": "09e6a52f-6f58-4000-8671-58a0c9859f4a",
+            "actions": [
+                {
+                    "name": "Block",
+                    "type": "Button",
+                    "id": "9d870c0c-116d-496e-a9be-c8867d0d5493",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3f993701-db0c-40da-b66f-a517c35cc381",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "AttackerActions",
+            "id": "70d127af-c55e-4110-854e-a7fdbe42d8e2",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "8a62cd0b-92ad-4c96-9139-cb3d50705cf5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8fc3d22e-445e-4f98-9d95-ede6ba0c4c26",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

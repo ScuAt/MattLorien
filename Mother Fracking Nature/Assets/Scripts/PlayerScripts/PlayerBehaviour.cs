@@ -25,7 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction move;
     InputAction rotate;
     
-    [SerializeField] private float speed = 7;
+   public float speed = 7;
 
     private Vector2 movementInput;
     private Vector2 aim;
@@ -124,6 +124,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.tag == "AssignAttacker")
         {
             Debug.Log("You are the attacker");
+            Debug.Log(gameObject);
             gameObject.GetComponent<AttackerBehaviour>().enabled = true;
             //destroys the object you are colliding with for this instance the assigning circle
             Destroy(collision.gameObject);

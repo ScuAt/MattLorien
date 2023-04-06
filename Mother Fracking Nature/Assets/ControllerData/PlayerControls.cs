@@ -70,6 +70,62 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DefenderActions"",
+            ""id"": ""09e6a52f-6f58-4000-8671-58a0c9859f4a"",
+            ""actions"": [
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d870c0c-116d-496e-a9be-c8867d0d5493"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3f993701-db0c-40da-b66f-a517c35cc381"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""AttackerActions"",
+            ""id"": ""70d127af-c55e-4110-854e-a7fdbe42d8e2"",
+            ""actions"": [
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a62cd0b-92ad-4c96-9139-cb3d50705cf5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8fc3d22e-445e-4f98-9d95-ede6ba0c4c26"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -78,6 +134,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
         m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
+        // DefenderActions
+        m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
+        m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
+        // AttackerActions
+        m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
+        m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -174,9 +236,83 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // DefenderActions
+    private readonly InputActionMap m_DefenderActions;
+    private IDefenderActionsActions m_DefenderActionsActionsCallbackInterface;
+    private readonly InputAction m_DefenderActions_Block;
+    public struct DefenderActionsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public DefenderActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Block => m_Wrapper.m_DefenderActions_Block;
+        public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DefenderActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IDefenderActionsActions instance)
+        {
+            if (m_Wrapper.m_DefenderActionsActionsCallbackInterface != null)
+            {
+                @Block.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnBlock;
+                @Block.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnBlock;
+                @Block.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnBlock;
+            }
+            m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Block.started += instance.OnBlock;
+                @Block.performed += instance.OnBlock;
+                @Block.canceled += instance.OnBlock;
+            }
+        }
+    }
+    public DefenderActionsActions @DefenderActions => new DefenderActionsActions(this);
+
+    // AttackerActions
+    private readonly InputActionMap m_AttackerActions;
+    private IAttackerActionsActions m_AttackerActionsActionsCallbackInterface;
+    private readonly InputAction m_AttackerActions_Attack;
+    public struct AttackerActionsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public AttackerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Attack => m_Wrapper.m_AttackerActions_Attack;
+        public InputActionMap Get() { return m_Wrapper.m_AttackerActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AttackerActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IAttackerActionsActions instance)
+        {
+            if (m_Wrapper.m_AttackerActionsActionsCallbackInterface != null)
+            {
+                @Attack.started -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_AttackerActionsActionsCallbackInterface.OnAttack;
+            }
+            m_Wrapper.m_AttackerActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
+            }
+        }
+    }
+    public AttackerActionsActions @AttackerActions => new AttackerActionsActions(this);
     public interface IPlayerActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+    }
+    public interface IDefenderActionsActions
+    {
+        void OnBlock(InputAction.CallbackContext context);
+    }
+    public interface IAttackerActionsActions
+    {
+        void OnAttack(InputAction.CallbackContext context);
     }
 }
