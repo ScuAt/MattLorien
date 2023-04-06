@@ -24,6 +24,8 @@ public class DefenderBehaviour : PlayerBehaviour
     InputAction block;
     InputAction place;
 
+    public float playerHealth = 250;
+
     private void Awake()
     {
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
@@ -35,6 +37,8 @@ public class DefenderBehaviour : PlayerBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
 
         block = defenderActions.FindAction("Block");
@@ -49,7 +53,28 @@ public class DefenderBehaviour : PlayerBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerHealth <= 0)
+        {
+            isDown = true;
+            speed = 0;
+            defenderActions.Disable();
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite =
+        }
+        else
+        {
+            isDown = false;
+            defenderActions.Enable();
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite =
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        //player health regen
+        for (; playerHealth < 250; playerHealth++)
+        {
+
+        }
     }
 
 

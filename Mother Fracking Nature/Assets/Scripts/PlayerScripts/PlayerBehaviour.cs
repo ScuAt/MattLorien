@@ -25,7 +25,10 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction move;
     InputAction rotate;
     
-   public float speed = 7;
+  public float speed = 7;
+    public bool isDown = false;
+    
+
 
     private Vector2 movementInput;
     private Vector2 aim;
@@ -110,7 +113,11 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="ctx"></param>
     // public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
-
+    //function called when trigger is activated 
+    public void Revive()
+    {
+        
+    }
 
 
     /// <summary>
@@ -137,5 +144,12 @@ public class PlayerBehaviour : MonoBehaviour
             //destroys the object you are colliding with
             Destroy(collision.gameObject);
         }
+        //checks if the player is within revive range
+        if (collision.tag == "Player")
+        {
+            Debug.Log("Ready to Revive");
+
+        }
+
     }
 }

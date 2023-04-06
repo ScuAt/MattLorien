@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 4871571212488235783}
   - component: {fileID: -6437231617415198858}
   - component: {fileID: -2756980718256294724}
+  - component: {fileID: 7877871587784161753}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,6 +232,8 @@ MonoBehaviour:
   speed: 7
   weaponData: {fileID: 11400000, guid: 3ccca8abffd31824d9a32eee715b2b48, type: 2}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
+  playerHealth: 100
+  isDown: 0
 --- !u!114 &-2756980718256294724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +249,20 @@ MonoBehaviour:
   speed: 5
   trapData: {fileID: 11400000, guid: 72c6c78591bb113419fc8d6e79aca3b6, type: 2}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
+  playerHealth: 250
+--- !u!58 &7877871587784161753
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959410326301455570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.11300947}
+  serializedVersion: 2
+  m_Radius: 0.61300945
