@@ -136,7 +136,7 @@ public class DefenderBehaviour : PlayerBehaviour
     {
         if (trapNumber <= 0)
         {
-            trapNumber = 3;
+            trapNumber = 2;
         }
 
         else

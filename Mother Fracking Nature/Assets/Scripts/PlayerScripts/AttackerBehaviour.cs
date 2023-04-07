@@ -22,9 +22,15 @@ public class AttackerBehaviour : PlayerBehaviour
     InputActionMap attackerActions;
     InputAction attack;
     InputAction ability;
+    InputAction scroll;
 
     public float playerHealth = 100;
-    
+
+    //Array of game objects for the traps
+    public GameObject[] weaponArray = new GameObject[3];
+    //Trap number to help navigate through the different traps
+    private int weaponNumber = 0;
+
 
     private void Awake()
     {
@@ -43,7 +49,12 @@ public class AttackerBehaviour : PlayerBehaviour
 
         ability = attackerActions.FindAction("Ability");
         ability.performed += ctx => weaponData.Ability(); //pulling function from weaponData scriptable object
-       
+
+        scroll = attackerActions.FindAction("LeftScroll");
+        scroll.performed += ctx => LeftScroll();
+
+        scroll = attackerActions.FindAction("RightScroll");
+        scroll.performed += ctx => RightsScroll();
 
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Guy;
     }
@@ -93,5 +104,39 @@ public class AttackerBehaviour : PlayerBehaviour
         attackerActions.Disable();
     }
 
-  
+
+
+    public void RightsScroll()
+    {
+        if (weaponNumber >= 2)
+        {
+            weaponNumber = 0;
+        }
+
+        else
+        {
+            weaponNumber++;
+            Debug.Log(weaponNumber);
+        }
+    }
+
+    /// <summary>
+    /// Decreases the trap number
+    /// Currently the only way to get to '0' trap :')
+    /// </summary>
+    public void LeftScroll()
+    {
+        if (weaponNumber <= 0)
+        {
+            weaponNumber = 2;
+        }
+
+        else
+        {
+            weaponNumber--;
+            Debug.Log(weaponNumber);
+        }
+    }
+
+
 }
