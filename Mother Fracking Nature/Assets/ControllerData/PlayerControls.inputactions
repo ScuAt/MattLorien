@@ -70,6 +70,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LeftScroll",
+                    "type": "Button",
+                    "id": "a7846b6a-fba0-46c9-b019-9cd4a9d2dca8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightScroll",
+                    "type": "Button",
+                    "id": "2d5b03af-1a88-4769-8b6d-2e21535a5d63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -92,6 +110,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Trap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4a98ded-fdbe-4a4a-b261-d45d9c85b6df",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bae111e-3e14-48f8-a9cd-18f596875d9b",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightScroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

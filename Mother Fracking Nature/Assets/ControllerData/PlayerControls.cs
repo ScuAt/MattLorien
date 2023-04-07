@@ -92,6 +92,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftScroll"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7846b6a-fba0-46c9-b019-9cd4a9d2dca8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightScroll"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d5b03af-1a88-4769-8b6d-2e21535a5d63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -114,6 +132,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Trap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4a98ded-fdbe-4a4a-b261-d45d9c85b6df"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bae111e-3e14-48f8-a9cd-18f596875d9b"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightScroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -178,6 +218,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
         m_DefenderActions_Trap = m_DefenderActions.FindAction("Trap", throwIfNotFound: true);
+        m_DefenderActions_LeftScroll = m_DefenderActions.FindAction("LeftScroll", throwIfNotFound: true);
+        m_DefenderActions_RightScroll = m_DefenderActions.FindAction("RightScroll", throwIfNotFound: true);
         // AttackerActions
         m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
         m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
@@ -284,12 +326,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IDefenderActionsActions m_DefenderActionsActionsCallbackInterface;
     private readonly InputAction m_DefenderActions_Block;
     private readonly InputAction m_DefenderActions_Trap;
+    private readonly InputAction m_DefenderActions_LeftScroll;
+    private readonly InputAction m_DefenderActions_RightScroll;
     public struct DefenderActionsActions
     {
         private @PlayerControls m_Wrapper;
         public DefenderActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Block => m_Wrapper.m_DefenderActions_Block;
         public InputAction @Trap => m_Wrapper.m_DefenderActions_Trap;
+        public InputAction @LeftScroll => m_Wrapper.m_DefenderActions_LeftScroll;
+        public InputAction @RightScroll => m_Wrapper.m_DefenderActions_RightScroll;
         public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +351,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Trap.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnTrap;
                 @Trap.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnTrap;
                 @Trap.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnTrap;
+                @LeftScroll.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnLeftScroll;
+                @LeftScroll.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnLeftScroll;
+                @LeftScroll.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnLeftScroll;
+                @RightScroll.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
+                @RightScroll.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
+                @RightScroll.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
             }
             m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -315,6 +367,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Trap.started += instance.OnTrap;
                 @Trap.performed += instance.OnTrap;
                 @Trap.canceled += instance.OnTrap;
+                @LeftScroll.started += instance.OnLeftScroll;
+                @LeftScroll.performed += instance.OnLeftScroll;
+                @LeftScroll.canceled += instance.OnLeftScroll;
+                @RightScroll.started += instance.OnRightScroll;
+                @RightScroll.performed += instance.OnRightScroll;
+                @RightScroll.canceled += instance.OnRightScroll;
             }
         }
     }
@@ -369,6 +427,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnBlock(InputAction.CallbackContext context);
         void OnTrap(InputAction.CallbackContext context);
+        void OnLeftScroll(InputAction.CallbackContext context);
+        void OnRightScroll(InputAction.CallbackContext context);
     }
     public interface IAttackerActionsActions
     {

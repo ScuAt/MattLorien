@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class TrapData : ScriptableObject
 {
-    
+
     [SerializeField] private string trapName;
     [SerializeField] private string damageType;
     [SerializeField] private int damage;
@@ -16,6 +16,9 @@ public class TrapData : ScriptableObject
     [SerializeField] private int trapHealth;
     //etc. 
 
+    //Array to hold the three traps
+    
+    
 
     public void PlaceTrap()
     {
@@ -23,5 +26,11 @@ public class TrapData : ScriptableObject
                                          + trapHealth + " health remaining");
 
         Debug.Log(trapName + " ready in " + coolDown + " seconds");
+
+        //Instantiate(current selected trap, player position, Quaternion.identity)
+        //GameObject newTrap = Instantiate(trapArray[trapNumber], playerPosition.position, Quaternion.identity);
     }
+
+    
+
 }

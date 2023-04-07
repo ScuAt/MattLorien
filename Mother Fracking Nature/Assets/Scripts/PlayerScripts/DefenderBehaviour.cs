@@ -14,17 +14,20 @@ using UnityEngine.InputSystem;
 
 public class DefenderBehaviour : PlayerBehaviour
 {
-    //initializes trapdata scriptable object into our defender
-    [SerializeField] private TrapData trapData;
-
     public Sprite Lady;
 
     InputActionAsset inputAsset3;
     InputActionMap defenderActions;
     InputAction block;
     InputAction place;
+    InputAction scroll;
 
     public float playerHealth = 250;
+
+    //Array of game objects for the traps
+    public GameObject[] trapArray = new GameObject[3];
+    //Trap number to help navigate through the different traps
+    private int trapNumber = 0;
 
     private void Awake()
     {
@@ -32,12 +35,12 @@ public class DefenderBehaviour : PlayerBehaviour
         defenderActions = inputAsset3.FindActionMap("DefenderActions");
     }
 
-  
-
-    // Start is called before the first frame update
+    /// <summary>
+    ///  Start is called before the first frame update
+    /// </summary>
     void Start()
     {
-        
+
 
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
 
@@ -45,9 +48,16 @@ public class DefenderBehaviour : PlayerBehaviour
         block.performed += ctx => Block();
 
         place = defenderActions.FindAction("Trap");
-        place.performed += ctx => trapData.PlaceTrap(); //pulling function from trapData scriptable object
+        place.performed += ctx => PlaceTrap(); //pulling function from trapData scriptable object
+
+        scroll = defenderActions.FindAction("LeftScroll");
+        scroll.performed += ctx => LeftScroll();
+
+        scroll = defenderActions.FindAction("RightScroll");
+        scroll.performed += ctx => RightsScroll();
 
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Lady;
+
     }
 
     // Update is called once per frame
@@ -77,11 +87,10 @@ public class DefenderBehaviour : PlayerBehaviour
         }
     }
 
-
-    /// <summary>
-    /// enables the input map
-    /// </summary>
-    private void OnEnable()
+        /// <summary>
+        /// enables the input map
+        /// </summary>
+        private void OnEnable()
     {
         defenderActions.Enable();
     }
@@ -93,9 +102,57 @@ public class DefenderBehaviour : PlayerBehaviour
         defenderActions.Disable();
     }
 
-
+    /// <summary>
+    /// Blocks enemies, obviously
+    /// </summary>
     private void Block()
     {
         Debug.Log("Blocking");
     }
+
+    /// <summary>
+    /// Increases the trap number
+    /// Will only get to '1' and '2' please help I'm to dumb to figure it out
+    /// </summary>
+    public void RightsScroll()
+    {
+        if (trapNumber >= 2)
+        {
+            trapNumber = 0;
+        }
+
+        else
+        {
+            trapNumber++;
+            Debug.Log(trapNumber);
+        }
+    }
+
+    /// <summary>
+    /// Decreases the trap number
+    /// Currently the only way to get to '0' trap :')
+    /// </summary>
+    public void LeftScroll()
+    {
+        if (trapNumber <= 0)
+        {
+            trapNumber = 3;
+        }
+
+        else
+        {
+            trapNumber--;
+            Debug.Log(trapNumber);
+        }
+    }
+
+    /// <summary>
+    /// Creats a new trap based on the current trap number and position of player
+    /// </summary>
+    public void PlaceTrap()
+    {
+        //This is where we'll put the cool downs, we can make a timer to configre it
+        GameObject newTrap = Instantiate(trapArray[trapNumber], transform.position, Quaternion.identity);
+    }
+
 }
