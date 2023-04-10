@@ -29,6 +29,7 @@ public class DefenderBehaviour : PlayerBehaviour
     //Trap number to help navigate through the different traps
     private int trapNumber = 0;
 
+
     private void Awake()
     {
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
@@ -85,6 +86,7 @@ public class DefenderBehaviour : PlayerBehaviour
         {
 
         }
+
     }
 
         /// <summary>
@@ -112,11 +114,11 @@ public class DefenderBehaviour : PlayerBehaviour
 
     /// <summary>
     /// Increases the trap number
-    /// Will only get to '1' and '2' please help I'm to dumb to figure it out
+    /// Will only get to '1' and '2' please help I'm too dumb to figure it out
     /// </summary>
     public void RightsScroll()
     {
-        if (trapNumber >= 2)
+        if (trapNumber == 2)
         {
             trapNumber = 0;
         }
@@ -134,7 +136,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     public void LeftScroll()
     {
-        if (trapNumber <= 0)
+        if (trapNumber == 0)
         {
             trapNumber = 2;
         }
@@ -151,8 +153,21 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     public void PlaceTrap()
     {
-        //This is where we'll put the cool downs, we can make a timer to configre it
-        GameObject newTrap = Instantiate(trapArray[trapNumber], transform.position, Quaternion.identity);
+        if (trapNumber == 0)
+        {
+            GameObject newTrap = Instantiate(trapArray[0], transform.position, Quaternion.identity);          
+        }
+
+        else if (trapNumber == 1)
+        {
+            GameObject newTrap = Instantiate(trapArray[1], transform.position, Quaternion.identity);
+        }
+
+        else if (trapNumber == 2)
+        {
+            GameObject newTrap = Instantiate(trapArray[2], transform.position, Quaternion.identity);
+        }
+       
     }
 
 }

@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  isDown: 0
 --- !u!61 &7959410326301455575
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,6 +192,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 93946c32-fead-4e38-8381-a56a1fdfbd85
     m_ActionName: AttackerActions/Ability[/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7846b6a-fba0-46c9-b019-9cd4a9d2dca8
+    m_ActionName: DefenderActions/LeftScroll
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2d5b03af-1a88-4769-8b6d-2e21535a5d63
+    m_ActionName: DefenderActions/RightScroll
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e007460f-319b-46b3-8796-bce480e1a345
+    m_ActionName: AttackerActions/LeftScroll
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a7ac222-4514-418b-b0a6-d847c7653796
+    m_ActionName: AttackerActions/RightScroll
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -230,10 +247,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  isDown: 0
   weaponData: {fileID: 11400000, guid: 3ccca8abffd31824d9a32eee715b2b48, type: 2}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
   playerHealth: 100
-  isDown: 0
+  weaponArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &-2756980718256294724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,9 +268,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  trapData: {fileID: 11400000, guid: 72c6c78591bb113419fc8d6e79aca3b6, type: 2}
+  isDown: 0
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
   playerHealth: 250
+  trapArray:
+  - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
+  - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
+  - {fileID: 4534791482657638435, guid: c85443d515c912542be39074831d8cad, type: 3}
 --- !u!58 &7877871587784161753
 CircleCollider2D:
   m_ObjectHideFlags: 0
