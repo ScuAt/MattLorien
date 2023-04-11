@@ -24,6 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction move;
     InputAction rotate;
     InputAction startGame;
+    InputAction howToGuide;
     
     public float speed = 7;
     public bool isDown = false;
@@ -55,7 +56,11 @@ public class PlayerBehaviour : MonoBehaviour
         startGame = playerControls.FindAction("StartGame");
         startGame.performed += ctx => playGame();
 
+        howToGuide = playerControls.FindAction("HowToGuide");
+        howToGuide.performed += ctx => HowToMenu();
+
     }
+
 
     /// <summary>
     /// Update is called once per frame
@@ -122,9 +127,39 @@ public class PlayerBehaviour : MonoBehaviour
         
     }
 
-    public void playGame()
+    private void playGame()
     {
         SceneManager.LoadScene("SceneOne");
+    }
+
+    private void HowToMenu()
+    {
+
+        SceneManager.LoadScene("HowToScene", LoadSceneMode.Additive);
+
+        /*
+        Scene scene = SceneManager.GetActiveScene();
+
+
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+
+        if (scene.name == "HowToScene")
+        {
+            Debug.Log("Goober");
+            SceneManager.GetActiveScene();
+        }
+
+        else if (scene.name != "HowToScene")
+        {
+            Debug.Log("Boobz");
+            
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("HowToScene"));
+        }
+
+
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+        */
+
     }
 
 

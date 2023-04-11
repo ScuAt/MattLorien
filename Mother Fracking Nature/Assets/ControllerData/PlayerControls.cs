@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HowToGuide"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b6fd043-2e86-42be-b888-1b066ede58fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -86,6 +95,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd76440d-b48e-4b16-8cc9-7578a09fa932"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HowToGuide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -275,6 +295,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
         m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
         m_PlayerActions_StartGame = m_PlayerActions.FindAction("StartGame", throwIfNotFound: true);
+        m_PlayerActions_HowToGuide = m_PlayerActions.FindAction("HowToGuide", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
@@ -349,6 +370,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Move;
     private readonly InputAction m_PlayerActions_Rotate;
     private readonly InputAction m_PlayerActions_StartGame;
+    private readonly InputAction m_PlayerActions_HowToGuide;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -356,6 +378,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
         public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
         public InputAction @StartGame => m_Wrapper.m_PlayerActions_StartGame;
+        public InputAction @HowToGuide => m_Wrapper.m_PlayerActions_HowToGuide;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -374,6 +397,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartGame.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
                 @StartGame.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
                 @StartGame.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
+                @HowToGuide.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToGuide;
+                @HowToGuide.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToGuide;
+                @HowToGuide.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToGuide;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -387,6 +413,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartGame.started += instance.OnStartGame;
                 @StartGame.performed += instance.OnStartGame;
                 @StartGame.canceled += instance.OnStartGame;
+                @HowToGuide.started += instance.OnHowToGuide;
+                @HowToGuide.performed += instance.OnHowToGuide;
+                @HowToGuide.canceled += instance.OnHowToGuide;
             }
         }
     }
@@ -510,6 +539,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnStartGame(InputAction.CallbackContext context);
+        void OnHowToGuide(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions
     {
