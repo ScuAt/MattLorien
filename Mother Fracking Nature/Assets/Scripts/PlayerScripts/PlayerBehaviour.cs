@@ -14,8 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -24,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
     InputActionMap playerControls;
     InputAction move;
     InputAction rotate;
+    InputAction startGame;
     
     public float speed = 7;
     public bool isDown = false;
@@ -51,6 +51,9 @@ public class PlayerBehaviour : MonoBehaviour
         move.canceled += contx => movementInput = Vector2.zero;
         rotate.performed += contx => aim = contx.ReadValue<Vector2>();
         rotate.canceled += contx => aim = Vector2.zero;
+
+        startGame = playerControls.FindAction("StartGame");
+        startGame.performed += ctx => playGame();
 
     }
 
@@ -117,6 +120,11 @@ public class PlayerBehaviour : MonoBehaviour
     public void Revive()
     {
         
+    }
+
+    public void playGame()
+    {
+        SceneManager.LoadScene("SceneOne");
     }
 
 
