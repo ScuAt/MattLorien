@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class BearTrapBehavior : MonoBehaviour
 {   
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != "Player")
@@ -19,4 +19,5 @@ public class BearTrapBehavior : MonoBehaviour
             Debug.Log("Bear trap activated");
         }
     }
+    */
 }

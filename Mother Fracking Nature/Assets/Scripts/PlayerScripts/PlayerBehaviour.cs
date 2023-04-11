@@ -25,7 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction move;
     InputAction rotate;
     
-  public float speed = 7;
+    public float speed = 7;
     public bool isDown = false;
     
 
