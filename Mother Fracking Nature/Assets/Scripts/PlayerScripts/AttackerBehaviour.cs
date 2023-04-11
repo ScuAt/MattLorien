@@ -14,7 +14,7 @@ using UnityEngine.InputSystem;
 public class AttackerBehaviour : PlayerBehaviour
 {
     //initializes weapondata scriptable object into our attacker
-    [SerializeField] private WeaponData weaponData;
+   // [SerializeField] private WeaponData weaponData;
 
     public Sprite Guy;
 
@@ -31,6 +31,21 @@ public class AttackerBehaviour : PlayerBehaviour
     //Trap number to help navigate through the different traps
     private int weaponNumber = 0;
 
+    [SerializeField] private string weaponName;
+    [SerializeField] private string damageType;
+    [SerializeField] private string specialAbility;
+    [SerializeField] private int damage;
+    [SerializeField] private int attackSpeed;
+    [SerializeField] private int coolDown;
+
+
+    public string WeaponName { get => weaponName; set => weaponName = value; }
+    public string DamageType { get => damageType; set => damageType = value; }
+    public string SpecialAbility { get => specialAbility; set => specialAbility = value; }
+    public int Damage { get => damage; set => damage = value; }
+    public int AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
+    public int CoolDown { get => coolDown; set => coolDown = value; }
+
 
     private void Awake()
     {
@@ -45,10 +60,10 @@ public class AttackerBehaviour : PlayerBehaviour
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
 
         attack = attackerActions.FindAction("Attack");
-        attack.performed += ctx => weaponData.Attack(); //pulling function from weaponData scriptable object
+        attack.performed += ctx => Attack(); 
 
         ability = attackerActions.FindAction("Ability");
-        ability.performed += ctx => weaponData.Ability(); //pulling function from weaponData scriptable object
+        ability.performed += ctx => Ability(); 
 
         scroll = attackerActions.FindAction("LeftScroll");
         scroll.performed += ctx => LeftScroll();
@@ -104,7 +119,15 @@ public class AttackerBehaviour : PlayerBehaviour
         attackerActions.Disable();
     }
 
+    public void Attack()
+    {
+        Debug.Log(WeaponName + " deals " + Damage + " " + DamageType + " damage!");
+    }
 
+    public void Ability()
+    {
+        Debug.Log(SpecialAbility + " activated!");
+    }
 
     public void RightsScroll()
     {
@@ -138,5 +161,8 @@ public class AttackerBehaviour : PlayerBehaviour
         }
     }
 
+
+
+    
 
 }

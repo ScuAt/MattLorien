@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AssignAttacker
   - AssignDefender
+  - MeleeAttack
   layers:
   - Default
   - TransparentFX
