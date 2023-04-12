@@ -78,6 +78,7 @@ public class PlayerBehaviour : MonoBehaviour
         //to find an acceptable number between 0 and 359 for the player to rotate to
         //the degrees is then input into a vector three where x and y are zero so the object rotates on the z axis
         float degrees = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
+       // Debug.Log(aim.y + " = Aim y " + aim.x + " = Aim x");
         degrees = (degrees + 360) % 360;
         Vector3 playerRotation = new(0, 0, degrees);
         //Keeps the rotation of the player at the last known z rotation

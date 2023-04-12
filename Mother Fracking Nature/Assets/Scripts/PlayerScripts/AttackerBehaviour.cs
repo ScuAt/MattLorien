@@ -42,8 +42,10 @@ public class AttackerBehaviour : PlayerBehaviour
     public GameObject[] weaponArray = new GameObject[3];
     //Trap number to help navigate through the different traps
     private int weaponNumber = 0;
-    private int frame_count = 0;
+    private int abilityFrames = 0;
+    private int attackFrames = 0;
     private bool attacking = false;
+    private bool abiliting = false;
 
    
 
@@ -114,13 +116,27 @@ public class AttackerBehaviour : PlayerBehaviour
 
         }
 
-        if (frame_count >= 6)
+        if (attackFrames >= 4)
         {
             DisableTriggers();
             attacking = false;
-            frame_count = 0;
+            attackFrames = 0;
         }
-        if (attacking) frame_count++;
+        if (attacking) attackFrames++;
+
+        if (abilityFrames >= 4)
+        {
+            DisableAbilityTriggers();
+            abiliting = false;
+            abilityFrames = 0;
+            if (weapon.WeaponName == "Hand Saw")
+            {
+                Vector3 player = GameObject.Find("LandingSpot").GetComponent<Transform>().position;
+                transform.position = player;
+            }
+        }
+        
+        if (abiliting) abilityFrames++;
 
     }
 
@@ -135,7 +151,10 @@ public class AttackerBehaviour : PlayerBehaviour
     public void DisableAbilityTriggers()
     {
         BanjoAbility.SetActive(false);
+        SawAbility.SetActive(false);
+
     }
+
     public void Attack()
     {
         
@@ -180,6 +199,7 @@ public class AttackerBehaviour : PlayerBehaviour
         }
 
         weapon.AbilityReady = weapon.CoolDown + Time.time;
+        abiliting = true;
 
         Debug.Log(weapon.SpecialAbility + " activated!" + weapon.AbilityReady);
 
@@ -190,8 +210,7 @@ public class AttackerBehaviour : PlayerBehaviour
         else if (weapon.WeaponName == "Hand Saw")
         {
             SawAbility.SetActive(true);
-            Vector3 player = GameObject.Find("LandingSpot").GetComponent<Transform>().position;
-            transform.position = player;
+            
         }
         else
         {
