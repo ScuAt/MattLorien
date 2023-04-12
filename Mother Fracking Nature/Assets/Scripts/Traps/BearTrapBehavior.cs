@@ -11,13 +11,16 @@ using UnityEngine;
 
 public class BearTrapBehavior : MonoBehaviour
 {   
-    /*
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Player")
+        if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
+            enemyComponent) && collision.tag == "Enemy")
         {
-            Debug.Log("Bear trap activated");
+            enemyComponent.TakeDamage(6);
+
+            Destroy(gameObject);
         }
     }
-    */
+    
 }

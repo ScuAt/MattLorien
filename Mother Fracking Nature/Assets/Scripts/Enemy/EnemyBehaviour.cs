@@ -51,9 +51,19 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
-    void Stunned()
+    public void Stunned()
     {
         stunEnd = stunTime + Time.time;
+    }
+
+
+    /// <summary>
+    /// This is for the trap scripts to call when the enemy walks into said trap
+    /// </summary>
+    /// <param name="damageAmount"></param>
+    public void TakeDamage(float damageAmount)
+    {
+        enemyHealth -= damageAmount;
     }
 
 
