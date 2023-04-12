@@ -15,6 +15,7 @@ TagManager:
   - SawAbility
   - BanjoAbility
   - Barrier
+  - BearTrap
   layers:
   - Default
   - TransparentFX

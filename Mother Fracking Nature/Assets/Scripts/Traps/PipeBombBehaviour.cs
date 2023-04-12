@@ -11,13 +11,20 @@ using UnityEngine;
 
 public class PipeBombBehaviour : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
-            enemyComponent) && collision.tag == "Enemy")
-        {
-            enemyComponent.TakeDamage(9);
+    private float timer = 2;
+    private float countdown;
 
+    private void Start()
+    {
+        countdown = timer;
+    }
+
+    private void Update()
+    {
+        countdown -= Time.deltaTime;
+        if (countdown <= 0)
+        {
+            Debug.Log("BOOM!");
             Destroy(gameObject);
         }
     }

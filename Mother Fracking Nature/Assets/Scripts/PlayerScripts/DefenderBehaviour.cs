@@ -30,12 +30,24 @@ public class DefenderBehaviour : PlayerBehaviour
     //Trap number to help navigate through the different traps
     private int trapNumber = 0;
 
+    //Timers
+    private float bearTrapTimer = 3f;
+    private float canPlaceBearTrap;
+
+    private float pipeBombTimer = 5f;
+    private float canPlacePipeBomb;
+
+    private float toasterTimer = 6f;
+    private float canPlaceToaster;
+
+
+    /*
     //Calls the health bar script
     public HealthBarBehaviour healthBar;
 
     //temp holder for player to tell which trap they have
     public Text currentTrapNumber;
-
+    */
 
     private void Awake()
     {
@@ -86,7 +98,7 @@ public class DefenderBehaviour : PlayerBehaviour
         }
 
         //Updates the healthbar with current health
-        healthBar.SetHealth((int)playerHealth);
+        //healthBar.SetHealth((int)playerHealth);
     }
 
     private void FixedUpdate()
@@ -163,22 +175,25 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     public void PlaceTrap()
     {
-        if (trapNumber == 0)
+        if (trapNumber == 0 && Time.time > canPlaceBearTrap)
         {
             GameObject newTrap = Instantiate(trapArray[0], transform.position, Quaternion.identity);
-            currentTrapNumber.text = "Bear Trap";
+            canPlaceBearTrap = Time.time + bearTrapTimer;
+            //currentTrapNumber.text = "Bear Trap";
         }
 
-        else if (trapNumber == 1)
+        else if (trapNumber == 1 && Time.time > canPlacePipeBomb)
         {
             GameObject newTrap = Instantiate(trapArray[1], transform.position, Quaternion.identity);
-            currentTrapNumber.text = "Pipe Bomb";
+            canPlacePipeBomb = Time.time + pipeBombTimer;
+            //currentTrapNumber.text = "Pipe Bomb";
         }
 
-        else if (trapNumber == 2)
+        else if (trapNumber == 2 && Time.time > canPlaceToaster)
         {
             GameObject newTrap = Instantiate(trapArray[2], transform.position, Quaternion.identity);
-            currentTrapNumber.text = "Toaster Bomb";
+            canPlaceToaster = Time.time + toasterTimer;
+            //currentTrapNumber.text = "Toaster Bomb";
         }
        
     }
