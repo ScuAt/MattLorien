@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
 
-
+    
     Weapon weapon;
 
     public float stunTime = 5;
@@ -79,7 +79,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.tag == "SawMelee")
         {
             Debug.Log("Enemy took damage");
-            enemyHealth -= 9;
+            enemyHealth -= 14;
             Debug.Log("Health remaining: " + enemyHealth);
 
         }
@@ -93,6 +93,16 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.tag == "BanjoAbility")
         {
             Stunned();
+        }
+        if (collision.tag == "SawAbility")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 9;
+        }
+        if (collision.tag == "BottleAbility")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 3;
         }
     }
 }
