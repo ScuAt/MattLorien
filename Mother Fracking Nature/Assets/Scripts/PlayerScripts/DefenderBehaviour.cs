@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class DefenderBehaviour : PlayerBehaviour
 {
@@ -28,6 +29,12 @@ public class DefenderBehaviour : PlayerBehaviour
     public GameObject[] trapArray = new GameObject[3];
     //Trap number to help navigate through the different traps
     private int trapNumber = 0;
+
+    //Calls the health bar script
+    public HealthBarBehaviour healthBar;
+
+    //temp holder for player to tell which trap they have
+    public Text currentTrapNumber;
 
 
     private void Awake()
@@ -77,6 +84,9 @@ public class DefenderBehaviour : PlayerBehaviour
             defenderActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
+
+        //Updates the healthbar with current health
+        healthBar.SetHealth((int)playerHealth);
     }
 
     private void FixedUpdate()
@@ -155,17 +165,20 @@ public class DefenderBehaviour : PlayerBehaviour
     {
         if (trapNumber == 0)
         {
-            GameObject newTrap = Instantiate(trapArray[0], transform.position, Quaternion.identity);          
+            GameObject newTrap = Instantiate(trapArray[0], transform.position, Quaternion.identity);
+            currentTrapNumber.text = "Bear Trap";
         }
 
         else if (trapNumber == 1)
         {
             GameObject newTrap = Instantiate(trapArray[1], transform.position, Quaternion.identity);
+            currentTrapNumber.text = "Pipe Bomb";
         }
 
         else if (trapNumber == 2)
         {
             GameObject newTrap = Instantiate(trapArray[2], transform.position, Quaternion.identity);
+            currentTrapNumber.text = "Toaster Bomb";
         }
        
     }

@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         ToasterBehaviour.cs
+// Author :            Lorien Nergard
+// Creation Date :     April 11th, 2023
+//
+// Brief Description : Controls the toasters collison, damage, and destruction.
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
