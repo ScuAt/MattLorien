@@ -8,6 +8,7 @@ public abstract class Weapon
     [SerializeField] private string damageType;
     [SerializeField] private string specialAbility;
     [SerializeField] private int damage;
+    [SerializeField] private int abilityDamage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float attackReady;
     [SerializeField] private float coolDown;
@@ -22,6 +23,7 @@ public abstract class Weapon
     public float CoolDown { get => coolDown; set => coolDown = value; }
     public float AttackReady { get => attackReady; set => attackReady = value; }
     public float AbilityReady { get => abilityReady; set => abilityReady = value; }
+    public int AbilityDamage { get => abilityDamage; set => abilityDamage = value; }
 
     public Weapon()
     {

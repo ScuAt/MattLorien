@@ -8,7 +8,8 @@ public class Banjo : Weapon
     {
         AttackSpeed = .4f;
         Damage = 4;
-        CoolDown = 12;
+        AbilityDamage = 0;
+        CoolDown = 4;
         DamageType = "Bludgeoning";
         SpecialAbility = "Stun";
         WeaponName = "Banjo";

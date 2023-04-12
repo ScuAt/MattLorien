@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 1545158368}
   m_Layer: 0
   m_Name: MFNBarrier
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1310,6 +1310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   isDown: 0
+  aim: {x: 0, y: 0}
+  currentRotation: {x: 0, y: 0, z: 0}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
   playerHealth: 250
   trapArray:
@@ -1411,6 +1413,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6a7ac222-4514-418b-b0a6-d847c7653796
     m_ActionName: AttackerActions/RightScroll
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02fe800e-e9e0-4b8d-99dc-a058af28842f
+    m_ActionName: PlayerActions/StartGame[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b6fd043-2e86-42be-b888-1b066ede58fe
+    m_ActionName: PlayerActions/HowToGuide[/XInputControllerWindows/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -1776,6 +1786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   isDown: 0
+  aim: {x: 0, y: 0}
+  currentRotation: {x: 0, y: 0, z: 0}
 --- !u!4 &3666644238268971003
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,15 +1859,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   isDown: 0
+  aim: {x: 0, y: 0}
+  currentRotation: {x: 0, y: 0, z: 0}
+  BottleMelee: {fileID: 0}
+  SawMelee: {fileID: 0}
+  BanjoMelee: {fileID: 0}
+  BanjoAbility: {fileID: 0}
+  BottleProjectile: {fileID: 0}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
   playerHealth: 100
   weaponArray:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  weaponName: 
-  damageType: 
-  specialAbility: 
-  damage: 0
-  attackSpeed: 0
-  coolDown: 0

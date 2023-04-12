@@ -32,9 +32,10 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     private Vector2 movementInput;
-    private Vector2 aim;
+    public Vector2 aim;
     //variable that holds the value of the last known z rotation value for the player
-    private Vector3 old_rotation;
+    public Vector3 old_rotation;
+    
  
     
   

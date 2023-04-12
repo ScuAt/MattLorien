@@ -7,8 +7,9 @@ public class Saw : Weapon
     public Saw()
     {
         AttackSpeed = 1;
-        Damage = 9;
-        CoolDown = 10;
+        Damage = 14;
+        AbilityDamage = 9;
+        CoolDown = 2;
         DamageType = "Slashing";
         SpecialAbility = "Dash";
         WeaponName = "Hand Saw";

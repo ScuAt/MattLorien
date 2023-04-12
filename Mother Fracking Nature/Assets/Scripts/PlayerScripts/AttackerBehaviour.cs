@@ -22,6 +22,9 @@ public class AttackerBehaviour : PlayerBehaviour
     public GameObject SawMelee;
     public GameObject BanjoMelee;
     public GameObject BanjoAbility;
+    public GameObject SawAbility;
+
+    public GameObject BottleProjectile;
 
     public Sprite Guy;
 
@@ -32,6 +35,8 @@ public class AttackerBehaviour : PlayerBehaviour
     InputAction scroll;
 
     public float playerHealth = 100;
+
+    
 
     //Array of game objects for the traps
     public GameObject[] weaponArray = new GameObject[3];
@@ -54,6 +59,7 @@ public class AttackerBehaviour : PlayerBehaviour
         weapon = new Bottle();
 
         speed = 10;
+
 
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
 
@@ -93,13 +99,7 @@ public class AttackerBehaviour : PlayerBehaviour
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
 
-        if (frame_count >= 6)
-        { 
-            DisableTriggers();
-            attacking = false;
-            frame_count = 0;
-        }
-        if (attacking) frame_count++;
+       
 
     }
 
@@ -185,11 +185,13 @@ public class AttackerBehaviour : PlayerBehaviour
 
         if (weapon.WeaponName == "Broken Bottle")
         {
-           
+            GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
         }
         else if (weapon.WeaponName == "Hand Saw")
         {
-           
+            SawAbility.SetActive(true);
+            Vector3 player = GameObject.Find("LandingSpot").GetComponent<Transform>().position;
+            transform.position = player;
         }
         else
         {
