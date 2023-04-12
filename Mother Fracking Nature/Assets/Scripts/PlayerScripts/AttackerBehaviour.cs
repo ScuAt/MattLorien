@@ -26,6 +26,9 @@ public class AttackerBehaviour : PlayerBehaviour
 
     public GameObject BottleProjectile;
 
+    private BottleAbilityBehaviour bB;
+    private Rigidbody2D rb2D;
+
     public Sprite Guy;
 
     InputActionAsset inputAsset2;
@@ -36,7 +39,8 @@ public class AttackerBehaviour : PlayerBehaviour
 
     public float playerHealth = 100;
 
-    
+    public float velocityX;
+    public float velocityY;
 
     //Array of game objects for the traps
     public GameObject[] weaponArray = new GameObject[3];
@@ -54,6 +58,8 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
         attackerActions = inputAsset2.FindActionMap("AttackerActions");
+
+        bB = FindObjectOfType<BottleAbilityBehaviour>();
     }
     // Start is called before the first frame update
     void Start()
@@ -206,6 +212,11 @@ public class AttackerBehaviour : PlayerBehaviour
         if (weapon.WeaponName == "Broken Bottle")
         {
             GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
+            velocityX = aim.x;
+            velocityY = aim.y;
+            rb2D = bB.GetComponent<Rigidbody2D>();
+            rb2D.velocity = new Vector2(velocityX, velocityY);
+
         }
         else if (weapon.WeaponName == "Hand Saw")
         {

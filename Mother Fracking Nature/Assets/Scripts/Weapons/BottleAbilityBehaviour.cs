@@ -11,7 +11,7 @@ public class BottleAbilityBehaviour : MonoBehaviour
     public float projectileSpeed = 24;
     private Rigidbody2D rb2D;
     private Quaternion rotation;
-    private PlayerBehaviour pB;
+    private AttackerBehaviour aB;
 
     
 
@@ -21,7 +21,7 @@ public class BottleAbilityBehaviour : MonoBehaviour
     {
        
 
-        pB = FindObjectOfType<PlayerBehaviour>();
+        aB = FindObjectOfType<AttackerBehaviour>();
 
         rb2D = GetComponent<Rigidbody2D>();
         // Debug.Log("Aim x = " + aim.x + "Aim y = " + aim.y);
@@ -29,26 +29,18 @@ public class BottleAbilityBehaviour : MonoBehaviour
 
         //Vector2 projectileVelocity = new Vector2(pB.aim.x, pB.aim.y) * projectileSpeed * Time.deltaTime;
         //transform.Translate(projectileVelocity, Space.Self);
-        rotation = pB.transform.rotation;
+        rotation = aB.transform.rotation;
         rb2D.inertia = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var adj = rotation.z;
-        //PlayerBehaviour pB = FindObjectOfType<PlayerBehaviour>();
-        //var rotation = pB.transform.rotation;
-        if (rotation.z > 180)
-        {
-            adj = (adj - 180) * -1;
-        }
-        var x_part = Mathf.Cos(adj);
-        var y_part = Mathf.Sin(adj);
+        
 
-        rb2D.velocity = new Vector2(x_part, y_part);
+        rb2D.velocity = new Vector2(aB.velocityX, aB.velocityY);
 
-        Debug.Log("Aim x = " + x_part + "Aim y = " + y_part);
+        Debug.Log("Aim x = " + aB.velocityX + "Aim y = " + aB.velocityY);
         
        
     }
