@@ -8,6 +8,12 @@ TagManager:
   - AssignDefender
   - MeleeAttack
   - Enemy
+  - BottleMelee
+  - SawMelee
+  - BanjoMelee
+  - BottleAbility
+  - SawAbility
+  - BanjoAbility
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,14 @@ using UnityEngine.InputSystem;
 public class AttackerBehaviour : PlayerBehaviour
 {
     //initializes weapondata scriptable object into our attacker
-   // [SerializeField] private WeaponData weaponData;
+    // [SerializeField] private WeaponData weaponData;
+
+    Weapon weapon;
+
+    public GameObject BottleMelee;
+    public GameObject SawMelee;
+    public GameObject BanjoMelee;
+    public GameObject BanjoAbility;
 
     public Sprite Guy;
 
@@ -30,21 +37,10 @@ public class AttackerBehaviour : PlayerBehaviour
     public GameObject[] weaponArray = new GameObject[3];
     //Trap number to help navigate through the different traps
     private int weaponNumber = 0;
+    private int frame_count = 0;
+    private bool attacking = false;
 
-    [SerializeField] private string weaponName;
-    [SerializeField] private string damageType;
-    [SerializeField] private string specialAbility;
-    [SerializeField] private int damage;
-    [SerializeField] private int attackSpeed;
-    [SerializeField] private int coolDown;
-
-
-    public string WeaponName { get => weaponName; set => weaponName = value; }
-    public string DamageType { get => damageType; set => damageType = value; }
-    public string SpecialAbility { get => specialAbility; set => specialAbility = value; }
-    public int Damage { get => damage; set => damage = value; }
-    public int AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
-    public int CoolDown { get => coolDown; set => coolDown = value; }
+   
 
 
     private void Awake()
@@ -55,15 +51,20 @@ public class AttackerBehaviour : PlayerBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weapon = new Bottle();
+
         speed = 10;
 
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
 
         attack = attackerActions.FindAction("Attack");
-        attack.performed += ctx => Attack(); 
+        attack.performed += ctx => Attack();
+        //attack.canceled += ctx => DisableTriggers();
 
         ability = attackerActions.FindAction("Ability");
-        ability.performed += ctx => Ability(); 
+        ability.performed += ctx => Ability();
+       // ability.canceled += ctx => DisableTriggers();
+
 
         scroll = attackerActions.FindAction("LeftScroll");
         scroll.performed += ctx => LeftScroll();
@@ -77,7 +78,8 @@ public class AttackerBehaviour : PlayerBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerHealth <= 0)
+
+        if (playerHealth <= 0)
         {
             isDown = true;
             speed = 0;
@@ -90,6 +92,15 @@ public class AttackerBehaviour : PlayerBehaviour
             attackerActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
+
+        if (frame_count >= 6)
+        { 
+            DisableTriggers();
+            attacking = false;
+            frame_count = 0;
+        }
+        if (attacking) frame_count++;
+
     }
 
     /// <summary>
@@ -102,6 +113,89 @@ public class AttackerBehaviour : PlayerBehaviour
         {
 
         }
+
+        if (frame_count >= 6)
+        {
+            DisableTriggers();
+            attacking = false;
+            frame_count = 0;
+        }
+        if (attacking) frame_count++;
+
+    }
+
+    public void DisableTriggers()
+    {
+        BottleMelee.SetActive(false);
+        SawMelee.SetActive(false);
+        BanjoMelee.SetActive(false);
+       
+    }
+
+    public void DisableAbilityTriggers()
+    {
+        BanjoAbility.SetActive(false);
+    }
+    public void Attack()
+    {
+        
+
+        if (weapon.AttackReady > Time.time)
+        {
+            Debug.Log("attack on cooldown" + weapon.AttackReady);
+            return;
+        }
+
+        weapon.AttackReady = weapon.AttackSpeed + Time.time;
+
+        Debug.Log("attacking" + weapon.AttackReady);
+        attacking = true;
+
+        Debug.Log(weapon.WeaponName + " deals " + weapon.Damage + " " + weapon.DamageType + " damage!");
+
+
+        if(weapon.WeaponName == "Broken Bottle")
+        {
+            BottleMelee.SetActive(true);
+        }
+        else if(weapon.WeaponName == "Hand Saw")
+        {
+            SawMelee.SetActive(true);
+        }
+        else
+        {
+            BanjoMelee.SetActive(true);
+        }
+
+        
+    }
+
+    public void Ability()
+    {
+
+        if (weapon.AbilityReady > Time.time)
+        {
+            Debug.Log("ability on cooldown" + weapon.AbilityReady);
+            return;
+        }
+
+        weapon.AbilityReady = weapon.CoolDown + Time.time;
+
+        Debug.Log(weapon.SpecialAbility + " activated!" + weapon.AbilityReady);
+
+        if (weapon.WeaponName == "Broken Bottle")
+        {
+           
+        }
+        else if (weapon.WeaponName == "Hand Saw")
+        {
+           
+        }
+        else
+        {
+            BanjoAbility.SetActive(true);
+        }
+
     }
 
     /// <summary>
@@ -118,7 +212,7 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         attackerActions.Disable();
     }
-
+/*
     public void Attack()
     {
         Debug.Log(WeaponName + " deals " + Damage + " " + DamageType + " damage!");
@@ -129,6 +223,11 @@ public class AttackerBehaviour : PlayerBehaviour
         Debug.Log(SpecialAbility + " activated!");
     }
 
+    */
+/// <summary>
+/// Selects a new weapon using the right bumper which will 
+/// loop back around between three different weapons assigning the right scipt
+/// </summary>
     public void RightsScroll()
     {
         if (weaponNumber >= 2)
@@ -141,11 +240,31 @@ public class AttackerBehaviour : PlayerBehaviour
             weaponNumber++;
             Debug.Log(weaponNumber);
         }
+
+
+        switch (weaponNumber)
+        {
+            case 0:
+                weapon = new Bottle();
+                break;
+
+            case 1:
+                weapon = new Saw();
+                break;
+
+            case 2:
+                weapon = new Banjo();
+                break;
+
+            default:
+                weapon = new Bottle();
+                break;
+        }
     }
 
     /// <summary>
-    /// Decreases the trap number
-    /// Currently the only way to get to '0' trap :')
+    /// Selects a new weapon using the left bumper which will 
+    /// loop back around between three different weapons assigning the right scipt
     /// </summary>
     public void LeftScroll()
     {
@@ -159,7 +278,30 @@ public class AttackerBehaviour : PlayerBehaviour
             weaponNumber--;
             Debug.Log(weaponNumber);
         }
+
+
+        switch (weaponNumber)
+        {
+            case 0:
+                weapon = new Bottle();
+                break;
+
+            case 1:
+                weapon = new Saw();
+                break;
+
+            case 2:
+                weapon = new Banjo();
+                break;
+
+            default :
+                weapon = new Bottle();
+                break;
+        }
     }
+
+
+   
 
 
 

@@ -5,9 +5,16 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
 
-    public float enemyHealth = 20;
+
+    Weapon weapon;
+
+    public float stunTime = 5;
+    public float stunEnd;
+    public bool stunned = false;
+
+    public float enemyHealth = 35;
     public float speed = 4;
-    public int damage = 10;
+    public int enemyDamage = 10;
 
 
     // Start is called before the first frame update
@@ -19,6 +26,63 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(enemyHealth <= 0)
+        {
+            Debug.Log("Enemy has died");
+            Destroy(this.gameObject);
+        }
+
+
+        //Keeps track of when enemy is stunned and able to move again
+        if(stunEnd > Time.time)
+        {
+            speed = 0;
+            enemyDamage = 0;
+            
+
+        }
+        else
+        {
+            speed = 4;
+            enemyDamage = 10;
+            
+        }
         
+
+    }
+
+    void Stunned()
+    {
+        stunEnd = stunTime + Time.time;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "BottleMelee")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 6;
+            Debug.Log("Health remaining: " + enemyHealth);
+            
+        }
+        if (collision.tag == "SawMelee")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 9;
+            Debug.Log("Health remaining: " + enemyHealth);
+
+        }
+        if (collision.tag == "BanjoMelee")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 4;
+            Debug.Log("Health remaining: " + enemyHealth);
+
+        }
+        if (collision.tag == "BanjoAbility")
+        {
+            Stunned();
+        }
     }
 }
