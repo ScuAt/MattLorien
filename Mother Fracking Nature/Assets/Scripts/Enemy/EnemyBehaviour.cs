@@ -67,20 +67,33 @@ public class EnemyBehaviour : MonoBehaviour
         attackPlayerDistance = Vector2.Distance(transform.position, attPosition);
         defensePlayerDistance = Vector2.Distance(transform.position, defPosition);
         towerDistance = Vector2.Distance(transform.position, tower.transform.position);
+        //finding the direction the enemy is heading towards the players and normalizes it and simplifies it to a simple number
+        Vector2 attackerDirection = attPosition - transform.position;
+        attackerDirection.Normalize();
+        float attackAngle = Mathf.Atan2(attackerDirection.y, attackerDirection.x) * Mathf.Rad2Deg;
+        Vector2 defenderDirection = defPosition - transform.position;
+        defenderDirection.Normalize();
+        float defendAngle = Mathf.Atan2(defenderDirection.y, defenderDirection.x) * Mathf.Rad2Deg;
+        Vector2 towerDirection = tower.transform.position - transform.position;
+        towerDirection.Normalize();
+        float towerAngle = Mathf.Atan2(towerDirection.y, towerDirection.x) * Mathf.Rad2Deg;
 
         if (attackPlayerDistance < 4 ) //&& attackPlayerDistance < defensePlayerDistance)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, attPosition, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(Vector3.forward * attackAngle);
 
         }
-       /* else if (defensePlayerDistance < 4  && defensePlayerDistance < attackPlayerDistance)
-        {
-            transform.position = Vector2.MoveTowards(this.transform.position, defPosition, speed * Time.deltaTime);
+        /* else if (defensePlayerDistance < 4  && defensePlayerDistance < attackPlayerDistance)
+         {
+             transform.position = Vector2.MoveTowards(this.transform.position, defPosition, speed * Time.deltaTime);
+             transform.rotation = Quaternion.Euler(Vector3.forward * defenseAngle);
 
-        } */
+         } */
         else
         {
             transform.position = Vector2.MoveTowards(this.transform.position, tower.transform.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(Vector3.forward * towerAngle);
         }
 
 
