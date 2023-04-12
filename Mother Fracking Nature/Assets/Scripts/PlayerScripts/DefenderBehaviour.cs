@@ -41,13 +41,13 @@ public class DefenderBehaviour : PlayerBehaviour
     private float canPlaceToaster;
 
 
-    /*
+    
     //Calls the health bar script
-    public HealthBarBehaviour healthBar;
+    //public HealthBarBehaviour healthBar;
 
     //temp holder for player to tell which trap they have
-    public Text currentTrapNumber;
-    */
+    //public Text currentTrapNumber;
+    
 
     private void Awake()
     {
@@ -97,8 +97,7 @@ public class DefenderBehaviour : PlayerBehaviour
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
 
-        //Updates the healthbar with current health
-        //healthBar.SetHealth((int)playerHealth);
+        
     }
 
     private void FixedUpdate()
@@ -108,6 +107,9 @@ public class DefenderBehaviour : PlayerBehaviour
         {
 
         }
+
+        //Updates the healthbar with current health
+        //healthBar.SetHealth((int)playerHealth);
 
     }
 

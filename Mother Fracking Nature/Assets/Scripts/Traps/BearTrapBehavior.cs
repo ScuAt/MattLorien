@@ -10,8 +10,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BearTrapBehavior : MonoBehaviour
-{   
-    
+{
+    private float timer = 20;
+    private float countdown;
+
+    private void Start()
+    {
+        countdown = timer;
+    }
+
+    private void Update()
+    {
+        countdown -= Time.deltaTime;
+        if (countdown <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
