@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         PipeBombBehaviour.cs
+// Author :            Lorien Nergard
+// Creation Date :     April 6th, 2023
+//
+// Brief Description : Controls the pipe bombs collison, damage, and destruction.
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
