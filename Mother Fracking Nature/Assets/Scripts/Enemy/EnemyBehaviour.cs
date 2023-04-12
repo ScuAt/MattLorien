@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+   
+
+    //public GameObject player;
+    public GameObject tower;
+    
 
 
     Weapon weapon;
@@ -13,8 +18,11 @@ public class EnemyBehaviour : MonoBehaviour
     public bool stunned = false;
 
     public float enemyHealth = 35;
-    public float speed = 4;
+    public float speed = 1;
     public int enemyDamage = 10;
+    public float attackPlayerDistance;
+    public float defensePlayerDistance;
+    public float towerDistance;
 
 
     // Start is called before the first frame update
@@ -43,11 +51,45 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            speed = 4;
+            speed = 1;
             enemyDamage = 10;
             
         }
+
+        AttackerBehaviour att = FindObjectOfType<AttackerBehaviour>();
+        DefenderBehaviour def = FindObjectOfType<DefenderBehaviour>();
+
+        Vector3 defPosition = def.transform.position;
+        Vector3 attPosition = att.transform.position;
+
         
+
+        attackPlayerDistance = Vector2.Distance(transform.position, attPosition);
+        defensePlayerDistance = Vector2.Distance(transform.position, defPosition);
+        towerDistance = Vector2.Distance(transform.position, tower.transform.position);
+
+        if (attackPlayerDistance < 4 ) //&& attackPlayerDistance < defensePlayerDistance)
+        {
+            transform.position = Vector2.MoveTowards(this.transform.position, attPosition, speed * Time.deltaTime);
+
+        }
+       /* else if (defensePlayerDistance < 4  && defensePlayerDistance < attackPlayerDistance)
+        {
+            transform.position = Vector2.MoveTowards(this.transform.position, defPosition, speed * Time.deltaTime);
+
+        } */
+        else
+        {
+            transform.position = Vector2.MoveTowards(this.transform.position, tower.transform.position, speed * Time.deltaTime);
+        }
+
+
+
+
+
+
+        
+
 
     }
 

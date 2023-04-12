@@ -2271,11 +2271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3314049286960798170, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.49
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 3314049286960798170, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: 5.59
       objectReference: {fileID: 0}
     - target: {fileID: 3314049286960798170, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2313,6 +2313,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3625149959648104815, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625149959648104815, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
+      propertyPath: tower
+      value: 
+      objectReference: {fileID: 581371061}
+    - target: {fileID: 3625149959648104815, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7959410326301455570, guid: 05fb38633fd3c5f4fa85c671a8bef721, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
 --- !u!58 &3586231442340018930
@@ -2504,6 +2516,8 @@ MonoBehaviour:
   BottleProjectile: {fileID: 0}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
   playerHealth: 100
+  velocityX: 0
+  velocityY: 0
   weaponArray:
   - {fileID: 0}
   - {fileID: 0}
