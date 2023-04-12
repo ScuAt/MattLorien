@@ -14,8 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -24,6 +23,8 @@ public class PlayerBehaviour : MonoBehaviour
     InputActionMap playerControls;
     InputAction move;
     InputAction rotate;
+    InputAction startGame;
+    InputAction howToGuide;
     
     public float speed = 7;
     public bool isDown = false;
@@ -52,7 +53,14 @@ public class PlayerBehaviour : MonoBehaviour
         rotate.performed += contx => aim = contx.ReadValue<Vector2>();
         rotate.canceled += contx => aim = Vector2.zero;
 
+        startGame = playerControls.FindAction("StartGame");
+        startGame.performed += ctx => playGame();
+
+        howToGuide = playerControls.FindAction("HowToGuide");
+        howToGuide.performed += ctx => HowToMenu();
+
     }
+
 
     /// <summary>
     /// Update is called once per frame
@@ -117,6 +125,41 @@ public class PlayerBehaviour : MonoBehaviour
     public void Revive()
     {
         
+    }
+
+    private void playGame()
+    {
+        SceneManager.LoadScene("SceneOne");
+    }
+
+    private void HowToMenu()
+    {
+
+        SceneManager.LoadScene("HowToScene", LoadSceneMode.Additive);
+
+        /*
+        Scene scene = SceneManager.GetActiveScene();
+
+
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+
+        if (scene.name == "HowToScene")
+        {
+            Debug.Log("Goober");
+            SceneManager.GetActiveScene();
+        }
+
+        else if (scene.name != "HowToScene")
+        {
+            Debug.Log("Boobz");
+            
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("HowToScene"));
+        }
+
+
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+        */
+
     }
 
 
