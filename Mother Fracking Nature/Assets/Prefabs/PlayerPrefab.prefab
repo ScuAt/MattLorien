@@ -1187,6 +1187,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e5fbe8da-0ff5-481e-a5e3-5ca25a963fa5
     m_ActionName: DefenderActions/Interact[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c671fcd-511e-4011-8732-4b79e905bf25
+    m_ActionName: DefenderActions/SummonInfo[/XInputControllerWindows/dpad/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 253ab54d-4cdc-4b31-93a8-c2eabb236c45
+    m_ActionName: DefenderActions/DesummonInfo[/XInputControllerWindows/dpad/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -1237,6 +1245,8 @@ MonoBehaviour:
   BottleProjectile: {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
   attackerHealth: 0
+  velocityX: 0
+  velocityY: 0
   weaponArray:
   - {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   - {fileID: 1969708928992985411}
@@ -1263,3 +1273,4 @@ MonoBehaviour:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
   - {fileID: 4534791482657638435, guid: c85443d515c912542be39074831d8cad, type: 3}
+  theInfo: {fileID: 2709658447387811306, guid: 3df607c0c10fc544eb9910d8083c0d9a, type: 3}

@@ -1948,12 +1948,12 @@ MonoBehaviour:
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
-  playerHealth: 250
+  defenderHealth: 0
   trapArray:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
   - {fileID: 4534791482657638435, guid: c85443d515c912542be39074831d8cad, type: 3}
-  oilRig: {fileID: 0}
+  theInfo: {fileID: 0}
 --- !u!1 &729894881247981443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   SawAbility: {fileID: 0}
   BottleProjectile: {fileID: 0}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
-  playerHealth: 100
+  attackerHealth: 0
   velocityX: 0
   velocityY: 0
   weaponArray:

@@ -159,6 +159,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SummonInfo"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c671fcd-511e-4011-8732-4b79e905bf25"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DesummonInfo"",
+                    ""type"": ""Button"",
+                    ""id"": ""253ab54d-4cdc-4b31-93a8-c2eabb236c45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +232,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42338c58-6bea-4b88-8654-b90467099c5c"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SummonInfo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81ab23f7-9155-4456-8ea8-49ead6018e2f"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DesummonInfo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -323,6 +363,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_DefenderActions_LeftScroll = m_DefenderActions.FindAction("LeftScroll", throwIfNotFound: true);
         m_DefenderActions_RightScroll = m_DefenderActions.FindAction("RightScroll", throwIfNotFound: true);
         m_DefenderActions_Interact = m_DefenderActions.FindAction("Interact", throwIfNotFound: true);
+        m_DefenderActions_SummonInfo = m_DefenderActions.FindAction("SummonInfo", throwIfNotFound: true);
+        m_DefenderActions_DesummonInfo = m_DefenderActions.FindAction("DesummonInfo", throwIfNotFound: true);
         // AttackerActions
         m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
         m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
@@ -450,6 +492,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_DefenderActions_LeftScroll;
     private readonly InputAction m_DefenderActions_RightScroll;
     private readonly InputAction m_DefenderActions_Interact;
+    private readonly InputAction m_DefenderActions_SummonInfo;
+    private readonly InputAction m_DefenderActions_DesummonInfo;
     public struct DefenderActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -459,6 +503,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @LeftScroll => m_Wrapper.m_DefenderActions_LeftScroll;
         public InputAction @RightScroll => m_Wrapper.m_DefenderActions_RightScroll;
         public InputAction @Interact => m_Wrapper.m_DefenderActions_Interact;
+        public InputAction @SummonInfo => m_Wrapper.m_DefenderActions_SummonInfo;
+        public InputAction @DesummonInfo => m_Wrapper.m_DefenderActions_DesummonInfo;
         public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -483,6 +529,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
+                @SummonInfo.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnSummonInfo;
+                @SummonInfo.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnSummonInfo;
+                @SummonInfo.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnSummonInfo;
+                @DesummonInfo.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnDesummonInfo;
+                @DesummonInfo.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnDesummonInfo;
+                @DesummonInfo.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnDesummonInfo;
             }
             m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -502,6 +554,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @SummonInfo.started += instance.OnSummonInfo;
+                @SummonInfo.performed += instance.OnSummonInfo;
+                @SummonInfo.canceled += instance.OnSummonInfo;
+                @DesummonInfo.started += instance.OnDesummonInfo;
+                @DesummonInfo.performed += instance.OnDesummonInfo;
+                @DesummonInfo.canceled += instance.OnDesummonInfo;
             }
         }
     }
@@ -577,6 +635,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLeftScroll(InputAction.CallbackContext context);
         void OnRightScroll(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSummonInfo(InputAction.CallbackContext context);
+        void OnDesummonInfo(InputAction.CallbackContext context);
     }
     public interface IAttackerActionsActions
     {

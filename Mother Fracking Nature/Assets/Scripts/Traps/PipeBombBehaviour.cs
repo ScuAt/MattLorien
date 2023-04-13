@@ -15,13 +15,16 @@ public class PipeBombBehaviour : MonoBehaviour
     private float countdown;
 
     /// <summary>
-    /// 
+    /// Sets the timer for the count down
     /// </summary>
     private void Start()
     {
         countdown = timer;
     }
 
+    /// <summary>
+    /// Explodes
+    /// </summary>
     private void Update()
     {
         countdown -= Time.deltaTime;

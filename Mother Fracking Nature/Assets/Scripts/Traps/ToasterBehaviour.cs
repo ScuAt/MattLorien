@@ -14,11 +14,15 @@ public class ToasterBehaviour : MonoBehaviour
     private float timer = 20;
     private float countdown;
 
+    /// <summary>
+    /// Sets timer for count down
+    /// </summary>
     private void Start()
     {
         countdown = timer;
     }
 
+    //If the trap is around for a long time is disappears
     private void Update()
     {
         countdown -= Time.deltaTime;
@@ -27,6 +31,11 @@ public class ToasterBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /// <summary>
+    /// Deals damage to the enemy and stuns enemy as well
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour

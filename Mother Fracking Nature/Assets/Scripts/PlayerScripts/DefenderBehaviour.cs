@@ -23,6 +23,8 @@ public class DefenderBehaviour : PlayerBehaviour
     InputAction place;
     InputAction scroll;
     InputAction interact;
+    InputAction summonInfo;
+    InputAction desummonInfo;
 
     public float defenderHealth;
 
@@ -30,6 +32,8 @@ public class DefenderBehaviour : PlayerBehaviour
     public GameObject[] trapArray = new GameObject[3];
     //Trap number to help navigate through the different traps
     private int trapNumber = 0;
+
+    public GameObject theInfo;
 
     //Timers
     private float bearTrapTimer = 3f;
@@ -80,8 +84,27 @@ public class DefenderBehaviour : PlayerBehaviour
         interact = defenderActions.FindAction("Interact");
         interact.performed += ctx => RepairRig();
 
+        summonInfo = defenderActions.FindAction("SummonInfo");
+        summonInfo.performed += ctx => SummonTheInfo();
+
+        desummonInfo = defenderActions.FindAction("SummonInfo");
+        desummonInfo.performed += ctx => DesummonTheInfo();
+
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Lady;
 
+    }
+
+    private void DesummonTheInfo()
+    {
+        DestroyImmediate(theInfo, true);
+    }
+
+    /// <summary>
+    /// Summons the info board
+    /// </summary>
+    private void SummonTheInfo()
+    {
+        GameObject newInfo = Instantiate(theInfo, transform.position, Quaternion.identity);
     }
 
 
