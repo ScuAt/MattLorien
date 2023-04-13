@@ -54,17 +54,20 @@ public class EnemyBehaviour : MonoBehaviour
             enemyDamage = 10;
             
         }
+       
 
         AttackerBehaviour att = FindObjectOfType<AttackerBehaviour>();
         DefenderBehaviour def = FindObjectOfType<DefenderBehaviour>();
 
-        Vector3 defPosition = def.transform.position;
-        Vector3 attPosition = att.transform.position;
-
-        if(!def && !att)
+        if (!def && !att)
         {
             return;
         }
+
+        Vector3 defPosition = def.transform.position;
+        Vector3 attPosition = att.transform.position;
+
+        
 
         attackPlayerDistance = Vector2.Distance(transform.position, attPosition);
         defensePlayerDistance = Vector2.Distance(transform.position, defPosition);
