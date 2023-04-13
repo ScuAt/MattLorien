@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HowToGuide",
+                    "name": "HowToMenu",
                     "type": "Button",
-                    "id": "4b6fd043-2e86-42be-b888-1b066ede58fe",
+                    "id": "38046006-0e00-4c62-aabc-399b55438310",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -78,12 +78,12 @@
                 },
                 {
                     "name": "",
-                    "id": "bd76440d-b48e-4b16-8cc9-7578a09fa932",
+                    "id": "5c9476a5-7e9f-477d-ae3e-a35794d1fcbd",
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HowToGuide",
+                    "action": "HowToMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -124,33 +124,6 @@
                     "name": "RightScroll",
                     "type": "Button",
                     "id": "2d5b03af-1a88-4769-8b6d-2e21535a5d63",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "e5fbe8da-0ff5-481e-a5e3-5ca25a963fa5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SummonInfo",
-                    "type": "Button",
-                    "id": "5c671fcd-511e-4011-8732-4b79e905bf25",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DesummonInfo",
-                    "type": "Button",
-                    "id": "253ab54d-4cdc-4b31-93a8-c2eabb236c45",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -199,39 +172,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightScroll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8ef3c3cf-47b1-485f-ac3d-f64335a7fff9",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "42338c58-6bea-4b88-8654-b90467099c5c",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SummonInfo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "81ab23f7-9155-4456-8ea8-49ead6018e2f",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DesummonInfo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

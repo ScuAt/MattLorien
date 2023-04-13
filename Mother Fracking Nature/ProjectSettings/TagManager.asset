@@ -16,6 +16,7 @@ TagManager:
   - BanjoAbility
   - Barrier
   - BearTrap
+  - InfoPopUp
   layers:
   - Default
   - TransparentFX

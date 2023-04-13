@@ -24,8 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction move;
     InputAction rotate;
     InputAction startGame;
-    InputAction howToGuide;
-    
+    InputAction howToMenu;
+
     public float speed = 7;
     public bool isDown = false;
     
@@ -57,11 +57,12 @@ public class PlayerBehaviour : MonoBehaviour
         startGame = playerControls.FindAction("StartGame");
         startGame.performed += ctx => playGame();
 
-        howToGuide = playerControls.FindAction("HowToGuide");
-        howToGuide.performed += ctx => HowToMenu();
+        howToMenu = playerControls.FindAction("HowToMenu");
+        howToMenu.performed += ctx => HowToMenu();
 
     }
 
+    
 
     /// <summary>
     /// Update is called once per frame
@@ -133,43 +134,17 @@ public class PlayerBehaviour : MonoBehaviour
     /// Loads scene one
     /// </summary>
     private void playGame()
-    {
+    { 
         SceneManager.LoadScene("SceneOne");
     }
 
     /// <summary>
-    /// Loads the how to menu
+    /// Loads the how to scene
     /// </summary>
     private void HowToMenu()
     {
-
         SceneManager.LoadScene("HowToScene", LoadSceneMode.Additive);
-
-        /*
-        Scene scene = SceneManager.GetActiveScene();
-
-
-        Debug.Log("Active Scene is '" + scene.name + "'.");
-
-        if (scene.name == "HowToScene")
-        {
-            Debug.Log("Goober");
-            SceneManager.GetActiveScene();
-        }
-
-        else if (scene.name != "HowToScene")
-        {
-            Debug.Log("Boobz");
-            
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("HowToScene"));
-        }
-
-
-        Debug.Log("Active Scene is '" + scene.name + "'.");
-        */
-
     }
-
 
     /// <summary>
     /// When players start game and run into these circles they will be 

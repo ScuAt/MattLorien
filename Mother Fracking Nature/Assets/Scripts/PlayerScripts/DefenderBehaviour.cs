@@ -22,9 +22,7 @@ public class DefenderBehaviour : PlayerBehaviour
     InputAction block;
     InputAction place;
     InputAction scroll;
-    InputAction interact;
-    //InputAction summonInfo;
-    //InputAction desummonInfo;
+    //InputAction interact;    
 
     public float defenderHealth;
 
@@ -32,8 +30,6 @@ public class DefenderBehaviour : PlayerBehaviour
     public GameObject[] trapArray = new GameObject[3];
     //Trap number to help navigate through the different traps
     private int trapNumber = 0;
-
-    public GameObject theInfo;
 
     //Timers
     private float bearTrapTimer = 3f;
@@ -81,34 +77,16 @@ public class DefenderBehaviour : PlayerBehaviour
         scroll = defenderActions.FindAction("RightScroll");
         scroll.performed += ctx => RightsScroll();
 
+        /*
         interact = defenderActions.FindAction("Interact");
         interact.performed += ctx => RepairRig();
-
-        /*
-        summonInfo = defenderActions.FindAction("SummonInfo");
-        summonInfo.performed += ctx => SummonTheInfo();
-
-        desummonInfo = defenderActions.FindAction("SummonInfo");
-        desummonInfo.performed += ctx => DesummonTheInfo();
         */
+        
+        
+        
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Lady;
 
-    }
-
-    /*
-    private void DesummonTheInfo()
-    {
-        DestroyImmediate(theInfo, true);
-    }
-
-    /// <summary>
-    /// Summons the info board
-    /// </summary>
-    private void SummonTheInfo()
-    {
-        GameObject newInfo = Instantiate(theInfo, transform.position, Quaternion.identity);
-    }
-    */
+    }    
 
     /// <summary>
     /// Update is called once per frame
@@ -246,6 +224,7 @@ public class DefenderBehaviour : PlayerBehaviour
         defenderHealth = -defenderDamageTaken;
     }
 
+    /*
     /// <summary>
     /// Gives the oil rig health
     /// </summary>
@@ -255,5 +234,5 @@ public class DefenderBehaviour : PlayerBehaviour
 
         oilRigComponent.getHealth(10);
     }
-
+    */
 }

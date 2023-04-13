@@ -55,9 +55,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HowToGuide"",
+                    ""name"": ""HowToMenu"",
                     ""type"": ""Button"",
-                    ""id"": ""4b6fd043-2e86-42be-b888-1b066ede58fe"",
+                    ""id"": ""38046006-0e00-4c62-aabc-399b55438310"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -100,12 +100,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bd76440d-b48e-4b16-8cc9-7578a09fa932"",
+                    ""id"": ""5c9476a5-7e9f-477d-ae3e-a35794d1fcbd"",
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HowToGuide"",
+                    ""action"": ""HowToMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -146,33 +146,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""RightScroll"",
                     ""type"": ""Button"",
                     ""id"": ""2d5b03af-1a88-4769-8b6d-2e21535a5d63"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""e5fbe8da-0ff5-481e-a5e3-5ca25a963fa5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SummonInfo"",
-                    ""type"": ""Button"",
-                    ""id"": ""5c671fcd-511e-4011-8732-4b79e905bf25"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""DesummonInfo"",
-                    ""type"": ""Button"",
-                    ""id"": ""253ab54d-4cdc-4b31-93a8-c2eabb236c45"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -221,39 +194,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightScroll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8ef3c3cf-47b1-485f-ac3d-f64335a7fff9"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""42338c58-6bea-4b88-8654-b90467099c5c"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SummonInfo"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""81ab23f7-9155-4456-8ea8-49ead6018e2f"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DesummonInfo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -355,16 +295,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
         m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
         m_PlayerActions_StartGame = m_PlayerActions.FindAction("StartGame", throwIfNotFound: true);
-        m_PlayerActions_HowToGuide = m_PlayerActions.FindAction("HowToGuide", throwIfNotFound: true);
+        m_PlayerActions_HowToMenu = m_PlayerActions.FindAction("HowToMenu", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
         m_DefenderActions_Trap = m_DefenderActions.FindAction("Trap", throwIfNotFound: true);
         m_DefenderActions_LeftScroll = m_DefenderActions.FindAction("LeftScroll", throwIfNotFound: true);
         m_DefenderActions_RightScroll = m_DefenderActions.FindAction("RightScroll", throwIfNotFound: true);
-        m_DefenderActions_Interact = m_DefenderActions.FindAction("Interact", throwIfNotFound: true);
-        m_DefenderActions_SummonInfo = m_DefenderActions.FindAction("SummonInfo", throwIfNotFound: true);
-        m_DefenderActions_DesummonInfo = m_DefenderActions.FindAction("DesummonInfo", throwIfNotFound: true);
         // AttackerActions
         m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
         m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
@@ -433,7 +370,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Move;
     private readonly InputAction m_PlayerActions_Rotate;
     private readonly InputAction m_PlayerActions_StartGame;
-    private readonly InputAction m_PlayerActions_HowToGuide;
+    private readonly InputAction m_PlayerActions_HowToMenu;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -441,7 +378,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
         public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
         public InputAction @StartGame => m_Wrapper.m_PlayerActions_StartGame;
-        public InputAction @HowToGuide => m_Wrapper.m_PlayerActions_HowToGuide;
+        public InputAction @HowToMenu => m_Wrapper.m_PlayerActions_HowToMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -460,9 +397,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartGame.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
                 @StartGame.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
                 @StartGame.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
-                @HowToGuide.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToGuide;
-                @HowToGuide.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToGuide;
-                @HowToGuide.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToGuide;
+                @HowToMenu.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
+                @HowToMenu.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
+                @HowToMenu.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -476,9 +413,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartGame.started += instance.OnStartGame;
                 @StartGame.performed += instance.OnStartGame;
                 @StartGame.canceled += instance.OnStartGame;
-                @HowToGuide.started += instance.OnHowToGuide;
-                @HowToGuide.performed += instance.OnHowToGuide;
-                @HowToGuide.canceled += instance.OnHowToGuide;
+                @HowToMenu.started += instance.OnHowToMenu;
+                @HowToMenu.performed += instance.OnHowToMenu;
+                @HowToMenu.canceled += instance.OnHowToMenu;
             }
         }
     }
@@ -491,9 +428,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_DefenderActions_Trap;
     private readonly InputAction m_DefenderActions_LeftScroll;
     private readonly InputAction m_DefenderActions_RightScroll;
-    private readonly InputAction m_DefenderActions_Interact;
-    private readonly InputAction m_DefenderActions_SummonInfo;
-    private readonly InputAction m_DefenderActions_DesummonInfo;
     public struct DefenderActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -502,9 +436,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Trap => m_Wrapper.m_DefenderActions_Trap;
         public InputAction @LeftScroll => m_Wrapper.m_DefenderActions_LeftScroll;
         public InputAction @RightScroll => m_Wrapper.m_DefenderActions_RightScroll;
-        public InputAction @Interact => m_Wrapper.m_DefenderActions_Interact;
-        public InputAction @SummonInfo => m_Wrapper.m_DefenderActions_SummonInfo;
-        public InputAction @DesummonInfo => m_Wrapper.m_DefenderActions_DesummonInfo;
         public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -526,15 +457,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RightScroll.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
                 @RightScroll.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
                 @RightScroll.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
-                @Interact.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
-                @SummonInfo.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnSummonInfo;
-                @SummonInfo.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnSummonInfo;
-                @SummonInfo.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnSummonInfo;
-                @DesummonInfo.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnDesummonInfo;
-                @DesummonInfo.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnDesummonInfo;
-                @DesummonInfo.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnDesummonInfo;
             }
             m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -551,15 +473,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RightScroll.started += instance.OnRightScroll;
                 @RightScroll.performed += instance.OnRightScroll;
                 @RightScroll.canceled += instance.OnRightScroll;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
-                @SummonInfo.started += instance.OnSummonInfo;
-                @SummonInfo.performed += instance.OnSummonInfo;
-                @SummonInfo.canceled += instance.OnSummonInfo;
-                @DesummonInfo.started += instance.OnDesummonInfo;
-                @DesummonInfo.performed += instance.OnDesummonInfo;
-                @DesummonInfo.canceled += instance.OnDesummonInfo;
             }
         }
     }
@@ -626,7 +539,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnStartGame(InputAction.CallbackContext context);
-        void OnHowToGuide(InputAction.CallbackContext context);
+        void OnHowToMenu(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions
     {
@@ -634,9 +547,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTrap(InputAction.CallbackContext context);
         void OnLeftScroll(InputAction.CallbackContext context);
         void OnRightScroll(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
-        void OnSummonInfo(InputAction.CallbackContext context);
-        void OnDesummonInfo(InputAction.CallbackContext context);
     }
     public interface IAttackerActionsActions
     {
