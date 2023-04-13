@@ -61,7 +61,10 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 defPosition = def.transform.position;
         Vector3 attPosition = att.transform.position;
 
-        
+        if(!def && !att)
+        {
+            return;
+        }
 
         attackPlayerDistance = Vector2.Distance(transform.position, attPosition);
         defensePlayerDistance = Vector2.Distance(transform.position, defPosition);

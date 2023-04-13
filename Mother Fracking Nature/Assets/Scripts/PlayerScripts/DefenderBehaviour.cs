@@ -23,8 +23,8 @@ public class DefenderBehaviour : PlayerBehaviour
     InputAction place;
     InputAction scroll;
     InputAction interact;
-    InputAction summonInfo;
-    InputAction desummonInfo;
+    //InputAction summonInfo;
+    //InputAction desummonInfo;
 
     public float defenderHealth;
 
@@ -84,16 +84,18 @@ public class DefenderBehaviour : PlayerBehaviour
         interact = defenderActions.FindAction("Interact");
         interact.performed += ctx => RepairRig();
 
+        /*
         summonInfo = defenderActions.FindAction("SummonInfo");
         summonInfo.performed += ctx => SummonTheInfo();
 
         desummonInfo = defenderActions.FindAction("SummonInfo");
         desummonInfo.performed += ctx => DesummonTheInfo();
-
+        */
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Lady;
 
     }
 
+    /*
     private void DesummonTheInfo()
     {
         DestroyImmediate(theInfo, true);
@@ -106,7 +108,7 @@ public class DefenderBehaviour : PlayerBehaviour
     {
         GameObject newInfo = Instantiate(theInfo, transform.position, Quaternion.identity);
     }
-
+    */
 
     /// <summary>
     /// Update is called once per frame
