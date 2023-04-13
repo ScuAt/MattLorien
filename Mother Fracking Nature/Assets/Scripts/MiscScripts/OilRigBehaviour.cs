@@ -13,16 +13,28 @@ public class OilRigBehaviour : MonoBehaviour
 {
     public float health;
 
+    /// <summary>
+    /// Sets the health for the oil rig
+    /// </summary>
     private void Start()
     {
         health = 500;
     }
 
+
+    /// <summary>
+    /// Gives health back to the oil rig
+    /// </summary>
+    /// <param name="healthBack"></param>
     public void getHealth(float healthBack)
     {
         health = health * healthBack;
     }
 
+    /// <summary>
+    /// Takes health from the oil rig
+    /// </summary>
+    /// <param name="damageTaken"></param>
     public void oirlRigDamageTaken(float damageTaken)
     {
         health = -damageTaken;

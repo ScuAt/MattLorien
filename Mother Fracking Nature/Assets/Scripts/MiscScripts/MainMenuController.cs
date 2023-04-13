@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         AttackerBehaviour.cs
+// Author :            Lorien Nergard
+// Creation Date :     April 11th, 2023
+//
+// Brief Description : Controls the main menu and switching of scenes 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +17,9 @@ public class MainMenuController : MonoBehaviour
     InputActionMap playerControls;
     InputAction startGame;
 
+    /// <summary>
+    /// Has the code for pressing the button
+    /// </summary>
     private void Awake()
     {
         /*
@@ -22,7 +32,9 @@ public class MainMenuController : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// Switches the scene to the next one
+    /// </summary>
     public void playGame()
     {
         SceneManager.LoadScene("SceneOne");

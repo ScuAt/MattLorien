@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         EnemyBehaviour.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 11th, 2023
+//
+// Brief Description : Controls the enemy collision, movement, health, and attack. 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,13 +28,9 @@ public class EnemyBehaviour : MonoBehaviour
     public float towerDistance;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         if(enemyHealth <= 0)
@@ -99,6 +102,10 @@ public class EnemyBehaviour : MonoBehaviour
         
     }
 
+
+    /// <summary>
+    /// Stuns the enemy for a breif amount of time
+    /// </summary>
     public void Stunned()
     {
         stunEnd = stunTime + Time.time;
@@ -107,6 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     /// <summary>
     /// This is for the trap scripts to call when the enemy walks into said trap
+    /// It deals damage to the enemy
     /// </summary>
     /// <param name="damageAmount"></param>
     public void TakeDamage(float damageAmount)
@@ -115,6 +123,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// This is for collision with the weapons/ special attacks. It also 
+    /// deals damage to players/ the rig
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "BottleMelee")

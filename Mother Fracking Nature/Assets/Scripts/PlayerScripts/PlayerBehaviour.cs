@@ -129,11 +129,17 @@ public class PlayerBehaviour : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Loads scene one
+    /// </summary>
     private void playGame()
     {
         SceneManager.LoadScene("SceneOne");
     }
 
+    /// <summary>
+    /// Loads the how to menu
+    /// </summary>
     private void HowToMenu()
     {
 

@@ -47,7 +47,9 @@ public class DefenderBehaviour : PlayerBehaviour
     //temp holder for player to tell which trap they have
     //public Text currentTrapNumber;
     
-
+    /// <summary>
+    /// Enables controls
+    /// </summary>
     private void Awake()
     {
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
@@ -82,9 +84,10 @@ public class DefenderBehaviour : PlayerBehaviour
 
     }
 
-    
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         /*
@@ -105,6 +108,9 @@ public class DefenderBehaviour : PlayerBehaviour
         
     }
 
+    /// <summary>
+    /// Health stuff
+    /// </summary>
     private void FixedUpdate()
     {
         /*
@@ -120,10 +126,10 @@ public class DefenderBehaviour : PlayerBehaviour
 
     }
 
-        /// <summary>
-        /// enables the input map
-        /// </summary>
-        private void OnEnable()
+    /// <summary>
+    /// enables the input map
+    /// </summary>
+    private void OnEnable()
     {
         defenderActions.Enable();
     }
@@ -206,11 +212,18 @@ public class DefenderBehaviour : PlayerBehaviour
         }       
     }
 
+    /// <summary>
+    /// Deals damage to the defender
+    /// </summary>
+    /// <param name="defenderDamageTaken"></param>
     public void DefenderTakeDamage(float defenderDamageTaken)
     {
         defenderHealth = -defenderDamageTaken;
     }
 
+    /// <summary>
+    /// Gives the oil rig health
+    /// </summary>
     private void RepairRig()
     {
         TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent);

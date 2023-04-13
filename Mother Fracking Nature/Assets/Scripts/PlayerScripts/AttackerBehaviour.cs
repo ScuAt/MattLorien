@@ -53,7 +53,9 @@ public class AttackerBehaviour : PlayerBehaviour
 
    
 
-
+    /// <summary>
+    /// Enables controls
+    /// </summary>
     private void Awake()
     {
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
@@ -61,7 +63,11 @@ public class AttackerBehaviour : PlayerBehaviour
 
         bB = FindObjectOfType<BottleAbilityBehaviour>();
     }
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Start is called before the first frame update
+    /// Stores all the controls and sets default weapon
+    /// </summary>
     void Start()
     {
         weapon = new Bottle();
@@ -91,7 +97,9 @@ public class AttackerBehaviour : PlayerBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Guy;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         /*
@@ -150,6 +158,9 @@ public class AttackerBehaviour : PlayerBehaviour
 
     }
 
+    /// <summary>
+    /// Turns off the attack range objects
+    /// </summary>
     public void DisableTriggers()
     {
         BottleMelee.SetActive(false);
@@ -158,6 +169,9 @@ public class AttackerBehaviour : PlayerBehaviour
        
     }
 
+    /// <summary>
+    /// Turns off attack range objects
+    /// </summary>
     public void DisableAbilityTriggers()
     {
         BanjoAbility.SetActive(false);
@@ -165,10 +179,12 @@ public class AttackerBehaviour : PlayerBehaviour
 
     }
 
+
+    /// <summary>
+    /// Checks what weapon you're holding and sets the correct trigger box
+    /// </summary>
     public void Attack()
     {
-        
-
         if (weapon.AttackReady > Time.time)
         {
             Debug.Log("attack on cooldown" + weapon.AttackReady);
@@ -194,11 +210,13 @@ public class AttackerBehaviour : PlayerBehaviour
         else
         {
             BanjoMelee.SetActive(true);
-        }
-
-        
+        }        
     }
 
+
+    /// <summary>
+    /// Checks which weapon you're holding and applies the correct ability
+    /// </summary>
     public void Ability()
     {
 
@@ -241,6 +259,7 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         attackerActions.Enable();
     }
+
     /// <summary>
     /// Disables the input map
     /// </summary>
@@ -260,6 +279,8 @@ public class AttackerBehaviour : PlayerBehaviour
     }
 
     */
+
+
 /// <summary>
 /// Selects a new weapon using the right bumper which will 
 /// loop back around between three different weapons assigning the right scipt
