@@ -37,7 +37,7 @@ public class AttackerBehaviour : PlayerBehaviour
     InputAction ability;
     InputAction scroll;
 
-    public float playerHealth = 100;
+    public float attackerHealth;
 
     public float velocityX;
     public float velocityY;
@@ -68,6 +68,8 @@ public class AttackerBehaviour : PlayerBehaviour
 
         speed = 10;
 
+        attackerHealth = 100;
+
 
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
 
@@ -92,7 +94,7 @@ public class AttackerBehaviour : PlayerBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         if (playerHealth <= 0)
         {
             isDown = true;
@@ -106,7 +108,7 @@ public class AttackerBehaviour : PlayerBehaviour
             attackerActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
-
+        */
        
 
     }
@@ -117,10 +119,12 @@ public class AttackerBehaviour : PlayerBehaviour
     private void FixedUpdate()
     {
         //player health regen
+        /*
         for (; playerHealth < 100; playerHealth += 2)
         {
 
         }
+        */
 
         if (attackFrames >= 4)
         {
@@ -332,11 +336,12 @@ public class AttackerBehaviour : PlayerBehaviour
         }
     }
 
-
-   
-
-
-
-    
-
+    /// <summary>
+    /// Allows other scripts to call this function and deal damage to the attacker
+    /// </summary>
+    /// <param name="attackerDamageTaken"></param>
+    public void AttackerTakeDamage(float attackerDamageTaken)
+    {
+        attackerHealth = -attackerDamageTaken;
+    }
 }

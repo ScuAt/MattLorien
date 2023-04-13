@@ -13,5 +13,18 @@ public class OilRigBehaviour : MonoBehaviour
 {
     public float health;
 
-    
+    private void Start()
+    {
+        health = 500;
+    }
+
+    public void getHealth(float healthBack)
+    {
+        health = health * healthBack;
+    }
+
+    public void oirlRigDamageTaken(float damageTaken)
+    {
+        health = -damageTaken;
+    }
 }

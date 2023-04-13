@@ -150,6 +150,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5fbe8da-0ff5-481e-a5e3-5ca25a963fa5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -194,6 +203,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ef3c3cf-47b1-485f-ac3d-f64335a7fff9"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -302,6 +322,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_DefenderActions_Trap = m_DefenderActions.FindAction("Trap", throwIfNotFound: true);
         m_DefenderActions_LeftScroll = m_DefenderActions.FindAction("LeftScroll", throwIfNotFound: true);
         m_DefenderActions_RightScroll = m_DefenderActions.FindAction("RightScroll", throwIfNotFound: true);
+        m_DefenderActions_Interact = m_DefenderActions.FindAction("Interact", throwIfNotFound: true);
         // AttackerActions
         m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
         m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
@@ -428,6 +449,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_DefenderActions_Trap;
     private readonly InputAction m_DefenderActions_LeftScroll;
     private readonly InputAction m_DefenderActions_RightScroll;
+    private readonly InputAction m_DefenderActions_Interact;
     public struct DefenderActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -436,6 +458,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Trap => m_Wrapper.m_DefenderActions_Trap;
         public InputAction @LeftScroll => m_Wrapper.m_DefenderActions_LeftScroll;
         public InputAction @RightScroll => m_Wrapper.m_DefenderActions_RightScroll;
+        public InputAction @Interact => m_Wrapper.m_DefenderActions_Interact;
         public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +480,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RightScroll.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
                 @RightScroll.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
                 @RightScroll.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
+                @Interact.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -473,6 +499,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RightScroll.started += instance.OnRightScroll;
                 @RightScroll.performed += instance.OnRightScroll;
                 @RightScroll.canceled += instance.OnRightScroll;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -547,6 +576,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTrap(InputAction.CallbackContext context);
         void OnLeftScroll(InputAction.CallbackContext context);
         void OnRightScroll(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IAttackerActionsActions
     {

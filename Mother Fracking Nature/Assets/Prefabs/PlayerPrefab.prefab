@@ -1098,6 +1098,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4b6fd043-2e86-42be-b888-1b066ede58fe
     m_ActionName: PlayerActions/HowToGuide[/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e5fbe8da-0ff5-481e-a5e3-5ca25a963fa5
+    m_ActionName: DefenderActions/Interact[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -1148,6 +1152,8 @@ MonoBehaviour:
   BottleProjectile: {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
   playerHealth: 100
+  velocityX: 0
+  velocityY: 0
   weaponArray:
   - {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   - {fileID: 1969708928992985411}
@@ -1174,3 +1180,4 @@ MonoBehaviour:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
   - {fileID: 4534791482657638435, guid: c85443d515c912542be39074831d8cad, type: 3}
+  oilRig: {fileID: 0}

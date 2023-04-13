@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-   
-
     //public GameObject player;
     public GameObject tower;
-    
-
 
     Weapon weapon;
 
@@ -67,13 +63,18 @@ public class EnemyBehaviour : MonoBehaviour
         attackPlayerDistance = Vector2.Distance(transform.position, attPosition);
         defensePlayerDistance = Vector2.Distance(transform.position, defPosition);
         towerDistance = Vector2.Distance(transform.position, tower.transform.position);
+
         //finding the direction the enemy is heading towards the players and normalizes it and simplifies it to a simple number
         Vector2 attackerDirection = attPosition - transform.position;
         attackerDirection.Normalize();
         float attackAngle = Mathf.Atan2(attackerDirection.y, attackerDirection.x) * Mathf.Rad2Deg;
+
+        //
         Vector2 defenderDirection = defPosition - transform.position;
         defenderDirection.Normalize();
         float defendAngle = Mathf.Atan2(defenderDirection.y, defenderDirection.x) * Mathf.Rad2Deg;
+
+        //
         Vector2 towerDirection = tower.transform.position - transform.position;
         towerDirection.Normalize();
         float towerAngle = Mathf.Atan2(towerDirection.y, towerDirection.x) * Mathf.Rad2Deg;
@@ -95,15 +96,7 @@ public class EnemyBehaviour : MonoBehaviour
             transform.position = Vector2.MoveTowards(this.transform.position, tower.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * towerAngle);
         }
-
-
-
-
-
-
         
-
-
     }
 
     public void Stunned()
@@ -149,6 +142,25 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Stunned();
         }
+
+        //Deals damage to players
+        if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
+        {
+            attackerComponent.AttackerTakeDamage(10);
+        }
+
+        if (collision.gameObject.TryGetComponent<DefenderBehaviour>(out DefenderBehaviour defenderComponent) && defensePlayerDistance <= 2)
+        {
+            defenderComponent.DefenderTakeDamage(10);
+        }
+
+
+        //Deals damage to the oil rig
+        if (collision.gameObject.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent) && towerDistance <= 2)
+        {
+            oilRigComponent.oirlRigDamageTaken(10);
+        }
+
 
     }
 }

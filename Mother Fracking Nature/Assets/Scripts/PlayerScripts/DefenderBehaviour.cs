@@ -22,8 +22,9 @@ public class DefenderBehaviour : PlayerBehaviour
     InputAction block;
     InputAction place;
     InputAction scroll;
+    InputAction interact;
 
-    public float playerHealth = 250;
+    public float defenderHealth;
 
     //Array of game objects for the traps
     public GameObject[] trapArray = new GameObject[3];
@@ -39,8 +40,6 @@ public class DefenderBehaviour : PlayerBehaviour
 
     private float toasterTimer = 6f;
     private float canPlaceToaster;
-
-
     
     //Calls the health bar script
     //public HealthBarBehaviour healthBar;
@@ -60,7 +59,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     void Start()
     {
-
+        defenderHealth = 250;
 
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
 
@@ -68,7 +67,7 @@ public class DefenderBehaviour : PlayerBehaviour
         block.performed += ctx => Block();
 
         place = defenderActions.FindAction("Trap");
-        place.performed += ctx => PlaceTrap(); //pulling function from trapData scriptable object
+        place.performed += ctx => PlaceTrap(); 
 
         scroll = defenderActions.FindAction("LeftScroll");
         scroll.performed += ctx => LeftScroll();
@@ -76,13 +75,19 @@ public class DefenderBehaviour : PlayerBehaviour
         scroll = defenderActions.FindAction("RightScroll");
         scroll.performed += ctx => RightsScroll();
 
+        interact = defenderActions.FindAction("Interact");
+        interact.performed += ctx => RepairRig();
+
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Lady;
 
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
+        /*
         if (playerHealth <= 0)
         {
             isDown = true;
@@ -96,17 +101,19 @@ public class DefenderBehaviour : PlayerBehaviour
             defenderActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
-
+        */
         
     }
 
     private void FixedUpdate()
     {
+        /*
         //player health regen
         for (; playerHealth < 250; playerHealth++)
         {
 
         }
+        */
 
         //Updates the healthbar with current health
         //healthBar.SetHealth((int)playerHealth);
@@ -140,7 +147,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// Increases the trap number
     /// Will only get to '1' and '2' please help I'm too dumb to figure it out
     /// </summary>
-    public void RightsScroll()
+    private void RightsScroll()
     {
         if (trapNumber == 2)
         {
@@ -158,7 +165,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// Decreases the trap number
     /// Currently the only way to get to '0' trap :')
     /// </summary>
-    public void LeftScroll()
+    private void LeftScroll()
     {
         if (trapNumber == 0)
         {
@@ -175,7 +182,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// <summary>
     /// Creats a new trap based on the current trap number and position of player
     /// </summary>
-    public void PlaceTrap()
+    private void PlaceTrap()
     {
         if (trapNumber == 0 && Time.time > canPlaceBearTrap)
         {
@@ -196,8 +203,19 @@ public class DefenderBehaviour : PlayerBehaviour
             GameObject newTrap = Instantiate(trapArray[2], transform.position, Quaternion.identity);
             canPlaceToaster = Time.time + toasterTimer;
             //currentTrapNumber.text = "Toaster Bomb";
-        }
-       
+        }       
+    }
+
+    public void DefenderTakeDamage(float defenderDamageTaken)
+    {
+        defenderHealth = -defenderDamageTaken;
+    }
+
+    private void RepairRig()
+    {
+        TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent);
+
+        oilRigComponent.getHealth(10);
     }
 
 }

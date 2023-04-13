@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eac8188d9003764c94c8cc4ef325414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 500
 --- !u!1 &603662083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +1953,7 @@ MonoBehaviour:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
   - {fileID: 4534791482657638435, guid: c85443d515c912542be39074831d8cad, type: 3}
+  oilRig: {fileID: 0}
 --- !u!1 &729894881247981443
 GameObject:
   m_ObjectHideFlags: 0
