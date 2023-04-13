@@ -61,7 +61,7 @@ public class AttackerBehaviour : PlayerBehaviour
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
         attackerActions = inputAsset2.FindActionMap("AttackerActions");
 
-        bB = FindObjectOfType<BottleAbilityBehaviour>();
+       
     }
 
     /// <summary>
@@ -234,10 +234,8 @@ public class AttackerBehaviour : PlayerBehaviour
         if (weapon.WeaponName == "Broken Bottle")
         {
             GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
-            velocityX = aim.x;
-            velocityY = aim.y;
-            rb2D = bB.GetComponent<Rigidbody2D>();
-            rb2D.velocity = new Vector2(velocityX, velocityY);
+            
+
 
         }
         else if (weapon.WeaponName == "Hand Saw")

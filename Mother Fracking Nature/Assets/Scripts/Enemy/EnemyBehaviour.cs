@@ -155,9 +155,15 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Stunned();
         }
+        if (collision.tag == "BottleAbility")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 15;
+            Debug.Log("Health remaining: " + enemyHealth);
+        }
 
-        //Deals damage to players
-        if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
+            //Deals damage to players
+            if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
         {
             attackerComponent.AttackerTakeDamage(10);
         }
