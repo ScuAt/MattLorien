@@ -14,17 +14,18 @@ using UnityEngine.UI;
 public class HealthBarBehaviour : MonoBehaviour
 {
     public Slider slider;
+    private int healthNumber;
 
     //Sets the health bar to full
-    public void SetMaxHealth(int health)
+    public void SetMaxHealth()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.maxValue = healthNumber;
+        slider.value = healthNumber;
     }
 
     //Sets the health bar to the current players health
-    public void SetHealth(int health)
+    public void SetHealth()
     {
-        slider.value = health;
+        slider.value = healthNumber;
     }
 }

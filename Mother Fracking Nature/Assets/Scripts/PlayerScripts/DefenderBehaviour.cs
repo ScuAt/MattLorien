@@ -224,7 +224,7 @@ public class DefenderBehaviour : PlayerBehaviour
         defenderHealth = -defenderDamageTaken;
     }
 
-    /*
+    
     /// <summary>
     /// Gives the oil rig health
     /// </summary>
@@ -234,5 +234,5 @@ public class DefenderBehaviour : PlayerBehaviour
 
         oilRigComponent.getHealth(10);
     }
-    */
+    
 }

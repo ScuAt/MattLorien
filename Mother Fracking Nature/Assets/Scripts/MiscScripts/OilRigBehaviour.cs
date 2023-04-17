@@ -28,7 +28,7 @@ public class OilRigBehaviour : MonoBehaviour
     /// <param name="healthBack"></param>
     public void getHealth(float healthBack)
     {
-        health = health * healthBack;
+        health = health + healthBack;
     }
 
     /// <summary>
@@ -37,6 +37,6 @@ public class OilRigBehaviour : MonoBehaviour
     /// <param name="damageTaken"></param>
     public void oirlRigDamageTaken(float damageTaken)
     {
-        health = -damageTaken;
+        health = health - damageTaken;
     }
 }

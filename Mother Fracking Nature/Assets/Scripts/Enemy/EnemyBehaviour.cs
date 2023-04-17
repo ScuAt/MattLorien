@@ -27,13 +27,13 @@ public class EnemyBehaviour : MonoBehaviour
     public float defensePlayerDistance;
     public float towerDistance;
 
-
     /// <summary>
     /// Update is called once per frame
     /// </summary>
     void Update()
     {
-        if(enemyHealth <= 0)
+
+        if (enemyHealth <= 0)
         {
             Debug.Log("Enemy has died");
             Destroy(this.gameObject);
@@ -169,7 +169,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
             //Deals damage to players
-            if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
+        if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
         {
             attackerComponent.AttackerTakeDamage(10);
         }
@@ -181,7 +181,7 @@ public class EnemyBehaviour : MonoBehaviour
 
 
         //Deals damage to the oil rig
-        if (collision.gameObject.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent) && towerDistance <= 2)
+        if (collision.gameObject.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent) && towerDistance <= 3)
         {
             oilRigComponent.oirlRigDamageTaken(10);
         }
