@@ -11,14 +11,14 @@ using UnityEngine;
 
 public class OilRigBehaviour : MonoBehaviour
 {
-    public float health;
+    public int health = 500;
 
     /// <summary>
     /// Sets the health for the oil rig
     /// </summary>
-    private void Start()
+    public void Start()
     {
-        health = 500;
+        //health = 500;
     }
 
 
@@ -26,7 +26,7 @@ public class OilRigBehaviour : MonoBehaviour
     /// Gives health back to the oil rig
     /// </summary>
     /// <param name="healthBack"></param>
-    public void getHealth(float healthBack)
+    public void getHealth(int healthBack)
     {
         health = health + healthBack;
     }
@@ -35,8 +35,9 @@ public class OilRigBehaviour : MonoBehaviour
     /// Takes health from the oil rig
     /// </summary>
     /// <param name="damageTaken"></param>
-    public void oirlRigDamageTaken(float damageTaken)
+    public void oirlRigDamageTaken(int damageTaken)
     {
         health = health - damageTaken;
+        Debug.Log(health);
     }
 }

@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     //public GameObject player;
     public GameObject tower;
 
-    public GameObject barrier;
+    //public GameObject barrier;
 
     Weapon weapon;
 
@@ -31,7 +31,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Start()
     {
-        IgnoreCollision(barrier.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //IgnoreCollision(barrier.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        GameObject barrier = GameObject.FindGameObjectWithTag("Barrier");
+        Physics2D.IgnoreCollision(barrier.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     /// <summary>
@@ -112,7 +115,13 @@ public class EnemyBehaviour : MonoBehaviour
             transform.position = Vector2.MoveTowards(this.transform.position, tower.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * towerAngle);
         }
-        
+
+
+        if (towerDistance <= 3)
+        {
+            StartCoroutine(EnemyAttackCycle());            
+        }
+
     }
 
 
@@ -179,6 +188,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Health remaining: " + enemyHealth);
         }
 
+        
             //Deals damage to players
         if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
         {
@@ -189,14 +199,26 @@ public class EnemyBehaviour : MonoBehaviour
         {
             defenderComponent.DefenderTakeDamage(10);
         }
+        
 
-
+        /*
         //Deals damage to the oil rig
         if (collision.gameObject.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent) && towerDistance <= 3)
         {
             oilRigComponent.oirlRigDamageTaken(10);
         }
+        */
 
+    }
 
+    IEnumerator EnemyAttackCycle()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (tower.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent))
+        {
+            Debug.Log("Tower is about to take damage");
+            oilRigComponent.oirlRigDamageTaken(5);
+        }
     }
 }

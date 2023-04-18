@@ -2771,6 +2771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OilRig
       objectReference: {fileID: 0}
+    - target: {fileID: 4859325779915082398, guid: 683605e2c8d14a041a234b522200c511, type: 3}
+      propertyPath: health
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683605e2c8d14a041a234b522200c511, type: 3}
 --- !u!4 &8518111170994057019
