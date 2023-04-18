@@ -14,6 +14,8 @@ public class EnemyBehaviour : MonoBehaviour
     //public GameObject player;
     public GameObject tower;
 
+    public GameObject barrier;
+
     Weapon weapon;
 
     public float stunTime = 5;
@@ -26,6 +28,11 @@ public class EnemyBehaviour : MonoBehaviour
     public float attackPlayerDistance;
     public float defensePlayerDistance;
     public float towerDistance;
+
+    private void Start()
+    {
+        IgnoreCollision(barrier.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+    }
 
     /// <summary>
     /// Update is called once per frame
@@ -117,6 +124,10 @@ public class EnemyBehaviour : MonoBehaviour
         stunEnd = stunTime + Time.time;
     }
 
+    public static void IgnoreCollision(Collider2D collider, Collider2D collider2, bool ignore = true)
+    {
+
+    }
 
     /// <summary>
     /// This is for the trap scripts to call when the enemy walks into said trap

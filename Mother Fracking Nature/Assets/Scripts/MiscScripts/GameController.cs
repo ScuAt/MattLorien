@@ -38,7 +38,9 @@ public class GameController : MonoBehaviour
         for ( ;enemyMax >= enemyCount ; enemyCount++ )
         {
             enemyList.Add(Instantiate(basicEnemy, new Vector3
-                              (Random.Range(-5, 5), 0, 0), Quaternion.identity));
+                              (-26, Random.Range(-10, 10), 0), Quaternion.identity));
+            enemyList.Add(Instantiate(basicEnemy, new Vector3
+                              (26, Random.Range(-10, 10), 0), Quaternion.identity));
             yield return new WaitForSeconds(3f);
         }
 

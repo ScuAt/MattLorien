@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 4859325779915082386, guid: 683605e2c8d14a041a234b522200c511, type: 3}
+  barrier: {fileID: 8552266494008045573, guid: 5d2c67d895c3edb4a8fa41b292255b68, type: 3}
   stunTime: 5
   stunEnd: 0
   stunned: 0
