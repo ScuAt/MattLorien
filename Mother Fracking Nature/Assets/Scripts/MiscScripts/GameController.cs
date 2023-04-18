@@ -16,8 +16,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
 
+        StartCoroutine(RoundControl());
+        StartCoroutine(Timer());
 
     }
 
@@ -49,18 +50,22 @@ public class GameController : MonoBehaviour
 
     IEnumerator RoundControl()
     {
-
-        if (enemyMax <= enemyCount)
+        for (; ; )
         {
-            enemyCount = 0;
-            enemyMax++;
-            time = 120;
+
+            if (enemyMax <= enemyCount)
+            {
+                enemyCount = 0;
+                enemyMax++;
+                // time = 120;
+            }
+
+            StartCoroutine(SpawnEnemies());
+            
+
+            yield return new WaitForSeconds(120f);
+
         }
-
-        StartCoroutine(SpawnEnemies());
-        StartCoroutine(Timer());
-
-        yield return new WaitForSeconds(120f);
 
     }
 
@@ -70,11 +75,15 @@ public class GameController : MonoBehaviour
         //loop
         while (true)
         {
-            
+            if(time <= 0)
+            {
+                time = 120;
+            }
             time--;
-            timeText.text = time.ToString();
+           // timeText.text = time.ToString();
             yield return new WaitForSecondsRealtime(1f);
         }
+
     }
 
 }

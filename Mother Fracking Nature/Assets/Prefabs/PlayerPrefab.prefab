@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4741720212930512129}
   m_Layer: 0
   m_Name: BottleTarget
-  m_TagString: Untagged
+  m_TagString: BottleTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2506341779448714438
 Transform:
   m_ObjectHideFlags: 0
@@ -211,9 +211,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969708928992985411}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.7532, y: -0.03, z: 0}
-  m_LocalScale: {x: 0.026873488, y: 0.16205977, z: 0.099999994}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0.86, y: -0.32, z: 0}
+  m_LocalScale: {x: 0.26, y: 0.05, z: 0.099999994}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7959410326301455568}
   m_RootOrder: 1
@@ -515,9 +515,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4055644872708018863}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.82, y: -0.23, z: 0}
-  m_LocalScale: {x: 0.17916732, y: 0.13204753, z: 0.099999994}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 1.22, y: -0.37, z: 0}
+  m_LocalScale: {x: 0.29, y: 0.11, z: 0.099999994}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7959410326301455568}
   m_RootOrder: 2
@@ -694,11 +694,11 @@ GameObject:
   - component: {fileID: 1021351414900059377}
   m_Layer: 0
   m_Name: LandingSpot
-  m_TagString: Untagged
+  m_TagString: LandingSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6800771666371641398
 Transform:
   m_ObjectHideFlags: 0
@@ -792,9 +792,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4732011163894643940}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.457, y: -0.0534, z: 0}
-  m_LocalScale: {x: 0.058158938, y: 0.11157045, z: 0.099999994}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 1.67, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.16, z: 0.099999994}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7959410326301455568}
   m_RootOrder: 0
@@ -1181,20 +1181,8 @@ MonoBehaviour:
     m_ActionName: PlayerActions/StartGame[/XInputControllerWindows/start]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4b6fd043-2e86-42be-b888-1b066ede58fe
-    m_ActionName: PlayerActions/HowToGuide[/XInputControllerWindows/select]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e5fbe8da-0ff5-481e-a5e3-5ca25a963fa5
-    m_ActionName: DefenderActions/Interact[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5c671fcd-511e-4011-8732-4b79e905bf25
-    m_ActionName: DefenderActions/SummonInfo[/XInputControllerWindows/dpad/up]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 253ab54d-4cdc-4b31-93a8-c2eabb236c45
-    m_ActionName: DefenderActions/DesummonInfo[/XInputControllerWindows/dpad/down]
+    m_ActionId: 38046006-0e00-4c62-aabc-399b55438310
+    m_ActionName: PlayerActions/HowToMenu[/XInputControllerWindows/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -1242,6 +1230,8 @@ MonoBehaviour:
   BanjoMelee: {fileID: 4055644872708018863}
   BanjoAbility: {fileID: 1334204821107554510}
   SawAbility: {fileID: 3456923002222474718}
+  LandingSpot: {fileID: 4538385270894170351}
+  BottleTarget: {fileID: 1161116553366863710}
   BottleProjectile: {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
   attackerHealth: 0
@@ -1273,4 +1263,3 @@ MonoBehaviour:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
   - {fileID: 4534791482657638435, guid: c85443d515c912542be39074831d8cad, type: 3}
-  theInfo: {fileID: 21300000, guid: 8e5eabc6db757c74eb5e294dae6e55c8, type: 3}

@@ -23,6 +23,8 @@ public class AttackerBehaviour : PlayerBehaviour
     public GameObject BanjoMelee;
     public GameObject BanjoAbility;
     public GameObject SawAbility;
+    public GameObject LandingSpot;
+    public GameObject BottleTarget;
 
     public GameObject BottleProjectile;
 
@@ -151,7 +153,13 @@ public class AttackerBehaviour : PlayerBehaviour
             {
                 Vector3 player = GameObject.Find("LandingSpot").GetComponent<Transform>().position;
                 transform.position = player;
+                DisableTargets();
             }
+        }
+
+        if(abilityFrames >= 10)
+        {
+            DisableTargets();
         }
         
         if (abiliting) abilityFrames++;
@@ -176,7 +184,14 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         BanjoAbility.SetActive(false);
         SawAbility.SetActive(false);
+        
 
+    }
+
+    public void DisableTargets()
+    {
+        BottleTarget.SetActive(false);
+        LandingSpot.SetActive(false);
     }
 
 
@@ -234,14 +249,16 @@ public class AttackerBehaviour : PlayerBehaviour
         if (weapon.WeaponName == "Broken Bottle")
         {
             GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
-            
+
+            BottleTarget.SetActive(true);
 
 
         }
         else if (weapon.WeaponName == "Hand Saw")
         {
             SawAbility.SetActive(true);
-            
+            LandingSpot.SetActive(true);
+
         }
         else
         {
