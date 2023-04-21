@@ -7,7 +7,7 @@ public class Banjo : Weapon
     public Banjo()
     {
         AttackSpeed = .4f;
-        Damage = 4;
+        Damage = 5;
         AbilityDamage = 0;
         CoolDown = 4;
         DamageType = "Bludgeoning";

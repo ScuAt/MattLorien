@@ -22,7 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float stunEnd;
     public bool stunned = false;
 
-    public float enemyHealth = 35;
+    public float enemyHealth = 10;
     public float speed = 1;
     public int enemyDamage = 10;
     public float attackPlayerDistance;
@@ -159,21 +159,21 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.tag == "BottleMelee")
         {
             Debug.Log("Enemy took damage");
-            enemyHealth -= 6;
+            enemyHealth -= 4;
             Debug.Log("Health remaining: " + enemyHealth);
             
         }
         if (collision.tag == "SawMelee")
         {
             Debug.Log("Enemy took damage");
-            enemyHealth -= 9;
+            enemyHealth -= 12;
             Debug.Log("Health remaining: " + enemyHealth);
 
         }
         if (collision.tag == "BanjoMelee")
         {
             Debug.Log("Enemy took damage");
-            enemyHealth -= 4;
+            enemyHealth -= 5;
             Debug.Log("Health remaining: " + enemyHealth);
 
         }
@@ -187,9 +187,15 @@ public class EnemyBehaviour : MonoBehaviour
             enemyHealth -= 15;
             Debug.Log("Health remaining: " + enemyHealth);
         }
+        if (collision.tag == "SawAbility")
+        {
+            Debug.Log("Enemy took damage");
+            enemyHealth -= 12;
+            Debug.Log("Health remaining: " + enemyHealth);
+        }
 
-        
-            //Deals damage to players
+
+        //Deals damage to players
         if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
         {
             attackerComponent.AttackerTakeDamage(10);

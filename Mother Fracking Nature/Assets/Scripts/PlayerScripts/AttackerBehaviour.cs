@@ -74,7 +74,7 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         weapon = new Bottle();
 
-        speed = 10;
+        speed = 10f;
 
         attackerHealth = 100;
 
@@ -213,19 +213,23 @@ public class AttackerBehaviour : PlayerBehaviour
 
         Debug.Log(weapon.WeaponName + " deals " + weapon.Damage + " " + weapon.DamageType + " damage!");
 
+        if (weapon.AttackReady >= Time.time)
+        {
 
-        if(weapon.WeaponName == "Broken Bottle")
-        {
-            BottleMelee.SetActive(true);
+
+            if (weapon.WeaponName == "Broken Bottle")
+            {
+                BottleMelee.SetActive(true);
+            }
+            else if (weapon.WeaponName == "Hand Saw")
+            {
+                SawMelee.SetActive(true);
+            }
+            else
+            {
+                BanjoMelee.SetActive(true);
+            }
         }
-        else if(weapon.WeaponName == "Hand Saw")
-        {
-            SawMelee.SetActive(true);
-        }
-        else
-        {
-            BanjoMelee.SetActive(true);
-        }        
     }
 
 
@@ -246,25 +250,27 @@ public class AttackerBehaviour : PlayerBehaviour
 
         Debug.Log(weapon.SpecialAbility + " activated!" + weapon.AbilityReady);
 
-        if (weapon.WeaponName == "Broken Bottle")
+        if (weapon.AbilityReady >= Time.time)
         {
-            GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
+            if (weapon.WeaponName == "Broken Bottle")
+            {
+                GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
 
-            BottleTarget.SetActive(true);
+                BottleTarget.SetActive(true);
 
 
+            }
+            else if (weapon.WeaponName == "Hand Saw")
+            {
+                SawAbility.SetActive(true);
+                LandingSpot.SetActive(true);
+
+            }
+            else
+            {
+                BanjoAbility.SetActive(true);
+            }
         }
-        else if (weapon.WeaponName == "Hand Saw")
-        {
-            SawAbility.SetActive(true);
-            LandingSpot.SetActive(true);
-
-        }
-        else
-        {
-            BanjoAbility.SetActive(true);
-        }
-
     }
 
     /// <summary>

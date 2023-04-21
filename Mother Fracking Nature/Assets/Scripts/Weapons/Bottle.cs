@@ -9,7 +9,7 @@ public class Bottle : Weapon
     public Bottle()
     {
         AttackSpeed = .09f;
-        Damage = 6;
+        Damage = 4;
         AbilityDamage = 15;
         CoolDown = 2f;
         DamageType = "Piercing";

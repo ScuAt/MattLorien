@@ -17,6 +17,8 @@ public class DefenderBehaviour : PlayerBehaviour
 {
     public Sprite Lady;
 
+    public GameObject Shield;
+
     InputActionAsset inputAsset3;
     InputActionMap defenderActions;
     InputAction block;
@@ -67,6 +69,7 @@ public class DefenderBehaviour : PlayerBehaviour
 
         block = defenderActions.FindAction("Block");
         block.performed += ctx => Block();
+        block.canceled += ctx => DisableBlock();
 
         place = defenderActions.FindAction("Trap");
         place.performed += ctx => PlaceTrap(); 
@@ -149,7 +152,13 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     private void Block()
     {
+        Shield.SetActive(true);
         Debug.Log("Blocking");
+    }
+
+    private void DisableBlock()
+    {
+        Shield.SetActive(false);
     }
 
     /// <summary>

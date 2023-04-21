@@ -19,6 +19,7 @@ TagManager:
   - InfoPopUp
   - LandingSpot
   - BottleTarget
+  - Block
   layers:
   - Default
   - TransparentFX

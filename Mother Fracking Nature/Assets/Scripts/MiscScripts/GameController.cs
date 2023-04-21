@@ -6,26 +6,46 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public int enemyCount = 0;
-    public int enemyMax = 1;
+    public int enemyMax = 0;
     public GameObject basicEnemy;
     List<GameObject> enemyList = new List<GameObject>();
-    public int time = 120;
+    private int time = 30;
     private Text timeText;
+    public bool roundsStarted = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        StartCoroutine(RoundControl());
+        timeText = GameObject.Find("timeText").GetComponent<Text>();
+        timeText.text = time.ToString();
+       // StartCoroutine(RoundControl());
         StartCoroutine(Timer());
+        if(time <= 0)
+        {
+            StartCoroutine(RoundControl());
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (time <= 0 && roundsStarted == false)
+        {
+            StartCoroutine(RoundControl());
+        }
+        //debugging purposes
+        /*  if (Input.GetKey(KeyCode.Escape))
+          {
+              Application.Quit();
+          }
+          else if (Input.GetKey(KeyCode.R))
+          {
+
+              UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+          }
+        */
     }
 
     /// <summary>
@@ -35,12 +55,16 @@ public class GameController : MonoBehaviour
     IEnumerator SpawnEnemies()
     {
 
-        for ( ;enemyMax >= enemyCount ; enemyCount++ )
+        for ( ;enemyMax > enemyCount ; enemyCount++ )
         {
             enemyList.Add(Instantiate(basicEnemy, new Vector3
                               (-26, Random.Range(-10, 10), 0), Quaternion.identity));
             enemyList.Add(Instantiate(basicEnemy, new Vector3
                               (26, Random.Range(-10, 10), 0), Quaternion.identity));
+            enemyList.Add(Instantiate(basicEnemy, new Vector3
+                              (Random.Range(-10, 10), 14, 0), Quaternion.identity));
+            enemyList.Add(Instantiate(basicEnemy, new Vector3
+                              (Random.Range(-10, 10), -18,  0), Quaternion.identity));
             yield return new WaitForSeconds(3f);
         }
 
@@ -52,6 +76,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator RoundControl()
     {
+        roundsStarted = true;
         for (; ; )
         {
 
@@ -59,13 +84,13 @@ public class GameController : MonoBehaviour
             {
                 enemyCount = 0;
                 enemyMax++;
-                // time = 120;
+                // time = 30;
             }
 
             StartCoroutine(SpawnEnemies());
             
 
-            yield return new WaitForSeconds(120f);
+            yield return new WaitForSeconds(30f);
 
         }
 
@@ -79,10 +104,11 @@ public class GameController : MonoBehaviour
         {
             if(time <= 0)
             {
-                time = 120;
+                time = 30;
             }
             time--;
-           // timeText.text = time.ToString();
+            //timeText = GameObject.Find("timeText").GetComponent<Text>();
+            timeText.text = time.ToString();
             yield return new WaitForSecondsRealtime(1f);
         }
 
