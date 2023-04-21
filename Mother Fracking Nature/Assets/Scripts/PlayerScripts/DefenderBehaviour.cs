@@ -170,7 +170,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     private void RightsScroll()
     {
-        if (trapNumber == 2)
+        if (trapNumber >= 2)
         {
             trapNumber = 0;
         }
@@ -187,7 +187,7 @@ public class DefenderBehaviour : PlayerBehaviour
 
                 GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = BearTrap;
                 GameObject.Find("RightTrap").GetComponent<Image>().sprite = PipeBomb;
-                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = ToasterBomb;
+                GameObject.Find("LeftTrap").GetComponent<Image>().sprite = ToasterBomb;
                 break;
 
             case 1:
@@ -208,7 +208,7 @@ public class DefenderBehaviour : PlayerBehaviour
 
                 GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = BearTrap;
                 GameObject.Find("RightTrap").GetComponent<Image>().sprite = PipeBomb;
-                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = ToasterBomb;
+                GameObject.Find("LeftTrap").GetComponent<Image>().sprite = ToasterBomb;
                 break;
         }
     }
@@ -219,7 +219,7 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     private void LeftScroll()
     {
-        if (trapNumber == 0)
+        if (trapNumber <= 0)
         {
             trapNumber = 2;
         }
@@ -236,28 +236,28 @@ public class DefenderBehaviour : PlayerBehaviour
 
                 GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = BearTrap;
                 GameObject.Find("RightTrap").GetComponent<Image>().sprite = PipeBomb;
-                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = ToasterBomb;
+                GameObject.Find("LeftTrap").GetComponent<Image>().sprite = ToasterBomb;
                 break;
 
             case 1:
-
-                GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = ToasterBomb;
-                GameObject.Find("RightTrap").GetComponent<Image>().sprite = BearTrap;
-                GameObject.Find("LeftTrap").GetComponent<Image>().sprite = PipeBomb;
-                break;
-
-            case 2:
 
                 GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = PipeBomb;
                 GameObject.Find("RightTrap").GetComponent<Image>().sprite = ToasterBomb;
                 GameObject.Find("LeftTrap").GetComponent<Image>().sprite = BearTrap;
                 break;
 
+            case 2:
+
+                GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = ToasterBomb;
+                GameObject.Find("RightTrap").GetComponent<Image>().sprite = BearTrap;
+                GameObject.Find("LeftTrap").GetComponent<Image>().sprite = PipeBomb;
+                break;
+
             default:
 
                 GameObject.Find("CurrentTrap").GetComponent<Image>().sprite = BearTrap;
                 GameObject.Find("RightTrap").GetComponent<Image>().sprite = PipeBomb;
-                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = ToasterBomb;
+                GameObject.Find("LeftTrap").GetComponent<Image>().sprite = ToasterBomb;
                 break;
         }
     }
