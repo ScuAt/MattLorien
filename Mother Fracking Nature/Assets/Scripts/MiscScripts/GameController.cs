@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     List<GameObject> enemyList = new List<GameObject>();
     private int time = 30;
     private Text timeText;
+    private int rndNmbr = 0;
+    private Text rndText;
     public bool roundsStarted = false;
 
 
@@ -19,7 +21,9 @@ public class GameController : MonoBehaviour
     {
         timeText = GameObject.Find("timeText").GetComponent<Text>();
         timeText.text = time.ToString();
-       // StartCoroutine(RoundControl());
+        rndText = GameObject.Find("rndText").GetComponent<Text>();
+        rndText.text = rndNmbr.ToString();
+        // StartCoroutine(RoundControl());
         StartCoroutine(Timer());
         if(time <= 0)
         {
@@ -77,9 +81,11 @@ public class GameController : MonoBehaviour
     IEnumerator RoundControl()
     {
         roundsStarted = true;
+        
         for (; ; )
         {
-
+            rndNmbr++;
+            rndText.text = rndNmbr.ToString();
             if (enemyMax <= enemyCount)
             {
                 enemyCount = 0;

@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class AttackerBehaviour : PlayerBehaviour
 {
@@ -32,6 +33,9 @@ public class AttackerBehaviour : PlayerBehaviour
     private Rigidbody2D rb2D;
 
     public Sprite Guy;
+    public Sprite Bottle;
+    public Sprite Saw;
+    public Sprite Banjo;
 
     InputActionAsset inputAsset2;
     InputActionMap attackerActions;
@@ -324,18 +328,30 @@ public class AttackerBehaviour : PlayerBehaviour
         {
             case 0:
                 weapon = new Bottle();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Bottle;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Saw;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Banjo;
                 break;
 
             case 1:
                 weapon = new Saw();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Saw;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Banjo;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Bottle;
                 break;
 
             case 2:
                 weapon = new Banjo();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Banjo;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Bottle;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Saw;
                 break;
 
             default:
                 weapon = new Bottle();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Bottle;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Saw;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Banjo;
                 break;
         }
     }
@@ -362,18 +378,30 @@ public class AttackerBehaviour : PlayerBehaviour
         {
             case 0:
                 weapon = new Bottle();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Bottle;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Saw;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Banjo;
                 break;
 
             case 1:
                 weapon = new Saw();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Saw;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Banjo;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Bottle;
                 break;
 
             case 2:
                 weapon = new Banjo();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Banjo;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Bottle;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Saw;
                 break;
 
             default :
                 weapon = new Bottle();
+                GameObject.Find("CurrentWeapon").GetComponent<Image>().sprite = Bottle;
+                GameObject.Find("RightWeapon").GetComponent<Image>().sprite = Saw;
+                GameObject.Find("LeftWeapon").GetComponent<Image>().sprite = Banjo;
                 break;
         }
     }

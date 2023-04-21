@@ -1235,6 +1235,9 @@ MonoBehaviour:
   BottleTarget: {fileID: 1161116553366863710}
   BottleProjectile: {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   Guy: {fileID: 21300000, guid: 6303a67a2df207045be28410166a5c7d, type: 3}
+  Bottle: {fileID: 21300000, guid: dc141bddd8713bf4495f7fc088d3a512, type: 3}
+  Saw: {fileID: 21300000, guid: 7246ef83b6975eb4a85aecfc2250d140, type: 3}
+  Banjo: {fileID: 21300000, guid: ffdd0a8b4c7a66b43a334eeca0a8e37b, type: 3}
   attackerHealth: 0
   velocityX: 0
   velocityY: 0
@@ -1259,6 +1262,9 @@ MonoBehaviour:
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
+  BearTrap: {fileID: 21300000, guid: f99a14869c6659543ae5345c501f06c4, type: 3}
+  ToasterBomb: {fileID: 21300000, guid: 1b147b93095eb2849aa97431fe81540a, type: 3}
+  PipeBomb: {fileID: 21300000, guid: 58d05d4245b049c4e8756bc519165c8f, type: 3}
   Shield: {fileID: 8101278563537506938}
   defenderHealth: 0
   trapArray:
