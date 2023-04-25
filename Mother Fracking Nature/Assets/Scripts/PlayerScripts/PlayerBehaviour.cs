@@ -26,7 +26,10 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction startGame;
     InputAction howToMenu;
 
-    public float speed = 7;
+    [SerializeField] private float speed;
+
+    public float Speed { get => speed; set => speed = value; }
+
     public bool isDown = false;
     
 
@@ -72,7 +75,7 @@ public class PlayerBehaviour : MonoBehaviour
         //Translate() function to translate in X and Y coordinates based on the
         //speed variable and delta time, which is how long it has been since last frame.
         //  transform.Translate(new Vector2(movementInput.x, movementInput.y) * speed * Time.deltaTime);
-        Vector2 movementVelocity = new Vector2(movementInput.x, movementInput.y) * speed * Time.deltaTime;
+        Vector2 movementVelocity = new Vector2(movementInput.x, movementInput.y) * Speed * Time.deltaTime;
         transform.Translate(movementVelocity, Space.World);
 
         //math involved in converting the x and y coordinates to degrees on a circle or radians that can then be modded

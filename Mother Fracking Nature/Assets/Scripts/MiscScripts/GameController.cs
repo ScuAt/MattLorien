@@ -120,6 +120,14 @@ public class GameController : MonoBehaviour
             time--;
             //timeText = GameObject.Find("timeText").GetComponent<Text>();
             timeText.text = time.ToString();
+            if(attackerHealth < 100)
+            {
+                attackerHealth ++;
+            }
+            if(defenderHealth < 250)
+            {
+                defenderHealth ++;
+            }
             yield return new WaitForSecondsRealtime(1f);
         }
 

@@ -22,6 +22,8 @@ public class DefenderBehaviour : PlayerBehaviour
 
     public GameObject Shield;
 
+    
+
     InputActionAsset inputAsset3;
     InputActionMap defenderActions;
     InputAction block;
@@ -101,21 +103,23 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     void Update()
     {
-        /*
-        if (playerHealth <= 0)
+        GameController gc = FindObjectOfType<GameController>();
+
+        if (gc.defenderHealth <= 0)
         {
             isDown = true;
-            speed = 0;
+            Speed = 0;
             defenderActions.Disable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
         else
         {
             isDown = false;
+            Speed = 7;
             defenderActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
-        */
+        
         
     }
 

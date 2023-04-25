@@ -116,11 +116,12 @@ public class EnemyBehaviour : MonoBehaviour
             transform.rotation = Quaternion.Euler(Vector3.forward * towerAngle);
         }
 
-
+        /*
         if (towerDistance <= 3)
         {
             StartCoroutine(EnemyAttackCycle());            
         }
+        */
 
     }
 
@@ -217,7 +218,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
-    IEnumerator EnemyAttackCycle()
+   /* IEnumerator EnemyAttackCycle()
     {
         yield return new WaitForSeconds(3f);
 
@@ -227,4 +228,5 @@ public class EnemyBehaviour : MonoBehaviour
             oilRigComponent.oirlRigDamageTaken(5);
         }
     }
+   */
 }

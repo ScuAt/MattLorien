@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 3314049288599746721}
   - component: {fileID: 3314049288599746722}
   - component: {fileID: 3676276206111687568}
+  - component: {fileID: 638641991178773565}
   m_Layer: 0
   m_Name: EnemyAttack
   m_TagString: Untagged
@@ -289,3 +290,26 @@ PolygonCollider2D:
       - {x: 0.40234375, y: 0.79296875}
       - {x: 0.29296875, y: 0.90234375}
       - {x: 0.15234375, y: 0.97265625}
+--- !u!114 &638641991178773565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314049288599746720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1d8bbc62dbfa6409df99b89edb6965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
+  stunTime: 5
+  stunEnd: 0
+  stunned: 0
+  enemyHealth: 10
+  speed: 1
+  enemyDamage: 10
+  attackPlayerDistance: 0
+  defensePlayerDistance: 0
+  towerDistance: 0
+  attacking: 0

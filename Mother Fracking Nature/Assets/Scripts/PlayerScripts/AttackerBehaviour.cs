@@ -19,6 +19,8 @@ public class AttackerBehaviour : PlayerBehaviour
 
     Weapon weapon;
 
+    
+
     public GameObject BottleMelee;
     public GameObject SawMelee;
     public GameObject BanjoMelee;
@@ -66,8 +68,8 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
         attackerActions = inputAsset2.FindActionMap("AttackerActions");
+        
 
-       
     }
 
     /// <summary>
@@ -80,7 +82,7 @@ public class AttackerBehaviour : PlayerBehaviour
 
         gameObject.tag = "Attacker";
 
-        speed = 10f;
+        Speed = 10f;
 
        // attackerHealth = 100;
 
@@ -110,21 +112,24 @@ public class AttackerBehaviour : PlayerBehaviour
     /// </summary>
     void Update()
     {
-        /*
-        if (playerHealth <= 0)
+        GameController gc = FindObjectOfType<GameController>();
+
+        if (gc.attackerHealth <= 0)
         {
             isDown = true;
-            speed = 0;
+            Speed = 0;
             attackerActions.Disable();
+            
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
         else
         {
             isDown = false;
+            Speed = 10;
             attackerActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
-        */
+        
        
 
     }
