@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 4859325779915082386, guid: 683605e2c8d14a041a234b522200c511, type: 3}
+  bleed: {fileID: 1206340618056532952, guid: b12db7ee1f4420249941038a30f20e6b, type: 3}
   stunTime: 5
   stunEnd: 0
   stunned: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
+  bleed: {fileID: 0}
   stunTime: 5
   stunEnd: 0
   stunned: 0

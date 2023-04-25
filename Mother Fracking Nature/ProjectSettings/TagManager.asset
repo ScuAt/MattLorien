@@ -23,6 +23,7 @@ TagManager:
   - Attacker
   - Defender
   - Tower
+  - Blood
   layers:
   - Default
   - TransparentFX

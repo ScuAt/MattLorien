@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     //public GameObject player;
     public GameObject tower;
+    public GameObject bleed;
 
     //public GameObject barrier;
 
@@ -46,6 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Debug.Log("Enemy has died");
+            Bleed();
             Destroy(this.gameObject);
         }
 
@@ -134,6 +136,11 @@ public class EnemyBehaviour : MonoBehaviour
         stunEnd = stunTime + Time.time;
     }
 
+    public void Bleed()
+    {
+        Instantiate(bleed, transform.position, Quaternion.identity);
+    }
+
     public static void IgnoreCollision(Collider2D collider, Collider2D collider2, bool ignore = true)
     {
 
@@ -147,6 +154,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         enemyHealth -= damageAmount;
+        Bleed();
     }
 
 
@@ -162,6 +170,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 4;
             Debug.Log("Health remaining: " + enemyHealth);
+            Bleed();
             
         }
         if (collision.tag == "SawMelee")
@@ -169,6 +178,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 12;
             Debug.Log("Health remaining: " + enemyHealth);
+            
 
         }
         if (collision.tag == "BanjoMelee")
@@ -176,6 +186,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 5;
             Debug.Log("Health remaining: " + enemyHealth);
+            Bleed();
 
         }
         if (collision.tag == "BanjoAbility")
@@ -187,12 +198,14 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 15;
             Debug.Log("Health remaining: " + enemyHealth);
+            
         }
         if (collision.tag == "SawAbility")
         {
             Debug.Log("Enemy took damage");
             enemyHealth -= 12;
             Debug.Log("Health remaining: " + enemyHealth);
+            
         }
 
         /*
