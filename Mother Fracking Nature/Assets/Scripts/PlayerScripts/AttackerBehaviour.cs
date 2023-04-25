@@ -82,7 +82,7 @@ public class AttackerBehaviour : PlayerBehaviour
 
         gameObject.tag = "Attacker";
 
-        Speed =+ 10f;
+       // Speed =+ 10f;
 
        // attackerHealth = 100;
 
@@ -117,7 +117,8 @@ public class AttackerBehaviour : PlayerBehaviour
         if (gc.attackerHealth <= 0)
         {
             isDown = true;
-            Speed = 0;
+            //speed = 0;
+            gameObject.isStatic = true;
             attackerActions.Disable();
             
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
@@ -125,7 +126,8 @@ public class AttackerBehaviour : PlayerBehaviour
         else
         {
             isDown = false;
-            Speed = 10;
+            //speed = 10;
+            gameObject.isStatic = false;
             attackerActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }

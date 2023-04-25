@@ -55,6 +55,16 @@ public class GameController : MonoBehaviour
               UnityEngine.SceneManagement.SceneManager.LoadScene(1);
           }
         */
+
+        if(attackerHealth <= 0 && defenderHealth <= 0)
+        {
+            Debug.Log("Game Over");
+        }
+        if (towerHealth <= 0)
+        {
+            Debug.Log("Game Over");
+        }
+
     }
 
     /// <summary>

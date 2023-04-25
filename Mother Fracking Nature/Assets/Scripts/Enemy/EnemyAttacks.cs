@@ -63,19 +63,19 @@ public class EnemyAttacks : EnemyBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Tower" && attacking == false)
+        if(collision.tag == "Tower")
         {
             attacking = true;
             StartCoroutine(TowerAttackCycle());
             
         }
-        if(collision.tag == "Attacker" && attacking == false)
+        if(collision.tag == "Attacker")
         {
             attacking = true;
             StartCoroutine(AttackerAttackCycle());
             
         }
-        if(collision.tag == "Defender" && attacking == false)
+        if(collision.tag == "Defender")
         {
             attacking = true;
             StartCoroutine(DefenderAttackCycle());

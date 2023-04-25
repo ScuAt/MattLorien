@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Revive",
+                    "type": "Button",
+                    "id": "290ea849-a42f-4f0e-bca2-f90c997b3480",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -86,6 +95,17 @@
                     "action": "HowToMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c83ac13d-6680-4502-9c97-ee0afd37c7cd",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Revive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -124,6 +144,15 @@
                     "name": "RightScroll",
                     "type": "Button",
                     "id": "2d5b03af-1a88-4769-8b6d-2e21535a5d63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Repair",
+                    "type": "Button",
+                    "id": "1d999ac5-9b5e-4ed5-9b78-c16120aebdc7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -172,6 +201,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45397c05-6e81-40fb-b48e-0945a04d3e94",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Repair",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

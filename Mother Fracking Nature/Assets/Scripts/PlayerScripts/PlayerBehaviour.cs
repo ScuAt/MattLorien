@@ -25,12 +25,14 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction rotate;
     InputAction startGame;
     InputAction howToMenu;
+    InputAction revive;
 
-    [SerializeField] private float speed = 7;
+   private float speed = 7;
 
-    public float Speed { get => speed; set => speed = value; }
+   public float Speed { get => speed; set => speed = value; }
 
     public bool isDown = false;
+    public bool revivable = false;
     
 
 
@@ -62,6 +64,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         howToMenu = playerControls.FindAction("HowToMenu");
         howToMenu.performed += ctx => HowToMenu();
+
+        revive = playerControls.FindAction("Revive");
+        revive.performed += ctx => Revive();
 
     }
 
@@ -128,9 +133,22 @@ public class PlayerBehaviour : MonoBehaviour
     // public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
     //function called when trigger is activated 
+    
+    /// <summary>
+    /// Gives health back to the attacker or defender
+    /// </summary>
     public void Revive()
     {
+        GameController gc = FindObjectOfType<GameController>();
         
+        if (isDown && revivable && gameObject.tag == "Defender")
+        {
+            gc.attackerHealth += 50;
+        }
+        if (isDown && revivable && gameObject.tag == "Attacker")
+        {
+            gc.defenderHealth += 125;
+        }
     }
 
     /// <summary>
@@ -152,6 +170,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <summary>
     /// When players start game and run into these circles they will be 
     /// assigned the correct script for their role and the trigger will dissapear
+    /// will also detect if the player is in range to revive
     /// </summary>
     /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D collision)
@@ -174,11 +193,22 @@ public class PlayerBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
         }
         //checks if the player is within revive range
-        if (collision.tag == "Player")
+        if (collision.tag == "Attacker" || collision.tag == "Defender")
         {
             Debug.Log("Ready to Revive");
-
+            revivable = true;
         }
 
+    }
+    /// <summary>
+    /// checks if the player has left the trigger range to revive
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Attacker" || collision.tag == "Defender")
+        {
+            revivable = false;
+        }
     }
 }

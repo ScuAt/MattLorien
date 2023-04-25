@@ -22,13 +22,14 @@ public class DefenderBehaviour : PlayerBehaviour
 
     public GameObject Shield;
 
-    
+    public bool repairable = false;
 
     InputActionAsset inputAsset3;
     InputActionMap defenderActions;
     InputAction block;
     InputAction place;
     InputAction scroll;
+    InputAction repair;
     //InputAction interact;    
 
     //public float defenderHealth;
@@ -87,6 +88,8 @@ public class DefenderBehaviour : PlayerBehaviour
         scroll = defenderActions.FindAction("RightScroll");
         scroll.performed += ctx => RightsScroll();
 
+        repair = defenderActions.FindAction("Repair");
+        repair.performed += ctx => Repair();
         /*
         interact = defenderActions.FindAction("Interact");
         interact.performed += ctx => RepairRig();
@@ -308,11 +311,15 @@ public class DefenderBehaviour : PlayerBehaviour
     /// <summary>
     /// Gives the oil rig health
     /// </summary>
-    private void RepairRig()
+    private void Repair()
     {
-        TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent);
+        GameController gc = FindObjectOfType<GameController>();
 
-        oilRigComponent.getHealth(10);
+        gc.towerHealth++;
     }
+
     
+
+   
+
 }

@@ -62,6 +62,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Revive"",
+                    ""type"": ""Button"",
+                    ""id"": ""290ea849-a42f-4f0e-bca2-f90c997b3480"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""HowToMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c83ac13d-6680-4502-9c97-ee0afd37c7cd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Revive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -146,6 +166,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""RightScroll"",
                     ""type"": ""Button"",
                     ""id"": ""2d5b03af-1a88-4769-8b6d-2e21535a5d63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Repair"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d999ac5-9b5e-4ed5-9b78-c16120aebdc7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -194,6 +223,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45397c05-6e81-40fb-b48e-0945a04d3e94"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Repair"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -296,12 +336,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
         m_PlayerActions_StartGame = m_PlayerActions.FindAction("StartGame", throwIfNotFound: true);
         m_PlayerActions_HowToMenu = m_PlayerActions.FindAction("HowToMenu", throwIfNotFound: true);
+        m_PlayerActions_Revive = m_PlayerActions.FindAction("Revive", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
         m_DefenderActions_Trap = m_DefenderActions.FindAction("Trap", throwIfNotFound: true);
         m_DefenderActions_LeftScroll = m_DefenderActions.FindAction("LeftScroll", throwIfNotFound: true);
         m_DefenderActions_RightScroll = m_DefenderActions.FindAction("RightScroll", throwIfNotFound: true);
+        m_DefenderActions_Repair = m_DefenderActions.FindAction("Repair", throwIfNotFound: true);
         // AttackerActions
         m_AttackerActions = asset.FindActionMap("AttackerActions", throwIfNotFound: true);
         m_AttackerActions_Attack = m_AttackerActions.FindAction("Attack", throwIfNotFound: true);
@@ -371,6 +413,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Rotate;
     private readonly InputAction m_PlayerActions_StartGame;
     private readonly InputAction m_PlayerActions_HowToMenu;
+    private readonly InputAction m_PlayerActions_Revive;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -379,6 +422,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
         public InputAction @StartGame => m_Wrapper.m_PlayerActions_StartGame;
         public InputAction @HowToMenu => m_Wrapper.m_PlayerActions_HowToMenu;
+        public InputAction @Revive => m_Wrapper.m_PlayerActions_Revive;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -400,6 +444,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HowToMenu.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
                 @HowToMenu.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
                 @HowToMenu.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
+                @Revive.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
+                @Revive.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
+                @Revive.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -416,6 +463,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HowToMenu.started += instance.OnHowToMenu;
                 @HowToMenu.performed += instance.OnHowToMenu;
                 @HowToMenu.canceled += instance.OnHowToMenu;
+                @Revive.started += instance.OnRevive;
+                @Revive.performed += instance.OnRevive;
+                @Revive.canceled += instance.OnRevive;
             }
         }
     }
@@ -428,6 +478,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_DefenderActions_Trap;
     private readonly InputAction m_DefenderActions_LeftScroll;
     private readonly InputAction m_DefenderActions_RightScroll;
+    private readonly InputAction m_DefenderActions_Repair;
     public struct DefenderActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -436,6 +487,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Trap => m_Wrapper.m_DefenderActions_Trap;
         public InputAction @LeftScroll => m_Wrapper.m_DefenderActions_LeftScroll;
         public InputAction @RightScroll => m_Wrapper.m_DefenderActions_RightScroll;
+        public InputAction @Repair => m_Wrapper.m_DefenderActions_Repair;
         public InputActionMap Get() { return m_Wrapper.m_DefenderActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +509,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RightScroll.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
                 @RightScroll.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
                 @RightScroll.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRightScroll;
+                @Repair.started -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRepair;
+                @Repair.performed -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRepair;
+                @Repair.canceled -= m_Wrapper.m_DefenderActionsActionsCallbackInterface.OnRepair;
             }
             m_Wrapper.m_DefenderActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -473,6 +528,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RightScroll.started += instance.OnRightScroll;
                 @RightScroll.performed += instance.OnRightScroll;
                 @RightScroll.canceled += instance.OnRightScroll;
+                @Repair.started += instance.OnRepair;
+                @Repair.performed += instance.OnRepair;
+                @Repair.canceled += instance.OnRepair;
             }
         }
     }
@@ -540,6 +598,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnStartGame(InputAction.CallbackContext context);
         void OnHowToMenu(InputAction.CallbackContext context);
+        void OnRevive(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions
     {
@@ -547,6 +606,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTrap(InputAction.CallbackContext context);
         void OnLeftScroll(InputAction.CallbackContext context);
         void OnRightScroll(InputAction.CallbackContext context);
+        void OnRepair(InputAction.CallbackContext context);
     }
     public interface IAttackerActionsActions
     {
