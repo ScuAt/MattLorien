@@ -24,56 +24,89 @@ public class EnemyAttacks : EnemyBehaviour
 
     IEnumerator TowerAttackCycle()
     {
-        yield return new WaitForSeconds(2f);
-        GameController gc = FindObjectOfType<GameController>();
-        gc.towerHealth -= enemyDamage;
-        
+        while (attacking)
+        {
+
+            yield return new WaitForSeconds(1f);
+            GameController gc = FindObjectOfType<GameController>();
+            gc.towerHealth -= enemyDamage;
+
+            yield return new WaitForSeconds(1f);
+
+        }
+
     }
 
     IEnumerator AttackerAttackCycle()
     {
-        yield return new WaitForSeconds(2f);
-        GameController gc = FindObjectOfType<GameController>();
-        gc.attackerHealth -= enemyDamage;
+        while (attacking)
+        {
+            yield return new WaitForSeconds(1f);
+            GameController gc = FindObjectOfType<GameController>();
+            gc.attackerHealth -= enemyDamage;
+
+            yield return new WaitForSeconds(1f);
+        }
 
     }
     IEnumerator DefenderAttackCycle()
     {
-        yield return new WaitForSeconds(2f);
-        GameController gc = FindObjectOfType<GameController>();
-        gc.defenderHealth -= enemyDamage;
+        while (attacking)
+        {
+            yield return new WaitForSeconds(1f);
+            GameController gc = FindObjectOfType<GameController>();
+            gc.defenderHealth -= enemyDamage;
+
+            yield return new WaitForSeconds(1f);
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Tower" && attacking == false)
         {
+            attacking = true;
             StartCoroutine(TowerAttackCycle());
+            
         }
         if(collision.tag == "Attacker" && attacking == false)
         {
+            attacking = true;
             StartCoroutine(AttackerAttackCycle());
+            
         }
         if(collision.tag == "Defender" && attacking == false)
         {
+            attacking = true;
             StartCoroutine(DefenderAttackCycle());
+            
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Tower" && attacking == true)
-        {
-            StopCoroutine(TowerAttackCycle());
-        }
-        if (collision.tag == "Attacker" && attacking ==  true)
-        {
-            StopCoroutine(AttackerAttackCycle());
-        }
-        if (collision.tag == "Defender" && attacking == true)
-        {
-            StopCoroutine(DefenderAttackCycle());
-        }
+        /* if (collision.tag == "Tower")// && attacking == true)
+         {
+             StopCoroutine(TowerAttackCycle());
+             attacking = false;
+         }
+         if (collision.tag == "Attacker")// && attacking ==  true)
+         {
+             StopCoroutine(AttackerAttackCycle());
+             attacking = false;
+         }
+         if (collision.tag == "Defender")// && attacking == true)
+         {
+             StopCoroutine(DefenderAttackCycle());
+             attacking = false;
+         }
+         */
+        StopCoroutine(TowerAttackCycle());
+        StopCoroutine(AttackerAttackCycle());
+        StopCoroutine(DefenderAttackCycle());
+        attacking = false;
+
     }
 
 }
