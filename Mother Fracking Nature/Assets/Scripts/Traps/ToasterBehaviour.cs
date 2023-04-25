@@ -41,7 +41,7 @@ public class ToasterBehaviour : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
-            enemyComponent.TakeDamage(3);
+            enemyComponent.TakeDamage(5);
 
             enemyComponent.Stunned();
 

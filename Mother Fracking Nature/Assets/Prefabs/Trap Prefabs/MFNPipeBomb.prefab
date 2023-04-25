@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9030509187605657238}
   - component: {fileID: 9030509187605657239}
   - component: {fileID: -6127792543165829520}
-  - component: {fileID: 7529269396779074611}
+  - component: {fileID: 1415382679236711960}
+  - component: {fileID: 8616678913601430881}
   m_Layer: 0
   m_Name: MFNPipeBomb
   m_TagString: Untagged
@@ -98,7 +99,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092114929ec8f044793ad7c2c47d3a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &7529269396779074611
+--- !u!58 &1415382679236711960
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030509187605657236}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.14436062, y: 0}
+  serializedVersion: 2
+  m_Radius: 20.313307
+--- !u!60 &8616678913601430881
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +125,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

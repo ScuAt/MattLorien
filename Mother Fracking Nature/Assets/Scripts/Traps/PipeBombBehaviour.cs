@@ -34,4 +34,20 @@ public class PipeBombBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /// <summary>
+    /// Deals damage to the enemy
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
+            enemyComponent) && collision.tag == "Enemy")
+        {
+            enemyComponent.TakeDamage(10);
+
+            Destroy(gameObject);
+        }
+    }
+
 }
