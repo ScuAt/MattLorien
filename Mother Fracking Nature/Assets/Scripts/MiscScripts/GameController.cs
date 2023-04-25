@@ -16,6 +16,11 @@ public class GameController : MonoBehaviour
     public bool roundsStarted = false;
 
 
+    public int attackerHealth = 100;
+    public int defenderHealth = 250;
+    public int towerHealth = 1000;
+
+
     // Start is called before the first frame update
     void Start()
     {
