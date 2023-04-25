@@ -194,7 +194,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Health remaining: " + enemyHealth);
         }
 
-
+        /*
         //Deals damage to players
         if (collision.gameObject.TryGetComponent<AttackerBehaviour>(out AttackerBehaviour attackerComponent) && attackPlayerDistance <= 2)
         {
@@ -205,7 +205,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             defenderComponent.DefenderTakeDamage(10);
         }
-        
+        */
 
         /*
         //Deals damage to the oil rig

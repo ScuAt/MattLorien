@@ -20,6 +20,9 @@ TagManager:
   - LandingSpot
   - BottleTarget
   - Block
+  - Attacker
+  - Defender
+  - Tower
   layers:
   - Default
   - TransparentFX

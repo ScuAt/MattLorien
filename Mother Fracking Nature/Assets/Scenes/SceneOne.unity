@@ -719,6 +719,9 @@ MonoBehaviour:
   enemyMax: 0
   basicEnemy: {fileID: 3314049286960798168, guid: 9478964b38d5c564b8ae427d2ac61314, type: 3}
   roundsStarted: 0
+  attackerHealth: 100
+  defenderHealth: 250
+  towerHealth: 1000
 --- !u!4 &432175314
 Transform:
   m_ObjectHideFlags: 0
@@ -3773,7 +3776,6 @@ MonoBehaviour:
   ToasterBomb: {fileID: 0}
   PipeBomb: {fileID: 0}
   Shield: {fileID: 0}
-  defenderHealth: 0
   trapArray:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
@@ -3879,8 +3881,8 @@ MonoBehaviour:
     m_ActionName: PlayerActions/StartGame[/XInputControllerWindows/start]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4b6fd043-2e86-42be-b888-1b066ede58fe
-    m_ActionName: PlayerActions/HowToGuide[/XInputControllerWindows/select]
+    m_ActionId: 38046006-0e00-4c62-aabc-399b55438310
+    m_ActionName: PlayerActions/HowToMenu[/XInputControllerWindows/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -4357,6 +4359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OilRig
       objectReference: {fileID: 0}
+    - target: {fileID: 4859325779915082386, guid: 683605e2c8d14a041a234b522200c511, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4859325779915082398, guid: 683605e2c8d14a041a234b522200c511, type: 3}
       propertyPath: health
       value: 500
@@ -4463,7 +4469,6 @@ MonoBehaviour:
   Bottle: {fileID: 0}
   Saw: {fileID: 0}
   Banjo: {fileID: 0}
-  attackerHealth: 0
   velocityX: 0
   velocityY: 0
   weaponArray:

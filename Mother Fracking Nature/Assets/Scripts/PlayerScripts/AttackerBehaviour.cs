@@ -43,7 +43,7 @@ public class AttackerBehaviour : PlayerBehaviour
     InputAction ability;
     InputAction scroll;
 
-    public float attackerHealth;
+  // public float attackerHealth;
 
     public float velocityX;
     public float velocityY;
@@ -78,9 +78,11 @@ public class AttackerBehaviour : PlayerBehaviour
     {
         weapon = new Bottle();
 
+        gameObject.tag = "Attacker";
+
         speed = 10f;
 
-        attackerHealth = 100;
+       // attackerHealth = 100;
 
 
         inputAsset2 = this.GetComponent<PlayerInput>().actions;
@@ -410,8 +412,9 @@ public class AttackerBehaviour : PlayerBehaviour
     /// Allows other scripts to call this function and deal damage to the attacker
     /// </summary>
     /// <param name="attackerDamageTaken"></param>
-    public void AttackerTakeDamage(float attackerDamageTaken)
+   /* public void AttackerTakeDamage(float attackerDamageTaken)
     {
         attackerHealth = -attackerDamageTaken;
     }
+   */
 }

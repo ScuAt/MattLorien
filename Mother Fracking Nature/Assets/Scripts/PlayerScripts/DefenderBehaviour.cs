@@ -29,7 +29,7 @@ public class DefenderBehaviour : PlayerBehaviour
     InputAction scroll;
     //InputAction interact;    
 
-    public float defenderHealth;
+    //public float defenderHealth;
 
     //Array of game objects for the traps
     public GameObject[] trapArray = new GameObject[3];
@@ -66,7 +66,9 @@ public class DefenderBehaviour : PlayerBehaviour
     /// </summary>
     void Start()
     {
-        defenderHealth = 250;
+        //defenderHealth = 250;
+
+        gameObject.tag = "Defender";
 
         inputAsset3 = this.GetComponent<PlayerInput>().actions;
 
@@ -293,11 +295,11 @@ public class DefenderBehaviour : PlayerBehaviour
     /// Deals damage to the defender
     /// </summary>
     /// <param name="defenderDamageTaken"></param>
-    public void DefenderTakeDamage(float defenderDamageTaken)
+   /* public void DefenderTakeDamage(float defenderDamageTaken)
     {
         defenderHealth = -defenderDamageTaken;
     }
-
+   */
     
     /// <summary>
     /// Gives the oil rig health
