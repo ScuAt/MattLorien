@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5c87bf1b46cee4d91120ab509d6e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
   isDown: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
@@ -1238,7 +1238,6 @@ MonoBehaviour:
   Bottle: {fileID: 21300000, guid: dc141bddd8713bf4495f7fc088d3a512, type: 3}
   Saw: {fileID: 21300000, guid: 7246ef83b6975eb4a85aecfc2250d140, type: 3}
   Banjo: {fileID: 21300000, guid: ffdd0a8b4c7a66b43a334eeca0a8e37b, type: 3}
-  attackerHealth: 0
   velocityX: 0
   velocityY: 0
   weaponArray:
@@ -1266,7 +1265,6 @@ MonoBehaviour:
   ToasterBomb: {fileID: 21300000, guid: 1b147b93095eb2849aa97431fe81540a, type: 3}
   PipeBomb: {fileID: 21300000, guid: 58d05d4245b049c4e8756bc519165c8f, type: 3}
   Shield: {fileID: 8101278563537506938}
-  defenderHealth: 0
   trapArray:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}

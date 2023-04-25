@@ -82,7 +82,7 @@ public class AttackerBehaviour : PlayerBehaviour
 
         gameObject.tag = "Attacker";
 
-        Speed = 10f;
+        Speed =+ 10f;
 
        // attackerHealth = 100;
 

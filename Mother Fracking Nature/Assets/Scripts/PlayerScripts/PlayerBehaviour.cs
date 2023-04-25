@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction startGame;
     InputAction howToMenu;
 
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 7;
 
     public float Speed { get => speed; set => speed = value; }
 
