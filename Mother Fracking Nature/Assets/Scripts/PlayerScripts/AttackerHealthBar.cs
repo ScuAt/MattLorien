@@ -1,26 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TowerHealthBar : MonoBehaviour
+public class AttackerHealthBar : MonoBehaviour
 {
 
     public float healthBar;
     
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    /// <summary>
+    /// find the attackerHealth from the game controller script and applies size based on the current health
+    /// </summary>
     void Update()
     {
         GameController gc = FindObjectOfType<GameController>();
 
-        healthBar = gc.towerHealth/5;
+        healthBar = gc.attackerHealth;
 
         RectTransform rt = gameObject.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(healthBar, 100);
