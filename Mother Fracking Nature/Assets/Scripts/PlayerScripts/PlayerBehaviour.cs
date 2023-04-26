@@ -24,7 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     InputAction move;
     InputAction rotate;
     InputAction startGame;
-    InputAction howToMenu;
+    InputAction quitGame;
     InputAction revive;
 
    private float speed = 7;
@@ -63,8 +63,8 @@ public class PlayerBehaviour : MonoBehaviour
         startGame = playerControls.FindAction("StartGame");
         startGame.performed += ctx => playGame();
 
-        howToMenu = playerControls.FindAction("HowToMenu");
-        howToMenu.performed += ctx => HowToMenu();
+        quitGame = playerControls.FindAction("QuitGame");
+        quitGame.performed += ctx => exitGame();
 
         revive = playerControls.FindAction("Revive");
         revive.performed += ctx => Revive();
@@ -199,11 +199,11 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads the how to scene
+    /// Quits the game
     /// </summary>
-    private void HowToMenu()
+    private void exitGame()
     {
-        SceneManager.LoadScene("HowToScene", LoadSceneMode.Additive);
+        Application.Quit();
     }
 
     /// <summary>

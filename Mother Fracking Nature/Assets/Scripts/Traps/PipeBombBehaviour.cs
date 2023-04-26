@@ -30,7 +30,6 @@ public class PipeBombBehaviour : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            Debug.Log("BOOM!");
             Destroy(gameObject);
         }
     }
@@ -45,8 +44,6 @@ public class PipeBombBehaviour : MonoBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
             enemyComponent.TakeDamage(10);
-
-            Destroy(gameObject);
         }
     }
 

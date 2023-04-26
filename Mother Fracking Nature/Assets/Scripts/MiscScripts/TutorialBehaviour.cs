@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class TutorialBehaviour : MonoBehaviour
 {
-    public Sprite[] spriteArray = new Sprite[5];
+    public Sprite[] spriteArray = new Sprite[8];
 
     public SpriteRenderer spriteRenderer;
 
@@ -46,6 +46,18 @@ public class TutorialBehaviour : MonoBehaviour
         else if (joinTextCountdown <= -15 && joinTextCountdown >= -20)
         {
             spriteRenderer.sprite = spriteArray[4];
+        }
+        else if (joinTextCountdown <= -20 && joinTextCountdown >= -25)
+        {
+            spriteRenderer.sprite = spriteArray[5];
+        }
+        else if (joinTextCountdown <= -25 && joinTextCountdown >= -30)
+        {
+            spriteRenderer.sprite = spriteArray[6];
+        }
+        else if (joinTextCountdown <= -30 && joinTextCountdown >= -35)
+        {
+            spriteRenderer.sprite = spriteArray[7];
         }
     }
 }

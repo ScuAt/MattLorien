@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HowToMenu",
+                    "name": "QuitGame",
                     "type": "Button",
                     "id": "38046006-0e00-4c62-aabc-399b55438310",
                     "expectedControlType": "Button",
@@ -92,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HowToMenu",
+                    "action": "QuitGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

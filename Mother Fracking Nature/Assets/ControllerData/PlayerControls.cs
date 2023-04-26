@@ -55,7 +55,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HowToMenu"",
+                    ""name"": ""QuitGame"",
                     ""type"": ""Button"",
                     ""id"": ""38046006-0e00-4c62-aabc-399b55438310"",
                     ""expectedControlType"": ""Button"",
@@ -114,7 +114,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HowToMenu"",
+                    ""action"": ""QuitGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -335,7 +335,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
         m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
         m_PlayerActions_StartGame = m_PlayerActions.FindAction("StartGame", throwIfNotFound: true);
-        m_PlayerActions_HowToMenu = m_PlayerActions.FindAction("HowToMenu", throwIfNotFound: true);
+        m_PlayerActions_QuitGame = m_PlayerActions.FindAction("QuitGame", throwIfNotFound: true);
         m_PlayerActions_Revive = m_PlayerActions.FindAction("Revive", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
@@ -412,7 +412,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Move;
     private readonly InputAction m_PlayerActions_Rotate;
     private readonly InputAction m_PlayerActions_StartGame;
-    private readonly InputAction m_PlayerActions_HowToMenu;
+    private readonly InputAction m_PlayerActions_QuitGame;
     private readonly InputAction m_PlayerActions_Revive;
     public struct PlayerActionsActions
     {
@@ -421,7 +421,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
         public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
         public InputAction @StartGame => m_Wrapper.m_PlayerActions_StartGame;
-        public InputAction @HowToMenu => m_Wrapper.m_PlayerActions_HowToMenu;
+        public InputAction @QuitGame => m_Wrapper.m_PlayerActions_QuitGame;
         public InputAction @Revive => m_Wrapper.m_PlayerActions_Revive;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
@@ -441,9 +441,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartGame.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
                 @StartGame.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
                 @StartGame.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnStartGame;
-                @HowToMenu.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
-                @HowToMenu.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
-                @HowToMenu.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHowToMenu;
+                @QuitGame.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnQuitGame;
+                @QuitGame.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnQuitGame;
+                @QuitGame.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnQuitGame;
                 @Revive.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
                 @Revive.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
                 @Revive.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
@@ -460,9 +460,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartGame.started += instance.OnStartGame;
                 @StartGame.performed += instance.OnStartGame;
                 @StartGame.canceled += instance.OnStartGame;
-                @HowToMenu.started += instance.OnHowToMenu;
-                @HowToMenu.performed += instance.OnHowToMenu;
-                @HowToMenu.canceled += instance.OnHowToMenu;
+                @QuitGame.started += instance.OnQuitGame;
+                @QuitGame.performed += instance.OnQuitGame;
+                @QuitGame.canceled += instance.OnQuitGame;
                 @Revive.started += instance.OnRevive;
                 @Revive.performed += instance.OnRevive;
                 @Revive.canceled += instance.OnRevive;
@@ -597,7 +597,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnStartGame(InputAction.CallbackContext context);
-        void OnHowToMenu(InputAction.CallbackContext context);
+        void OnQuitGame(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions

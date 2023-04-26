@@ -221,26 +221,6 @@ public class EnemyBehaviour : MonoBehaviour
             defenderComponent.DefenderTakeDamage(10);
         }
         */
-
-        /*
-        //Deals damage to the oil rig
-        if (collision.gameObject.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent) && towerDistance <= 3)
-        {
-            oilRigComponent.oirlRigDamageTaken(10);
-        }
-        */
-
     }
 
-   /* IEnumerator EnemyAttackCycle()
-    {
-        yield return new WaitForSeconds(3f);
-
-        if (tower.TryGetComponent<OilRigBehaviour>(out OilRigBehaviour oilRigComponent))
-        {
-            Debug.Log("Tower is about to take damage");
-            oilRigComponent.oirlRigDamageTaken(5);
-        }
-    }
-   */
 }

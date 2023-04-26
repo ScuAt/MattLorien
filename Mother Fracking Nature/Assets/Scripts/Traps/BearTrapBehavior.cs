@@ -11,15 +11,17 @@ using UnityEngine;
 
 public class BearTrapBehavior : MonoBehaviour
 {
+    /*
     private float timer = 20;
     private float countdown;
+    */
 
     /// <summary>
     /// Sets the timers
     /// </summary>
     private void Start()
     {
-        countdown = timer;
+        //countdown = timer;
     }
 
     /// <summary>
@@ -27,11 +29,13 @@ public class BearTrapBehavior : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        /*
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
             Destroy(gameObject);
         }
+        */
     }
 
     /// <summary>
@@ -44,6 +48,7 @@ public class BearTrapBehavior : MonoBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
             enemyComponent.TakeDamage(10);
+            Destroy(gameObject);
         }
     }
     

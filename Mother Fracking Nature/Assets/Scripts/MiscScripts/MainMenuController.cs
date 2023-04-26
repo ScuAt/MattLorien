@@ -10,12 +10,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System;
 
 public class MainMenuController : MonoBehaviour
 {
     InputActionAsset inputAsset;
     InputActionMap playerControls;
     InputAction startGame;
+    InputAction quitGame;
 
     /// <summary>
     /// Has the code for pressing the button
@@ -29,7 +31,18 @@ public class MainMenuController : MonoBehaviour
 
         startGame = playerControls.FindAction("StartGame");
         startGame.performed += ctx => playGame();
-        
+
+        quitGame = playerControls.FindAction("QuitGame");
+        quitGame.performed += ctx => exitGame();
+
+    }
+
+    /// <summary>
+    /// Quits the game
+    /// </summary>
+    public void exitGame()
+    {
+        Application.Quit();
     }
 
     /// <summary>
