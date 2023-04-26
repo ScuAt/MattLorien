@@ -101,7 +101,7 @@ public class EnemyBehaviour : MonoBehaviour
         towerDirection.Normalize();
         float towerAngle = Mathf.Atan2(towerDirection.y, towerDirection.x) * Mathf.Rad2Deg;
 
-        if (attackPlayerDistance < 8 && gc.attackerHealth > 0 && gc.defenderHealth > 0)// && attackPlayerDistance) //< defensePlayerDistance && gc.attackerHealth > 0)
+        if (attackPlayerDistance < 5 && gc.attackerHealth > 0 && gc.defenderHealth > 0)// && attackPlayerDistance) //< defensePlayerDistance && gc.attackerHealth > 0)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, attPosition, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * attackAngle);
@@ -185,7 +185,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.tag == "BanjoMelee")
         {
             Debug.Log("Enemy took damage");
-            enemyHealth -= 5;
+            enemyHealth -= 3;
             Debug.Log("Health remaining: " + enemyHealth);
             Bleed();
 
