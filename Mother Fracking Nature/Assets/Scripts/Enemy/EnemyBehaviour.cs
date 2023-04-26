@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public float enemyHealth = 10;
     public float speed = 1;
-    public int enemyDamage = 10;
+    public int enemyDamage = 5;
     public float attackPlayerDistance;
     public float defensePlayerDistance;
     public float towerDistance;
@@ -43,6 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
     /// </summary>
     void Update()
     {
+        GameController gc = FindObjectOfType<GameController>();
 
         if (enemyHealth <= 0)
         {
@@ -63,7 +64,7 @@ public class EnemyBehaviour : MonoBehaviour
         else
         {
             speed = 1;
-            enemyDamage = 10;
+            enemyDamage = 5;
             
         }
        
@@ -100,16 +101,16 @@ public class EnemyBehaviour : MonoBehaviour
         towerDirection.Normalize();
         float towerAngle = Mathf.Atan2(towerDirection.y, towerDirection.x) * Mathf.Rad2Deg;
 
-        if (attackPlayerDistance < 4 ) //&& attackPlayerDistance < defensePlayerDistance)
+        if (attackPlayerDistance < 8 && gc.attackerHealth > 0 && gc.defenderHealth > 0)// && attackPlayerDistance) //< defensePlayerDistance && gc.attackerHealth > 0)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, attPosition, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * attackAngle);
 
         }
-        /* else if (defensePlayerDistance < 4  && defensePlayerDistance < attackPlayerDistance)
+       /* else if (defensePlayerDistance < 6  && defensePlayerDistance < attackPlayerDistance && gc.defenderHealth > 0)
          {
              transform.position = Vector2.MoveTowards(this.transform.position, defPosition, speed * Time.deltaTime);
-             transform.rotation = Quaternion.Euler(Vector3.forward * defenseAngle);
+             transform.rotation = Quaternion.Euler(Vector3.forward * defendAngle);
 
          } */
         else

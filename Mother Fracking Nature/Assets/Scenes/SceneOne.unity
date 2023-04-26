@@ -1280,7 +1280,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1001 &753226482
 PrefabInstance:
@@ -1820,7 +1820,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936837865
 GameObject:
@@ -3905,8 +3905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ce4392385693e47b03bd8f18aa0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   isDown: 0
+  revivable: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
@@ -3914,6 +3914,7 @@ MonoBehaviour:
   ToasterBomb: {fileID: 0}
   PipeBomb: {fileID: 0}
   Shield: {fileID: 0}
+  repairable: 0
   trapArray:
   - {fileID: 8852789889879315038, guid: 59a8841660c39964e9d70ae174dcc143, type: 3}
   - {fileID: 9030509187605657236, guid: 267eef254996af343a30be2d077180de, type: 3}
@@ -4396,8 +4397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5c87bf1b46cee4d91120ab509d6e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   isDown: 0
+  revivable: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
 --- !u!4 &3666644238268971003
@@ -4451,7 +4452,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4859325779915082384, guid: 683605e2c8d14a041a234b522200c511, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4859325779915082384, guid: 683605e2c8d14a041a234b522200c511, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4535,7 +4536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552266494008045624, guid: 5d2c67d895c3edb4a8fa41b292255b68, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8552266494008045624, guid: 5d2c67d895c3edb4a8fa41b292255b68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4591,8 +4592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57683c9418f3a3341b0075b6719af2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
   isDown: 0
+  revivable: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
   BottleMelee: {fileID: 0}

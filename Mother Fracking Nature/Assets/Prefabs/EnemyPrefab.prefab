@@ -106,8 +106,8 @@ MonoBehaviour:
   stunEnd: 0
   stunned: 0
   enemyHealth: 20
-  speed: 4
-  enemyDamage: 10
+  speed: 2
+  enemyDamage: 5
   attackPlayerDistance: 0
   defensePlayerDistance: 0
   towerDistance: 0
@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 3314049288599746722}
   - component: {fileID: 3676276206111687568}
   - component: {fileID: 638641991178773565}
+  - component: {fileID: 3589683924778129904}
   m_Layer: 0
   m_Name: EnemyAttack
   m_TagString: Untagged
@@ -185,8 +186,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3314049288599746720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.49, y: 0.09, z: 0}
-  m_LocalScale: {x: 2.75, y: 1.1029042, z: 0.12792085}
+  m_LocalPosition: {x: -0.3044, y: 0.1083, z: 0}
+  m_LocalScale: {x: 2.3789394, y: 1.0845959, z: 0.12792085}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3314049286960798170}
@@ -314,4 +315,23 @@ MonoBehaviour:
   attackPlayerDistance: 0
   defensePlayerDistance: 0
   towerDistance: 0
+  attackingAttacker: 0
+  attackingDefender: 0
+  attackingTower: 0
   attacking: 0
+--- !u!58 &3589683924778129904
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314049288599746720}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08436388, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.48369378

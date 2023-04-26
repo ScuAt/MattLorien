@@ -31,7 +31,8 @@ public class PlayerBehaviour : MonoBehaviour
 
    public float Speed { get => speed; set => speed = value; }
 
-    public bool isDown = false;
+    public bool attackerIsDown = false;
+    public bool defenderIsDown = false;
     public bool revivable = false;
     
 
@@ -97,6 +98,44 @@ public class PlayerBehaviour : MonoBehaviour
             transform.eulerAngles = playerRotation;
             old_rotation = playerRotation;
         }
+
+
+        GameController gc = FindObjectOfType<GameController>();
+
+        if(gc.attackerHealth <= 0)
+        {
+            attackerIsDown = true;
+        }
+        else if(gc.defenderHealth <= 0)
+        {
+            defenderIsDown = true;
+        }
+        else
+        {
+            attackerIsDown = false;
+            defenderIsDown = false;
+        }
+
+        if (gameObject.tag == "Attacker" && attackerIsDown == false)
+        {
+            speed = 10;
+        }
+        else if (gameObject.tag == "Defender" && defenderIsDown == false)
+        {
+            speed = 7;
+        }
+        else if (gameObject.tag == "Attacker" && attackerIsDown == true )
+        {
+            speed = 0;
+        }
+        else if (gameObject.tag == "Defender" && defenderIsDown == true)
+        {
+            speed = 0;
+        }
+        else
+        {
+            speed = 7;
+        }
     }
     /// <summary>
     /// enables the input map
@@ -141,11 +180,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         GameController gc = FindObjectOfType<GameController>();
         
-        if (isDown && revivable && gameObject.tag == "Defender")
+        if (defenderIsDown && revivable && gameObject.tag == "Defender")
         {
             gc.attackerHealth += 50;
         }
-        if (isDown && revivable && gameObject.tag == "Attacker")
+        if (attackerIsDown && revivable && gameObject.tag == "Attacker")
         {
             gc.defenderHealth += 125;
         }
@@ -176,7 +215,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //enables the correct script for the attacker
-        if (collision.tag == "AssignAttacker")
+        if (collision.tag == "AssignAttacker" && gameObject.tag != "Defender")
         {
             Debug.Log("You are the attacker");
             Debug.Log(gameObject);
@@ -185,7 +224,7 @@ public class PlayerBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
         }
         //enables the correct script for the defender
-        if (collision.tag == "AssignDefender")
+        if (collision.tag == "AssignDefender" && gameObject.tag != "Attacker")
         {
             Debug.Log("You are the defender");
             gameObject.GetComponent<DefenderBehaviour>().enabled = true;

@@ -110,14 +110,14 @@ public class DefenderBehaviour : PlayerBehaviour
 
         if (gc.defenderHealth <= 0)
         {
-            isDown = true;
+            defenderIsDown = true;
             Speed = 0;
             defenderActions.Disable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =
         }
         else
         {
-            isDown = false;
+            defenderIsDown = false;
             Speed = 7;
             defenderActions.Enable();
             //this.gameObject.GetComponent<SpriteRenderer>().sprite =

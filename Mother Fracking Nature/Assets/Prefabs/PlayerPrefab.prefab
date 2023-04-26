@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1334204821107554510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.91, y: 7.91, z: 1.582}
+  m_LocalScale: {x: 9.3, y: 9.3, z: 1.8600001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7959410326301455568}
@@ -211,8 +211,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969708928992985411}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.22, y: -0.32, z: 0}
-  m_LocalScale: {x: 0.26, y: 0.1, z: 0.099999994}
+  m_LocalPosition: {x: 1.46, y: -0.53, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.19, z: 0.099999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7959410326301455568}
@@ -301,7 +301,7 @@ PolygonCollider2D:
       - {x: 1.0546875, y: -6.2109375}
       - {x: 1.4765625, y: -5.4375}
       - {x: 1.734375, y: -4.96875}
-      - {x: 2.296875, y: -3.9375}
+      - {x: 2.0296817, y: -4.0957046}
       - {x: 2.5546875, y: -3.46875}
       - {x: 2.9765625, y: -2.6953125}
       - {x: 3.234375, y: -2.2265625}
@@ -367,7 +367,7 @@ PolygonCollider2D:
       - {x: -3.8671875, y: -5.4375}
       - {x: -3.421875, y: -6.2109375}
       - {x: -3.234375, y: -6.5390625}
-      - {x: -2.8828125, y: -7.1484375}
+      - {x: -2.8160145, y: -7.1484375}
       - {x: -2.625, y: -7.59375}
       - {x: -1.9921875, y: -8.6953125}
       - {x: -1.6171875, y: -9.3515625}
@@ -515,8 +515,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4055644872708018863}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.61, y: -0.45, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.17, z: 0.099999994}
+  m_LocalPosition: {x: 3.65, y: -0.45, z: 0}
+  m_LocalScale: {x: 0.41, y: 0.33, z: 0.099999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7959410326301455568}
@@ -1070,7 +1070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5c87bf1b46cee4d91120ab509d6e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDown: 0
+  attackerIsDown: 0
+  defenderIsDown: 0
   revivable: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
@@ -1231,7 +1232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57683c9418f3a3341b0075b6719af2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDown: 0
+  attackerIsDown: 0
+  defenderIsDown: 0
   revivable: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
@@ -1265,7 +1267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ce4392385693e47b03bd8f18aa0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDown: 0
+  attackerIsDown: 0
+  defenderIsDown: 0
   revivable: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}

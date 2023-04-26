@@ -116,7 +116,7 @@ public class AttackerBehaviour : PlayerBehaviour
 
         if (gc.attackerHealth <= 0)
         {
-            isDown = true;
+            attackerIsDown = true;
             //speed = 0;
             gameObject.isStatic = true;
             attackerActions.Disable();
@@ -125,7 +125,7 @@ public class AttackerBehaviour : PlayerBehaviour
         }
         else
         {
-            isDown = false;
+            attackerIsDown = false;
             //speed = 10;
             gameObject.isStatic = false;
             attackerActions.Enable();
