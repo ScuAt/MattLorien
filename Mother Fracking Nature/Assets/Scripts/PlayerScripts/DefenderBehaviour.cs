@@ -21,6 +21,9 @@ public class DefenderBehaviour : PlayerBehaviour
     public Sprite PipeBomb;
 
     public GameObject Shield;
+    public GameObject tower;
+
+    public float towerDistance;
 
     public bool repairable = false;
 
@@ -314,8 +317,15 @@ public class DefenderBehaviour : PlayerBehaviour
     private void Repair()
     {
         GameController gc = FindObjectOfType<GameController>();
-
-        gc.towerHealth++;
+        towerDistance = Vector2.Distance(transform.position, tower.transform.position);
+       
+        
+            if (towerDistance < 6 && gc.towerHealth < 500)
+            {
+                gc.towerHealth += 5;
+                Debug.Log("Repairing");
+            }
+        
     }
 
     
