@@ -173,12 +173,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Repair"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""1d999ac5-9b5e-4ed5-9b78-c16120aebdc7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
