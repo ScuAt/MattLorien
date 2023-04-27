@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour
             }
             if(defenderHealth < 250 && defenderHealth > 0)
             {
-                defenderHealth ++;
+                defenderHealth += 2;
             }
             
             yield return new WaitForSecondsRealtime(1f);

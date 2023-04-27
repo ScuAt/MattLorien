@@ -34,8 +34,9 @@ public class PlayerBehaviour : MonoBehaviour
     public bool attackerIsDown = false;
     public bool defenderIsDown = false;
     public bool revivable = false;
-    
 
+    public float attackPlayerDistance;
+    public float defensePlayerDistance;
 
     private Vector2 movementInput;
     public Vector2 aim;
@@ -136,6 +137,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             speed = 7;
         }
+
+
+        
     }
     /// <summary>
     /// enables the input map
@@ -156,7 +160,33 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        
+        AttackerBehaviour att = FindObjectOfType<AttackerBehaviour>();
+        DefenderBehaviour def = FindObjectOfType<DefenderBehaviour>();
+
+        if (!def && !att)
+        {
+            return;
+        }
+
+        Vector3 defPosition = def.transform.position;
+        Vector3 attPosition = att.transform.position;
+
+
+        attackPlayerDistance = Vector2.Distance(transform.position, attPosition);
+        defensePlayerDistance = Vector2.Distance(transform.position, defPosition);
+
+        if(gameObject.tag == "Attacker" && defensePlayerDistance < 1f)
+        {
+            revivable = true;
+        }
+        else if(gameObject.tag == "Defender" && attackPlayerDistance < 1f)
+        {
+            revivable = true;
+        }
+        else
+        {
+            revivable = false;
+        }
     }
 
 
@@ -180,13 +210,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         GameController gc = FindObjectOfType<GameController>();
         
-        if (defenderIsDown && revivable && gameObject.tag == "Defender")
-        {
-            gc.attackerHealth += 50;
-        }
-        if (attackerIsDown && revivable && gameObject.tag == "Attacker")
+        if (defenderIsDown && revivable && gameObject.tag == "Attacker")
         {
             gc.defenderHealth += 125;
+        }
+        if (attackerIsDown && revivable && gameObject.tag == "Defender")
+        {
+            gc.attackerHealth += 50;
         }
     }
 
@@ -232,17 +262,22 @@ public class PlayerBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
         }
         //checks if the player is within revive range
+        /*
         if (collision.tag == "Attacker" || collision.tag == "Defender")
         {
             Debug.Log("Ready to Revive");
             revivable = true;
         }
+        */
 
     }
+    
     /// <summary>
     /// checks if the player has left the trigger range to revive
     /// </summary>
     /// <param name="collision"></param>
+    /// 
+    /*
     public void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.tag == "Attacker" || collision.tag == "Defender")
@@ -250,4 +285,5 @@ public class PlayerBehaviour : MonoBehaviour
             revivable = false;
         }
     }
+    */
 }
