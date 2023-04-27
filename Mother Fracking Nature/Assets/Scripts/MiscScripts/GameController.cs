@@ -20,10 +20,13 @@ public class GameController : MonoBehaviour
     public float defenderHealth = 250;
     public float towerHealth = 500;
 
+    public GameObject endScreen;
 
     // Start is called before the first frame update
     void Start()
     {
+        endScreen.SetActive(false);
+
         timeText = GameObject.Find("timeText").GetComponent<Text>();
         timeText.text = time.ToString();
         rndText = GameObject.Find("rndText").GetComponent<Text>();
@@ -59,10 +62,12 @@ public class GameController : MonoBehaviour
         if(attackerHealth <= 0 && defenderHealth <= 0)
         {
             Debug.Log("Game Over");
+            endScreen.SetActive(true);
         }
         if (towerHealth <= 0)
         {
             Debug.Log("Game Over");
+            endScreen.SetActive(true);
         }
 
     }
