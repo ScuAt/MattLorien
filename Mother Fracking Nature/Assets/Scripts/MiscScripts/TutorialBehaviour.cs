@@ -19,15 +19,18 @@ public class TutorialBehaviour : MonoBehaviour
     public float joinTextCountdown;
 
 
-
-    // Start is called before the first frame update
+    /// <summary>
+    ///  Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         joinTextCountdown = joinTextTimer;
         spriteRenderer.sprite = spriteArray[0];
     }
 
-    // Update is called once per frame
+    /// <summary>
+    ///  Update is called once per frame
+    /// </summary>
     void Update()
     {
         joinTextCountdown -= Time.deltaTime;
