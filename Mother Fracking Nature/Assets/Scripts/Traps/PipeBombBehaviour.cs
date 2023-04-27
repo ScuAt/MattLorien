@@ -14,6 +14,8 @@ public class PipeBombBehaviour : MonoBehaviour
     private float timer = 2;
     private float countdown;
 
+    public GameObject circle;
+
     /// <summary>
     /// Sets the timer for the count down
     /// </summary>
@@ -30,10 +32,12 @@ public class PipeBombBehaviour : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
+            boomRadious();
             Destroy(gameObject);
         }
     }
 
+    /*
     /// <summary>
     /// Deals damage to the enemy
     /// </summary>
@@ -43,8 +47,15 @@ public class PipeBombBehaviour : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
-            enemyComponent.TakeDamage(10);
+            boomRadious();
+            enemyComponent.TakeDamage(10000000000);
         }
+    }
+    */
+
+    private void boomRadious()
+    {
+        Instantiate(circle, transform.position, Quaternion.identity);
     }
 
 }

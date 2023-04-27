@@ -47,7 +47,7 @@ public class BearTrapBehavior : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
-            enemyComponent.TakeDamage(10);
+            enemyComponent.TakeDamage(20);
             Destroy(gameObject);
         }
     }

@@ -46,6 +46,22 @@ public class TutorialBehaviour : MonoBehaviour
         {
             spriteRenderer.sprite = spriteArray[3];
         }
+
+        //Spawn static enemy
+        //When attacker destroys enemy move onto next instructions
+        //Give attacker instructions first
+        //Down the attackeer and give defender time to defeat an enemy
+        //Spawn enemy close to oil rig so it will damage the rig 
+        //Give Defender instructions
+
+        //Include skip(Side of right D - Pad)
+
+        //New scene with a fade-in/out for tutorial
+
+        //Change repair rig to B
+
+        //X to revive 
+
         else if (joinTextCountdown <= -15 && joinTextCountdown >= -20)
         {
             spriteRenderer.sprite = spriteArray[4];
