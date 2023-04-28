@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         WeaponData.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 12th, 2023
+//
+// Brief Description : Originally stored the weapon data before being replaced the by Weapon.cs script 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

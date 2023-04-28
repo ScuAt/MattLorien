@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :        AttackerHealthBar.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 26th, 2023
+//
+// Brief Description : adjusts attackers healthbar to match the current attacker health 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

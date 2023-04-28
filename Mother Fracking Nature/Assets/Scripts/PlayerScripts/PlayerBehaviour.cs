@@ -75,7 +75,8 @@ public class PlayerBehaviour : MonoBehaviour
     
 
     /// <summary>
-    /// Update is called once per frame
+    /// controls movement, rotation, checks if attacker or defender are down and sets their speed to 0
+    /// 
     /// </summary>
     private void FixedUpdate()
     {
@@ -156,7 +157,7 @@ public class PlayerBehaviour : MonoBehaviour
         playerControls.Disable();
     }
     /// <summary>
-    /// 
+    /// checks for the attacker and defender location and allows them to be revived
     /// </summary>
     private void Update()
     {

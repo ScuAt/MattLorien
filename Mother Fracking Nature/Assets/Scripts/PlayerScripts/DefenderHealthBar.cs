@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         DefenderHealthBar.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 18th, 2023
+//
+// Brief Description : Controls the size of the defender health bar based on the defender health from game controller
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

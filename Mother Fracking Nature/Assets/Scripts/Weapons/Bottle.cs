@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         Bottle.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 18th, 2023
+//
+// Brief Description : inherits from weapon and stores all attributes for the bottle weapon
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

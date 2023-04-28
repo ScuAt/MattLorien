@@ -108,7 +108,7 @@ public class AttackerBehaviour : PlayerBehaviour
     }
 
     /// <summary>
-    /// Update is called once per frame
+    /// sets whether or not the attacker is downed and can attack or move
     /// </summary>
     void Update()
     {
@@ -200,7 +200,9 @@ public class AttackerBehaviour : PlayerBehaviour
         
 
     }
-
+    /// <summary>
+    /// Turns off the dash and bottle targets
+    /// </summary>
     public void DisableTargets()
     {
         BottleTarget.SetActive(false);

@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         BottleAbilityBehaviour.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 20th, 2023
+//
+// Brief Description : Controls the movment for the bottle ability that is thrown
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +23,9 @@ public class BottleAbilityBehaviour : MonoBehaviour
     
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// finds the bottle target and sets it equal to targets
+    /// </summary>
     void Start()
     {
 
@@ -27,7 +36,9 @@ public class BottleAbilityBehaviour : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// moves the bottle with the movement of the right stick
+    /// </summary>
     void Update()
     {
 
@@ -39,6 +50,10 @@ public class BottleAbilityBehaviour : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// checks if the bottle collides with an enemy or the barrier and destroys it
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
             if (collision.tag == "Enemy" || collision.tag == "Barrier")

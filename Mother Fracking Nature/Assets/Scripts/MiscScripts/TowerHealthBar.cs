@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         TowerHealthBar.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 26th, 2023
+//
+// Brief Description : adjusts tower health bar based on the current health
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +22,9 @@ public class TowerHealthBar : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// changes tower health bar everytime the tower health is changed
+    /// </summary>
     void Update()
     {
         GameController gc = FindObjectOfType<GameController>();

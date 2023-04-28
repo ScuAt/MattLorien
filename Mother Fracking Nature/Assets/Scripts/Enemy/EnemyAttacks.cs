@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         EnemyAttacks.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 24th, 2023
+//
+// Brief Description : Checks who is in collision range and starts attack coroutines based on that. Stops them when they leave
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +25,9 @@ public class EnemyAttacks : EnemyBehaviour
         
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Checks who is in attack range and activates or stops coroutines based on that
+    /// </summary>
     void Update()
     {
         if(attackingAttacker == false)
@@ -48,7 +57,10 @@ public class EnemyAttacks : EnemyBehaviour
 
     }
 
-
+    /// <summary>
+    /// Deals damage every 2 seconds to the tower
+    /// </summary>
+    /// <returns></returns>
     IEnumerator TowerAttackCycle()
     {
         while (attackingTower == true)
@@ -64,6 +76,10 @@ public class EnemyAttacks : EnemyBehaviour
 
     }
 
+    /// <summary>
+    /// deals damage every 2 seconds to the attacker
+    /// </summary>
+    /// <returns></returns>
     IEnumerator AttackerAttackCycle()
     {
         while (attackingAttacker == true)
@@ -77,6 +93,10 @@ public class EnemyAttacks : EnemyBehaviour
         }
 
     }
+    /// <summary>
+    /// deals damage every 2 seconds to the defender
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DefenderAttackCycle()
     {
         while (attackingDefender == true)
@@ -92,6 +112,10 @@ public class EnemyAttacks : EnemyBehaviour
 
     }
 
+    /// <summary>
+    /// checks what enters trigger range and changes bool based on that
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
          if (collision.tag == "Tower")// && attacking == true)
@@ -119,6 +143,10 @@ public class EnemyAttacks : EnemyBehaviour
        // attacking = false;
 
     }
+    /// <summary>
+    /// checks who exits trigger range and changes bool accordingly
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Tower")

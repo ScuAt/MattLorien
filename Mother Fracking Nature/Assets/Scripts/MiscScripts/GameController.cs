@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         GameController.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 20th, 2023
+//
+// Brief Description : controls all timer and spawning coroutines as well as stores health values
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +29,10 @@ public class GameController : MonoBehaviour
 
     public GameObject endScreen;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// starts the timer and round control coroutines and displays the time left in the wave
+    /// as well as the wave number
+    /// </summary>
     void Start()
     {
         endScreen.SetActive(false);
@@ -40,7 +50,9 @@ public class GameController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// checks if the first round should start and checks if the game needs to end
+    /// </summary>
     void Update()
     {
         if (time <= 0 && roundsStarted == false)
@@ -73,7 +85,7 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// Spawns enemies
+    /// Spawns 4 enemies in each direction
     /// </summary>
     /// <returns></returns>
     IEnumerator SpawnEnemies()
@@ -97,7 +109,11 @@ public class GameController : MonoBehaviour
         
 
     }
-
+    /// <summary>
+    /// adds to the round number every time the timer hits zero, increases the enemies that spawn each round
+    /// displays current round number
+    /// </summary>
+    /// <returns></returns>
     IEnumerator RoundControl()
     {
         roundsStarted = true;
@@ -122,7 +138,11 @@ public class GameController : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// counts from 30 to zero and resets
+    /// regenerates health for the attacker and defender every second
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Timer()
     {
         //loop
@@ -137,11 +157,11 @@ public class GameController : MonoBehaviour
             timeText.text = time.ToString();
             if(attackerHealth < 100 && attackerHealth > 0)
             {
-                attackerHealth ++;
+                attackerHealth += 2;
             }
             if(defenderHealth < 250 && defenderHealth > 0)
             {
-                defenderHealth += 2;
+                defenderHealth += 4;
             }
             
             yield return new WaitForSecondsRealtime(1f);

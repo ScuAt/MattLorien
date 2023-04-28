@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         Weapon.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 18th, 2023
+//
+// Brief Description : stores data for all child weapon classes 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +32,9 @@ public abstract class Weapon
     public float AbilityReady { get => abilityReady; set => abilityReady = value; }
     public int AbilityDamage { get => abilityDamage; set => abilityDamage = value; }
 
+    /// <summary>
+    /// constructor for weapon
+    /// </summary>
     public Weapon()
     {
 

@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         BrockenBottleBehaviour.cs
+// Author :            Matthew McCoy
+// Creation Date :     Apirl 19th, 2023
+//
+// Brief Description : Bottle projectile behaviour
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
