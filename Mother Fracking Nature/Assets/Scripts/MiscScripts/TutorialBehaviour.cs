@@ -50,6 +50,7 @@ public class TutorialBehaviour : MonoBehaviour
         //Spawn static enemy
         //When attacker destroys enemy move onto next instructions
         //Give attacker instructions first
+
         //Down the attackeer and give defender time to defeat an enemy
         //Spawn enemy close to oil rig so it will damage the rig 
         //Give Defender instructions
