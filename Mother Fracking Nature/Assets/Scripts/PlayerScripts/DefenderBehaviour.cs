@@ -23,6 +23,12 @@ public class DefenderBehaviour : PlayerBehaviour
     public GameObject Shield;
     public GameObject tower;
 
+    public AudioClip bearTrapPlace;
+    public AudioClip toasterPlace;
+    public AudioClip pipeBombPlace;
+
+    public AudioClip repairSound;
+
     public float towerDistance;
 
     public bool repairable = false;
@@ -282,6 +288,7 @@ public class DefenderBehaviour : PlayerBehaviour
         if (trapNumber == 0 && Time.time > canPlaceBearTrap)
         {
             GameObject newTrap = Instantiate(trapArray[0], transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(bearTrapPlace, Camera.main.transform.position);
             canPlaceBearTrap = Time.time + bearTrapTimer;
             //currentTrapNumber.text = "Bear Trap";
         }
@@ -289,6 +296,7 @@ public class DefenderBehaviour : PlayerBehaviour
         else if (trapNumber == 1 && Time.time > canPlacePipeBomb)
         {
             GameObject newTrap = Instantiate(trapArray[1], transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(pipeBombPlace, Camera.main.transform.position);
             canPlacePipeBomb = Time.time + pipeBombTimer;
             //currentTrapNumber.text = "Pipe Bomb";
         }
@@ -296,6 +304,7 @@ public class DefenderBehaviour : PlayerBehaviour
         else if (trapNumber == 2 && Time.time > canPlaceToaster)
         {
             GameObject newTrap = Instantiate(trapArray[2], transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(toasterPlace, Camera.main.transform.position);
             canPlaceToaster = Time.time + toasterTimer;
             //currentTrapNumber.text = "Toaster Bomb";
         }       
@@ -323,7 +332,8 @@ public class DefenderBehaviour : PlayerBehaviour
             if (towerDistance < 6 && gc.towerHealth < 500)
             {
                 gc.towerHealth += 5;
-                Debug.Log("Repairing");
+            AudioSource.PlayClipAtPoint(repairSound, Camera.main.transform.position);
+            Debug.Log("Repairing");
             }
         
     }

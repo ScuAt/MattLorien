@@ -16,6 +16,7 @@ public class BearTrapBehavior : MonoBehaviour
     private float countdown;
     */
 
+    public AudioClip bearTrapDamage;
     /// <summary>
     /// Sets the timers
     /// </summary>
@@ -48,6 +49,7 @@ public class BearTrapBehavior : MonoBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
             enemyComponent.TakeDamage(20);
+            AudioSource.PlayClipAtPoint(bearTrapDamage, Camera.main.transform.position);
             Destroy(gameObject);
         }
     }

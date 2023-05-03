@@ -16,6 +16,8 @@ public class PipeBombBehaviour : MonoBehaviour
 
     public GameObject circle;
 
+    public AudioClip pipeBombDamage;
+
     /// <summary>
     /// Sets the timer for the count down
     /// </summary>
@@ -33,6 +35,7 @@ public class PipeBombBehaviour : MonoBehaviour
         if (countdown <= 0)
         {
             boomRadious();
+            AudioSource.PlayClipAtPoint(pipeBombDamage, Camera.main.transform.position);
             Destroy(gameObject);
         }
     }

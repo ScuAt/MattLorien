@@ -17,6 +17,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     //public GameObject barrier;
 
+    public AudioClip enemyDeath;
+    public AudioClip enemyTakeDamage;
+    public AudioClip enemyNoises;
+
+    public AudioClip bottleDamage;
+    public AudioClip sawDamage;
+    public AudioClip banjoDamage;
+    public AudioClip bottleAbilityDamage;
+    public AudioClip sawAbilityDamage;
+    public AudioClip banjoAbilityStun;
+
     Weapon weapon;
 
     public float stunTime = 5;
@@ -36,6 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         GameObject barrier = GameObject.FindGameObjectWithTag("Barrier");
         Physics2D.IgnoreCollision(barrier.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        StartCoroutine(Squeaks());
     }
 
     /// <summary>
@@ -49,6 +61,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Debug.Log("Enemy has died");
             Bleed();
+            AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position);
             Destroy(this.gameObject);
         }
 
@@ -140,6 +153,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void Bleed()
     {
         Instantiate(bleed, transform.position, Quaternion.identity);
+       
     }
 
     public static void IgnoreCollision(Collider2D collider, Collider2D collider2, bool ignore = true)
@@ -157,6 +171,23 @@ public class EnemyBehaviour : MonoBehaviour
         enemyHealth -= damageAmount;
         Bleed();
     }
+    /// <summary>
+    /// every 5 seconds there is a 1 in 5 chance that the enemy will squeak
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator Squeaks()
+    {
+        while (true)
+        {
+            var rand = Random.Range(0, 4);
+            if(rand == 0)
+            {
+                AudioSource.PlayClipAtPoint(enemyNoises, Camera.main.transform.position);
+            }
+            yield return new WaitForSeconds(5f);
+        }
+        
+    }
 
 
     /// <summary>
@@ -171,6 +202,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 4;
             Debug.Log("Health remaining: " + enemyHealth);
+            AudioSource.PlayClipAtPoint(bottleDamage, Camera.main.transform.position);
             Bleed();
             
         }
@@ -179,7 +211,8 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 12;
             Debug.Log("Health remaining: " + enemyHealth);
-            
+            AudioSource.PlayClipAtPoint(sawDamage, Camera.main.transform.position);
+
 
         }
         if (collision.tag == "BanjoMelee")
@@ -187,26 +220,30 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 3;
             Debug.Log("Health remaining: " + enemyHealth);
+            AudioSource.PlayClipAtPoint(banjoDamage, Camera.main.transform.position);
             Bleed();
 
         }
         if (collision.tag == "BanjoAbility")
         {
             Stunned();
+            AudioSource.PlayClipAtPoint(banjoAbilityStun, Camera.main.transform.position);
         }
         if (collision.tag == "BottleAbility")
         {
             Debug.Log("Enemy took damage");
             enemyHealth -= 15;
             Debug.Log("Health remaining: " + enemyHealth);
-            
+            AudioSource.PlayClipAtPoint(bottleAbilityDamage, Camera.main.transform.position);
+
         }
         if (collision.tag == "SawAbility")
         {
             Debug.Log("Enemy took damage");
             enemyHealth -= 12;
             Debug.Log("Health remaining: " + enemyHealth);
-            
+            AudioSource.PlayClipAtPoint(sawAbilityDamage, Camera.main.transform.position);
+
         }
 
         /*

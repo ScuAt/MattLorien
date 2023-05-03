@@ -29,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour
 
    private float speed = 7;
 
+
+    public AudioClip reviveSound;
+    public AudioClip downedSound;
    public float Speed { get => speed; set => speed = value; }
 
     public bool attackerIsDown = false;
@@ -107,10 +110,12 @@ public class PlayerBehaviour : MonoBehaviour
         if(gc.attackerHealth <= 0)
         {
             attackerIsDown = true;
+            AudioSource.PlayClipAtPoint(downedSound, Camera.main.transform.position);
         }
         else if(gc.defenderHealth <= 0)
         {
             defenderIsDown = true;
+            AudioSource.PlayClipAtPoint(downedSound, Camera.main.transform.position);
         }
         else
         {
@@ -214,10 +219,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (defenderIsDown && revivable && gameObject.tag == "Attacker")
         {
             gc.defenderHealth += 125;
+            AudioSource.PlayClipAtPoint(reviveSound, Camera.main.transform.position);
         }
         if (attackerIsDown && revivable && gameObject.tag == "Defender")
         {
             gc.attackerHealth += 50;
+            AudioSource.PlayClipAtPoint(reviveSound, Camera.main.transform.position);
         }
     }
 

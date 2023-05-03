@@ -16,6 +16,7 @@ public class ToasterBehaviour : MonoBehaviour
     private float countdown;
     */
 
+    public AudioClip toasterDamage;
     /// <summary>
     /// Sets timer for count down
     /// </summary>
@@ -46,7 +47,7 @@ public class ToasterBehaviour : MonoBehaviour
             enemyComponent) && collision.tag == "Enemy")
         {
             enemyComponent.TakeDamage(5);
-
+            AudioSource.PlayClipAtPoint(toasterDamage, Camera.main.transform.position);
             enemyComponent.Stunned();
 
             Destroy(gameObject);

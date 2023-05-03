@@ -17,7 +17,9 @@ public class EnemyAttacks : EnemyBehaviour
     public bool attackingTower = false;
     public bool attacking = false;
 
-    
+    public AudioClip attackerTakeDamage;
+    public AudioClip defenderTakeDamage;
+    public AudioClip towerTakeDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +71,7 @@ public class EnemyAttacks : EnemyBehaviour
             yield return new WaitForSeconds(1f);
             GameController gc = FindObjectOfType<GameController>();
             gc.towerHealth -= enemyDamage;
-
+            AudioSource.PlayClipAtPoint(towerTakeDamage, Camera.main.transform.position);
             yield return new WaitForSeconds(1f);
 
         }
@@ -88,7 +90,7 @@ public class EnemyAttacks : EnemyBehaviour
             yield return new WaitForSeconds(1f);
             GameController gc = FindObjectOfType<GameController>();
             gc.attackerHealth -= enemyDamage;
-
+            AudioSource.PlayClipAtPoint(attackerTakeDamage, Camera.main.transform.position);
             yield return new WaitForSeconds(1f);
         }
 
@@ -105,7 +107,7 @@ public class EnemyAttacks : EnemyBehaviour
             yield return new WaitForSeconds(1f);
             GameController gc = FindObjectOfType<GameController>();
             gc.defenderHealth -= enemyDamage;
-
+            AudioSource.PlayClipAtPoint(defenderTakeDamage, Camera.main.transform.position);
             yield return new WaitForSeconds(1f);
 
         }

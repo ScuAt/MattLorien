@@ -22,6 +22,15 @@ public class GameController : MonoBehaviour
     private Text rndText;
     public bool roundsStarted = false;
 
+    public AudioClip waveStart;
+    public AudioClip attackerTakeDamage;
+    public AudioClip defenderTakeDamage;
+    public AudioClip towerTakeDamage;
+
+    //public AudioClip gameMusic;
+    //public AudioClip loseMusic;
+
+
 
     public float attackerHealth = 100;
     public float defenderHealth = 250;
@@ -36,6 +45,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         endScreen.SetActive(false);
+        GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Play();
+        GameObject.Find("LoseMusic").GetComponent<AudioSource>().Stop();
 
         timeText = GameObject.Find("timeText").GetComponent<Text>();
         timeText.text = time.ToString();
@@ -58,6 +69,7 @@ public class GameController : MonoBehaviour
         if (time <= 0 && roundsStarted == false)
         {
             StartCoroutine(RoundControl());
+            AudioSource.PlayClipAtPoint(waveStart, Camera.main.transform.position);
         }
         //debugging purposes
         /*  if (Input.GetKey(KeyCode.Escape))
@@ -75,11 +87,15 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game Over");
             endScreen.SetActive(true);
+            GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Stop();
+            GameObject.Find("LoseMusic").GetComponent<AudioSource>().Play();
         }
         if (towerHealth <= 0)
         {
             Debug.Log("Game Over");
             endScreen.SetActive(true);
+            GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Stop();
+            GameObject.Find("LoseMusic").GetComponent<AudioSource>().Play();
         }
 
     }
@@ -127,6 +143,7 @@ public class GameController : MonoBehaviour
                 enemyCount = 0;
                 enemyMax++;
                 // time = 30;
+                AudioSource.PlayClipAtPoint(waveStart, Camera.main.transform.position);
             }
 
             StartCoroutine(SpawnEnemies());

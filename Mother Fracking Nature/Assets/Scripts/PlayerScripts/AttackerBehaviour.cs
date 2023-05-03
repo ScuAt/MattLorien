@@ -59,7 +59,12 @@ public class AttackerBehaviour : PlayerBehaviour
     private bool attacking = false;
     private bool abiliting = false;
 
-   
+    public AudioClip bottleAttack;
+    public AudioClip sawAttack;
+    public AudioClip banjoAttack;
+    public AudioClip bottleAbility;
+    public AudioClip sawAbility;
+    public AudioClip banjoAbility;
 
     /// <summary>
     /// Enables controls
@@ -235,14 +240,17 @@ public class AttackerBehaviour : PlayerBehaviour
             if (weapon.WeaponName == "Broken Bottle")
             {
                 BottleMelee.SetActive(true);
+                AudioSource.PlayClipAtPoint(bottleAttack, Camera.main.transform.position);
             }
             else if (weapon.WeaponName == "Hand Saw")
             {
                 SawMelee.SetActive(true);
+                AudioSource.PlayClipAtPoint(sawAttack, Camera.main.transform.position);
             }
             else
             {
                 BanjoMelee.SetActive(true);
+                AudioSource.PlayClipAtPoint(banjoAttack, Camera.main.transform.position);
             }
         }
     }
@@ -272,18 +280,19 @@ public class AttackerBehaviour : PlayerBehaviour
                 GameObject newProjectile = Instantiate(weaponArray[0], transform.position, transform.rotation);
 
                 BottleTarget.SetActive(true);
-
+                AudioSource.PlayClipAtPoint(bottleAbility, Camera.main.transform.position);
 
             }
             else if (weapon.WeaponName == "Hand Saw")
             {
                 SawAbility.SetActive(true);
                 LandingSpot.SetActive(true);
-
+                AudioSource.PlayClipAtPoint(sawAbility, Camera.main.transform.position);
             }
             else
             {
                 BanjoAbility.SetActive(true);
+                AudioSource.PlayClipAtPoint(banjoAbility, Camera.main.transform.position);
             }
         }
     }

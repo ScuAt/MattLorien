@@ -1070,9 +1070,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5c87bf1b46cee4d91120ab509d6e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reviveSound: {fileID: 0}
   attackerIsDown: 0
   defenderIsDown: 0
   revivable: 0
+  attackPlayerDistance: 0
+  defensePlayerDistance: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
 --- !u!61 &7959410326301455575
@@ -1232,9 +1235,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57683c9418f3a3341b0075b6719af2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reviveSound: {fileID: 0}
   attackerIsDown: 0
   defenderIsDown: 0
   revivable: 0
+  attackPlayerDistance: 0
+  defensePlayerDistance: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
   BottleMelee: {fileID: 4732011163894643940}
@@ -1255,6 +1261,12 @@ MonoBehaviour:
   - {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   - {fileID: 1969708928992985411}
   - {fileID: 4055644872708018863}
+  bottleAttack: {fileID: 0}
+  sawAttack: {fileID: 0}
+  banjoAttack: {fileID: 0}
+  bottleAbility: {fileID: 0}
+  sawAbility: {fileID: 0}
+  banjoAbility: {fileID: 0}
 --- !u!114 &-2756980718256294724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,9 +1279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ce4392385693e47b03bd8f18aa0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reviveSound: {fileID: 0}
   attackerIsDown: 0
   defenderIsDown: 0
   revivable: 0
+  attackPlayerDistance: 0
+  defensePlayerDistance: 0
   aim: {x: 0, y: 0}
   old_rotation: {x: 0, y: 0, z: 0}
   Lady: {fileID: 21300000, guid: e972c618392c1044e9909e48c717e77a, type: 3}
@@ -1278,6 +1293,10 @@ MonoBehaviour:
   PipeBomb: {fileID: 21300000, guid: 58d05d4245b049c4e8756bc519165c8f, type: 3}
   Shield: {fileID: 8101278563537506938}
   tower: {fileID: 4859325779915082386, guid: 683605e2c8d14a041a234b522200c511, type: 3}
+  bearTrapPlace: {fileID: 0}
+  toasterPlace: {fileID: 0}
+  pipeBombPlace: {fileID: 0}
+  repairSound: {fileID: 0}
   towerDistance: 0
   repairable: 0
   trapArray:
@@ -1311,6 +1330,7 @@ GameObject:
   - component: {fileID: 2463718359906753465}
   - component: {fileID: 1767447597908729169}
   - component: {fileID: 8720948111171860943}
+  - component: {fileID: 905611045814506917}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Block
@@ -1411,3 +1431,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1820865, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &905611045814506917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101278563537506938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04a64489bb28194f839a637ce648cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocked: {fileID: 0}
