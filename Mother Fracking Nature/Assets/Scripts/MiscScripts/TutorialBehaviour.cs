@@ -26,6 +26,8 @@ public class TutorialBehaviour : MonoBehaviour
     {
         joinTextCountdown = joinTextTimer;
         spriteRenderer.sprite = spriteArray[0];
+
+        //Hey! I'm testing to see if github works so I'm writing comments to make little changes
     }
 
     /// <summary>
