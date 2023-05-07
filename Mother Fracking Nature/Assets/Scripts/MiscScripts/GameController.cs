@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         endScreen.SetActive(false);
-        GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Play();
+        //GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Play();
         GameObject.Find("LoseMusic").GetComponent<AudioSource>().Stop();
 
         timeText = GameObject.Find("timeText").GetComponent<Text>();

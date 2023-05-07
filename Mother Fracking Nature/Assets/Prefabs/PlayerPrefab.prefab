@@ -1070,7 +1070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5c87bf1b46cee4d91120ab509d6e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reviveSound: {fileID: 0}
+  reviveSound: {fileID: 8300000, guid: 878ad4aeef9a1004e802ac66cd88a4f9, type: 3}
+  downedSound: {fileID: 8300000, guid: aaf175b7438a0d74d9ddbbf2ec86332a, type: 3}
   attackerIsDown: 0
   defenderIsDown: 0
   revivable: 0
@@ -1235,7 +1236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57683c9418f3a3341b0075b6719af2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reviveSound: {fileID: 0}
+  reviveSound: {fileID: 8300000, guid: 878ad4aeef9a1004e802ac66cd88a4f9, type: 3}
+  downedSound: {fileID: 8300000, guid: aaf175b7438a0d74d9ddbbf2ec86332a, type: 3}
   attackerIsDown: 0
   defenderIsDown: 0
   revivable: 0
@@ -1261,12 +1263,12 @@ MonoBehaviour:
   - {fileID: 9028599616520146607, guid: 51bf5d8a997492346b601e01cd3d904f, type: 3}
   - {fileID: 1969708928992985411}
   - {fileID: 4055644872708018863}
-  bottleAttack: {fileID: 0}
-  sawAttack: {fileID: 0}
-  banjoAttack: {fileID: 0}
-  bottleAbility: {fileID: 0}
-  sawAbility: {fileID: 0}
-  banjoAbility: {fileID: 0}
+  bottleAttack: {fileID: 8300000, guid: 3f4a978651350a145ae7590a4ed01854, type: 3}
+  sawAttack: {fileID: 8300000, guid: b7c90fcf57c5baf4887d918e8358a3f4, type: 3}
+  banjoAttack: {fileID: 8300000, guid: a53d01b7e7900c649820e76fc492019f, type: 3}
+  bottleAbility: {fileID: 8300000, guid: 622c59ded6bc8e34c8c57f826d9c718a, type: 3}
+  sawAbility: {fileID: 8300000, guid: 2df0d8f839ca3af42bd7908b82485767, type: 3}
+  banjoAbility: {fileID: 8300000, guid: abdb7b82ba9f6b14a882ae1758cd0b3b, type: 3}
 --- !u!114 &-2756980718256294724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,7 +1281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ce4392385693e47b03bd8f18aa0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reviveSound: {fileID: 0}
+  reviveSound: {fileID: 8300000, guid: 878ad4aeef9a1004e802ac66cd88a4f9, type: 3}
+  downedSound: {fileID: 8300000, guid: aaf175b7438a0d74d9ddbbf2ec86332a, type: 3}
   attackerIsDown: 0
   defenderIsDown: 0
   revivable: 0
@@ -1293,10 +1296,10 @@ MonoBehaviour:
   PipeBomb: {fileID: 21300000, guid: 58d05d4245b049c4e8756bc519165c8f, type: 3}
   Shield: {fileID: 8101278563537506938}
   tower: {fileID: 4859325779915082386, guid: 683605e2c8d14a041a234b522200c511, type: 3}
-  bearTrapPlace: {fileID: 0}
-  toasterPlace: {fileID: 0}
-  pipeBombPlace: {fileID: 0}
-  repairSound: {fileID: 0}
+  bearTrapPlace: {fileID: 8300000, guid: 9bb608001c84c464bbbb92e5e497b2f7, type: 3}
+  toasterPlace: {fileID: 8300000, guid: 15d77bf897a2c48428a9c6a961f185d1, type: 3}
+  pipeBombPlace: {fileID: 8300000, guid: a84be8830f954af4086ebaac2bcf324e, type: 3}
+  repairSound: {fileID: 8300000, guid: b6dab51d33f9fe84da3e96298729b79c, type: 3}
   towerDistance: 0
   repairable: 0
   trapArray:

@@ -102,6 +102,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tower: {fileID: 4859325779915082386, guid: 683605e2c8d14a041a234b522200c511, type: 3}
   bleed: {fileID: 1206340618056532952, guid: b12db7ee1f4420249941038a30f20e6b, type: 3}
+  enemyDeath: {fileID: 8300000, guid: e6d27d9cdd068c84d804ed3c3a299436, type: 3}
+  enemyTakeDamage: {fileID: 8300000, guid: 1864d126ec2216a45a588efc6b87889c, type: 3}
+  enemyNoises: {fileID: 8300000, guid: 1864d126ec2216a45a588efc6b87889c, type: 3}
+  bottleDamage: {fileID: 8300000, guid: bfb95360e68d7634195427f6aeeb125a, type: 3}
+  sawDamage: {fileID: 8300000, guid: 8cdcfe5ed6e9dc14f8a3d575f2c97909, type: 3}
+  banjoDamage: {fileID: 8300000, guid: 8c6f5bedcfa3c4e46a020358d16e611c, type: 3}
+  bottleAbilityDamage: {fileID: 8300000, guid: a7486cc9688982447873181bcdc6c56a, type: 3}
+  sawAbilityDamage: {fileID: 0}
+  banjoAbilityStun: {fileID: 0}
   stunTime: 5
   stunEnd: 0
   stunned: 0
@@ -306,6 +315,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
   bleed: {fileID: 0}
+  enemyDeath: {fileID: 0}
+  enemyTakeDamage: {fileID: 0}
+  enemyNoises: {fileID: 0}
+  bottleDamage: {fileID: 0}
+  sawDamage: {fileID: 0}
+  banjoDamage: {fileID: 0}
+  bottleAbilityDamage: {fileID: 0}
+  sawAbilityDamage: {fileID: 0}
+  banjoAbilityStun: {fileID: 0}
   stunTime: 5
   stunEnd: 0
   stunned: 0
@@ -319,6 +337,9 @@ MonoBehaviour:
   attackingDefender: 0
   attackingTower: 0
   attacking: 0
+  attackerTakeDamage: {fileID: 0}
+  defenderTakeDamage: {fileID: 0}
+  towerTakeDamage: {fileID: 0}
 --- !u!58 &3589683924778129904
 CircleCollider2D:
   m_ObjectHideFlags: 0
