@@ -32,6 +32,8 @@ public class DefenderBehaviour : PlayerBehaviour
     public float towerDistance;
 
     public bool repairable = false;
+    public bool repairing = false;
+    public int repairFrames = 0;
 
     InputActionAsset inputAsset3;
     InputActionMap defenderActions;
@@ -150,7 +152,13 @@ public class DefenderBehaviour : PlayerBehaviour
 
         //Updates the healthbar with current health
         //healthBar.SetHealth((int)playerHealth);
-
+        if (repairFrames >= 100)
+        {
+            
+            repairing = false;
+            repairFrames = 0;
+        }
+        if (repairing) repairFrames++;
     }
 
     /// <summary>
@@ -329,11 +337,13 @@ public class DefenderBehaviour : PlayerBehaviour
         towerDistance = Vector2.Distance(transform.position, tower.transform.position);
        
         
-            if (towerDistance < 6 && gc.towerHealth < 500)
+            if (towerDistance < 6 && gc.towerHealth < 500 && repairing == false)
             {
-                gc.towerHealth += 5;
+            repairing = true;
+                gc.towerHealth += 20;
             AudioSource.PlayClipAtPoint(repairSound, Camera.main.transform.position);
             Debug.Log("Repairing");
+            
             }
         
     }

@@ -1198,6 +1198,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1d999ac5-9b5e-4ed5-9b78-c16120aebdc7
     m_ActionName: DefenderActions/Repair[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 479457ea-d4b2-44af-8628-ba73d6fce510
+    m_ActionName: PlayerActions/Join[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 73f1499a-6501-4a65-bce0-67c033022a2f
+    m_ActionName: PlayerActions/SkipTutorial[/XInputControllerWindows/dpad/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -1446,4 +1454,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04a64489bb28194f839a637ce648cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocked: {fileID: 0}
+  blocked: {fileID: 8300000, guid: 5a4030cd134b3434581eb4e4845a5961, type: 3}
