@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipTutorial"",
+                    ""type"": ""Button"",
+                    ""id"": ""73f1499a-6501-4a65-bce0-67c033022a2f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -146,6 +155,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdeb9dfb-9fd6-4da6-9699-65860b2bc260"",
+                    ""path"": ""<XInputController>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipTutorial"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -358,6 +378,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_QuitGame = m_PlayerActions.FindAction("QuitGame", throwIfNotFound: true);
         m_PlayerActions_Revive = m_PlayerActions.FindAction("Revive", throwIfNotFound: true);
         m_PlayerActions_Join = m_PlayerActions.FindAction("Join", throwIfNotFound: true);
+        m_PlayerActions_SkipTutorial = m_PlayerActions.FindAction("SkipTutorial", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
@@ -436,6 +457,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_QuitGame;
     private readonly InputAction m_PlayerActions_Revive;
     private readonly InputAction m_PlayerActions_Join;
+    private readonly InputAction m_PlayerActions_SkipTutorial;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -446,6 +468,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @QuitGame => m_Wrapper.m_PlayerActions_QuitGame;
         public InputAction @Revive => m_Wrapper.m_PlayerActions_Revive;
         public InputAction @Join => m_Wrapper.m_PlayerActions_Join;
+        public InputAction @SkipTutorial => m_Wrapper.m_PlayerActions_SkipTutorial;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -473,6 +496,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Join.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJoin;
                 @Join.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJoin;
                 @Join.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJoin;
+                @SkipTutorial.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSkipTutorial;
+                @SkipTutorial.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSkipTutorial;
+                @SkipTutorial.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSkipTutorial;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -495,6 +521,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Join.started += instance.OnJoin;
                 @Join.performed += instance.OnJoin;
                 @Join.canceled += instance.OnJoin;
+                @SkipTutorial.started += instance.OnSkipTutorial;
+                @SkipTutorial.performed += instance.OnSkipTutorial;
+                @SkipTutorial.canceled += instance.OnSkipTutorial;
             }
         }
     }
@@ -629,6 +658,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnQuitGame(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
+        void OnSkipTutorial(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions
     {

@@ -46,14 +46,14 @@ public class TutorialBehaviour : MonoBehaviour
         joinButton = playerActions.FindAction("Join");
         joinButton.performed += ctx => OnJoin();
 
-        startGame = playerActions.FindAction("StartGame");
-        startGame.performed += ctx => playGame();
+        startGame = playerActions.FindAction("SkipTutorial");
+        startGame.performed += ctx => Skip();
 
     }
 
-    private void playGame()
+    public void Skip()
     {
-        //SceneManager.LoadScene("SceneOne");
+        SceneManager.LoadScene("SceneOne");
     }
 
 
