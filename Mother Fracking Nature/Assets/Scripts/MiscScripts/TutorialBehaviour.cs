@@ -14,25 +14,29 @@ using UnityEngine.SceneManagement;
 
 public class TutorialBehaviour : MonoBehaviour
 {
-    public Sprite[] spriteArray = new Sprite[6];
+    public Sprite[] spriteArray = new Sprite[11];
 
     public SpriteRenderer spriteRenderer;
 
     public GameObject playerPrefab;
 
+    public GameObject towerHealthBar;
+    public GameObject towerBarBackground;
+
     public GameObject attackerCircle;
     public GameObject defednerCircle;
 
     public GameObject attackerText;
+    public GameObject defenderText;
+
+    public GameObject enemy1;
+    public GameObject enemy2;
+    public GameObject enemy3;
 
     InputActionAsset inputAsset4;
-    InputActionAsset inputAsset5;
     InputActionMap playerActions;
-    InputActionMap attackerActions;
     InputAction joinButton;
     InputAction startGame;
-    InputAction basicAttack;
-    InputAction ability;
 
     private float joinTimer = 5;
     public float joinCountdown;
@@ -40,9 +44,9 @@ public class TutorialBehaviour : MonoBehaviour
     private float attackerTimer = 5;
     public float attackerCountdown;
 
-    private bool startTutorial;
+    private bool startEnemies;
 
-    public bool attackerTutorial;
+    private bool startTutorial;
 
     public int attackerNum;
 
@@ -51,13 +55,6 @@ public class TutorialBehaviour : MonoBehaviour
     {
         inputAsset4 = playerPrefab.GetComponent<PlayerInput>().actions;
         playerActions = inputAsset4.FindActionMap("PlayerActions");
-
-        inputAsset5 = playerPrefab.GetComponent<PlayerInput>().actions;
-        attackerActions = inputAsset5.FindActionMap("AttackerActions");
-
-        basicAttack = attackerActions.FindAction("Attack");
-
-        ability = attackerActions.FindAction("Ability");
 
         joinButton = playerActions.FindAction("Join");
         joinButton.performed += ctx => OnJoin();
@@ -89,7 +86,16 @@ public class TutorialBehaviour : MonoBehaviour
         defednerCircle.SetActive(false);
 
         attackerText.SetActive(false);
-        attackerTutorial = false;
+        defenderText.SetActive(false);
+
+        towerHealthBar.SetActive(false);
+        towerBarBackground.SetActive(false);
+
+        enemy1.SetActive(false);
+        enemy2.SetActive(false);
+        enemy3.SetActive(false);
+
+        startEnemies = false;
     }
 
     /// <summary>
@@ -112,10 +118,11 @@ public class TutorialBehaviour : MonoBehaviour
             else if (joinCountdown <= 0)
             {
                 spriteRenderer.sprite = spriteArray[2];
+                
 
                 //To stop the script from searching for the circles incase a 
                 //player selects a role
-                if (attackerCircle == null)
+                if (attackerCircle == null || defednerCircle == null)
                 {
                     attackerCountdown -= Time.deltaTime;
                     if (attackerCountdown <= 0)
@@ -123,30 +130,71 @@ public class TutorialBehaviour : MonoBehaviour
                         attackerText.SetActive(true);
                         spriteRenderer.sprite = spriteArray[3];
 
-                        if (basicAttack.triggered)
+                        if (attackerCountdown <= -5 && attackerCountdown >= -10)
                         {
                             spriteRenderer.sprite = spriteArray[4];
                         }
 
-                        if (ability.triggered)
+                        if (attackerCountdown <= -10 && attackerCountdown >= -15)
                         {
                             spriteRenderer.sprite = spriteArray[5];
                         }
 
+                        if (attackerCountdown <= -20 && attackerCountdown >= -25)
+                        {
+                            attackerText.SetActive(false);
+                            defenderText.SetActive(true);
+                            spriteRenderer.sprite = spriteArray[6];
+                        }
+
+                        if (attackerCountdown <= -25 && attackerCountdown >= -30)
+                        {
+                            attackerText.SetActive(false);
+                            defenderText.SetActive(true);
+                            spriteRenderer.sprite = spriteArray[7];
+                        }
+
+                        if (attackerCountdown <= -30 && attackerCountdown >= -35)
+                        {
+                            attackerText.SetActive(false);
+                            defenderText.SetActive(true);
+                            spriteRenderer.sprite = spriteArray[8];
+                        }
+
+                        if (attackerCountdown <= -35 && attackerCountdown >= -40)
+                        {
+                            attackerText.SetActive(false);
+                            defenderText.SetActive(false);
+                            spriteRenderer.sprite = spriteArray[9];
+                        }
+
+                        if (attackerCountdown <= -40 && attackerCountdown >= -45)
+                        {
+                            attackerText.SetActive(false);
+                            defenderText.SetActive(false);
+                            spriteRenderer.sprite = spriteArray[10];
+                            towerBarBackground.SetActive(true);
+                            towerHealthBar.SetActive(true);
+                            enemy1.SetActive(true);
+                            enemy2.SetActive(true);
+                            enemy3.SetActive(true);
+                            startEnemies = true;
+                        }
+
+                        if (enemy1 == null && enemy2 == null && enemy3 == null && startEnemies == true)
+                        {
+                            SceneManager.LoadScene("SceneOne");
+                        }
+
                     }
 
-                    
-                }
-
-                else if (defednerCircle == null)
-                {
-                    return;
-                }
-
+                }        
+                
                 else
                 {
                     attackerCircle.SetActive(true);
                     defednerCircle.SetActive(true);
+                    return;
                 }
             }
         }

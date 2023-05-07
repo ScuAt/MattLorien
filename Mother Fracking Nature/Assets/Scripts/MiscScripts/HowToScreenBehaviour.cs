@@ -13,6 +13,8 @@ public class HowToScreenBehaviour : MonoBehaviour
     public GameObject playerPrefab;
 
     public GameObject howToScreen;
+    public GameObject closeScreen;
+    public GameObject openScreen;
 
     private void Awake()
     {
@@ -29,15 +31,21 @@ public class HowToScreenBehaviour : MonoBehaviour
     public void Start()
     {
         howToScreen.SetActive(false);
+        closeScreen.SetActive(false);
+        openScreen.SetActive(true);
     }
 
     public void openHowToScreen()
     {
         howToScreen.SetActive(true);
+        openScreen.SetActive(false);
+        closeScreen.SetActive(true);
     }
 
     public void closeHowToScreen()
     {
         howToScreen.SetActive(false);
+        openScreen.SetActive(true);
+        closeScreen.SetActive(false);
     }
 }
