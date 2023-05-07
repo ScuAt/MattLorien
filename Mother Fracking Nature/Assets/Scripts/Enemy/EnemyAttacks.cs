@@ -71,7 +71,10 @@ public class EnemyAttacks : EnemyBehaviour
             yield return new WaitForSeconds(1f);
             GameController gc = FindObjectOfType<GameController>();
             gc.towerHealth -= enemyDamage;
-            AudioSource.PlayClipAtPoint(towerTakeDamage, Camera.main.transform.position);
+            if (gc.towerHealth > 0)
+            {
+                AudioSource.PlayClipAtPoint(towerTakeDamage, Camera.main.transform.position);
+            }
             yield return new WaitForSeconds(1f);
 
         }

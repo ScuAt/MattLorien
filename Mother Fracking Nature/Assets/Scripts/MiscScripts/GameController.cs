@@ -87,14 +87,14 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game Over");
             endScreen.SetActive(true);
-            GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Stop();
+            GameObject.Find("GameMusic").GetComponent<AudioSource>().Stop();
             GameObject.Find("LoseMusic").GetComponent<AudioSource>().Play();
         }
         if (towerHealth <= 0)
         {
             Debug.Log("Game Over");
             endScreen.SetActive(true);
-            GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Stop();
+            GameObject.Find("GameMusic").GetComponent<AudioSource>().Stop();
             GameObject.Find("LoseMusic").GetComponent<AudioSource>().Play();
         }
 
