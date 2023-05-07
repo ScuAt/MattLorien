@@ -5,18 +5,56 @@
 //
 // Brief Description : Controls the tutorial text
 *****************************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TutorialBehaviour : MonoBehaviour
 {
-    public Sprite[] spriteArray = new Sprite[8];
+    public Sprite[] spriteArray = new Sprite[4];
 
     public SpriteRenderer spriteRenderer;
 
-    public float joinTextTimer = 5;
-    public float joinTextCountdown;
+    public GameObject playerPrefab;
+
+    public GameObject attackerCircle;
+    public GameObject defednerCircle;
+
+    public GameObject attackerText;
+
+    InputActionAsset inputAsset4;
+    InputActionMap playerActions;
+    InputAction joinButton;
+    InputAction startGame;
+
+    public float joinTimer = 5;
+    public float joinCountdown;
+
+    private bool startTutorial;
+
+    private bool attackerTutorial = false;
+
+
+    private void Awake()
+    {
+        inputAsset4 = playerPrefab.GetComponent<PlayerInput>().actions;
+        playerActions = inputAsset4.FindActionMap("PlayerActions");
+
+        joinButton = playerActions.FindAction("Join");
+        joinButton.performed += ctx => OnJoin();
+
+        startGame = playerActions.FindAction("StartGame");
+        startGame.performed += ctx => playGame();
+
+    }
+
+    private void playGame()
+    {
+        //SceneManager.LoadScene("SceneOne");
+    }
 
 
     /// <summary>
@@ -24,10 +62,16 @@ public class TutorialBehaviour : MonoBehaviour
     /// </summary>
     void Start()
     {
-        joinTextCountdown = joinTextTimer;
         spriteRenderer.sprite = spriteArray[0];
 
-        //Hey! I'm testing to see if github works so I'm writing comments to make little changes
+        joinCountdown = joinTimer;
+
+        startTutorial = false;
+
+        attackerCircle.SetActive(false);
+        defednerCircle.SetActive(false);
+
+        attackerText.SetActive(false);
     }
 
     /// <summary>
@@ -35,19 +79,54 @@ public class TutorialBehaviour : MonoBehaviour
     /// </summary>
     void Update()
     {
-        joinTextCountdown -= Time.deltaTime;
-        if (joinTextCountdown <= 0 && joinTextCountdown >= -5)
+        if (startTutorial == true)
         {
-            spriteRenderer.sprite = spriteArray[1];
+            joinCountdown -= Time.deltaTime;
+
+
+            //This is for picking roles and movement
+            if (joinCountdown <= 0 && joinCountdown >= -5)
+            {
+                spriteRenderer.sprite = spriteArray[1];
+            }
+
+            else if (joinCountdown <= -5 && joinCountdown <= 0)
+            {
+                spriteRenderer.sprite = spriteArray[2];
+
+                //To stop the script from searching for the circles incase a 
+                //player selects a role
+                if (attackerCircle == null)
+                {
+                    attackerTutorial = true;
+                    return;
+                }
+
+                else if (defednerCircle == null)
+                {
+                    return;
+                }
+                else
+                {
+                    attackerCircle.SetActive(true);
+                    defednerCircle.SetActive(true);
+                }
+            }
+
+            //Attacker tutorial
+            else if (attackerTutorial == true && joinCountdown <= 0)
+            {
+                Debug.Log("Goober");
+                joinCountdown = joinTimer;
+
+                attackerText.SetActive(true);
+
+                spriteRenderer.sprite = spriteArray[3];
+
+            }
         }
-        else if (joinTextCountdown <= -5 && joinTextCountdown >= -10)
-        {
-            spriteRenderer.sprite = spriteArray[2];
-        }
-        else if (joinTextCountdown <= -10 && joinTextCountdown >= -15)
-        {
-            spriteRenderer.sprite = spriteArray[3];
-        }
+
+        
 
         //Spawn static enemy
         //When attacker destroys enemy move onto next instructions
@@ -65,21 +144,13 @@ public class TutorialBehaviour : MonoBehaviour
 
         //X to revive 
 
-        else if (joinTextCountdown <= -15 && joinTextCountdown >= -20)
-        {
-            spriteRenderer.sprite = spriteArray[4];
-        }
-        else if (joinTextCountdown <= -20 && joinTextCountdown >= -25)
-        {
-            spriteRenderer.sprite = spriteArray[5];
-        }
-        else if (joinTextCountdown <= -25 && joinTextCountdown >= -30)
-        {
-            spriteRenderer.sprite = spriteArray[6];
-        }
-        else if (joinTextCountdown <= -30 && joinTextCountdown >= -35)
-        {
-            spriteRenderer.sprite = spriteArray[7];
-        }
+    }
+
+    /// <summary>
+    /// Is triggered when players join
+    /// </summary>
+    private void OnJoin()
+    {
+        startTutorial = true;
     }
 }

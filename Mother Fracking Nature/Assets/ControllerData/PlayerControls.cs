@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""479457ea-d4b2-44af-8628-ba73d6fce510"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -126,6 +135,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Revive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1120b01-8f61-4f84-8273-a888c98f754f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Join"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -337,6 +357,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_StartGame = m_PlayerActions.FindAction("StartGame", throwIfNotFound: true);
         m_PlayerActions_QuitGame = m_PlayerActions.FindAction("QuitGame", throwIfNotFound: true);
         m_PlayerActions_Revive = m_PlayerActions.FindAction("Revive", throwIfNotFound: true);
+        m_PlayerActions_Join = m_PlayerActions.FindAction("Join", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
@@ -414,6 +435,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_StartGame;
     private readonly InputAction m_PlayerActions_QuitGame;
     private readonly InputAction m_PlayerActions_Revive;
+    private readonly InputAction m_PlayerActions_Join;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -423,6 +445,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @StartGame => m_Wrapper.m_PlayerActions_StartGame;
         public InputAction @QuitGame => m_Wrapper.m_PlayerActions_QuitGame;
         public InputAction @Revive => m_Wrapper.m_PlayerActions_Revive;
+        public InputAction @Join => m_Wrapper.m_PlayerActions_Join;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -447,6 +470,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Revive.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
                 @Revive.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
                 @Revive.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRevive;
+                @Join.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJoin;
+                @Join.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJoin;
+                @Join.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJoin;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -466,6 +492,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Revive.started += instance.OnRevive;
                 @Revive.performed += instance.OnRevive;
                 @Revive.canceled += instance.OnRevive;
+                @Join.started += instance.OnJoin;
+                @Join.performed += instance.OnJoin;
+                @Join.canceled += instance.OnJoin;
             }
         }
     }
@@ -599,6 +628,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnStartGame(InputAction.CallbackContext context);
         void OnQuitGame(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions
     {
