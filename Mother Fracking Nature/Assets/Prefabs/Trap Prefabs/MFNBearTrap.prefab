@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46da63992ec4c947b335ac8866506e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bearTrapDamage: {fileID: 8300000, guid: 636dc465d49640742b675174ae9ef31c, type: 3}
 --- !u!58 &2572798206747645926
 CircleCollider2D:
   m_ObjectHideFlags: 0

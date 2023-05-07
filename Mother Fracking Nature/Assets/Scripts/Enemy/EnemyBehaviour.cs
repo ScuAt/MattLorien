@@ -25,8 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
     public AudioClip sawDamage;
     public AudioClip banjoDamage;
     public AudioClip bottleAbilityDamage;
-    public AudioClip sawAbilityDamage;
-    public AudioClip banjoAbilityStun;
+   // public AudioClip sawAbilityDamage;
+   // public AudioClip banjoAbilityStun;
 
     Weapon weapon;
 
@@ -227,7 +227,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.tag == "BanjoAbility")
         {
             Stunned();
-            AudioSource.PlayClipAtPoint(banjoAbilityStun, Camera.main.transform.position);
+            //AudioSource.PlayClipAtPoint(banjoAbilityStun, Camera.main.transform.position);
         }
         if (collision.tag == "BottleAbility")
         {
@@ -242,7 +242,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("Enemy took damage");
             enemyHealth -= 12;
             Debug.Log("Health remaining: " + enemyHealth);
-            AudioSource.PlayClipAtPoint(sawAbilityDamage, Camera.main.transform.position);
+           // AudioSource.PlayClipAtPoint(sawAbilityDamage, Camera.main.transform.position);
 
         }
 

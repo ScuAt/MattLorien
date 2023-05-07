@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 9197672640147263261, guid: 0d05fea01b201474db8bb8460777897b, type: 3}
+  pipeBombDamage: {fileID: 8300000, guid: ca743824b7255a942aef3e2382a7ff53, type: 3}
 --- !u!60 &8616678913601430881
 PolygonCollider2D:
   m_ObjectHideFlags: 0
