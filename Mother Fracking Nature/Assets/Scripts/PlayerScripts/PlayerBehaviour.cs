@@ -73,9 +73,11 @@ public class PlayerBehaviour : MonoBehaviour
         revive = playerControls.FindAction("Revive");
         revive.performed += ctx => Revive();
 
+        
+
     }
 
-    
+
 
     /// <summary>
     /// controls movement, rotation, checks if attacker or defender are down and sets their speed to 0

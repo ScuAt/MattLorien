@@ -89,6 +89,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenHowTo"",
+                    ""type"": ""Button"",
+                    ""id"": ""6552654c-e92e-44b7-8227-9f2ee68b2606"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseHowTo"",
+                    ""type"": ""Button"",
+                    ""id"": ""454a83fb-17eb-4043-9c6a-e5230281bf68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -166,6 +184,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SkipTutorial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""172968f0-9bb4-4fb7-a72b-a37d847b3605"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenHowTo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca9b16b0-c974-4222-8f33-b89e07a7bfd6"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseHowTo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -379,6 +419,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Revive = m_PlayerActions.FindAction("Revive", throwIfNotFound: true);
         m_PlayerActions_Join = m_PlayerActions.FindAction("Join", throwIfNotFound: true);
         m_PlayerActions_SkipTutorial = m_PlayerActions.FindAction("SkipTutorial", throwIfNotFound: true);
+        m_PlayerActions_OpenHowTo = m_PlayerActions.FindAction("OpenHowTo", throwIfNotFound: true);
+        m_PlayerActions_CloseHowTo = m_PlayerActions.FindAction("CloseHowTo", throwIfNotFound: true);
         // DefenderActions
         m_DefenderActions = asset.FindActionMap("DefenderActions", throwIfNotFound: true);
         m_DefenderActions_Block = m_DefenderActions.FindAction("Block", throwIfNotFound: true);
@@ -458,6 +500,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Revive;
     private readonly InputAction m_PlayerActions_Join;
     private readonly InputAction m_PlayerActions_SkipTutorial;
+    private readonly InputAction m_PlayerActions_OpenHowTo;
+    private readonly InputAction m_PlayerActions_CloseHowTo;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -469,6 +513,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Revive => m_Wrapper.m_PlayerActions_Revive;
         public InputAction @Join => m_Wrapper.m_PlayerActions_Join;
         public InputAction @SkipTutorial => m_Wrapper.m_PlayerActions_SkipTutorial;
+        public InputAction @OpenHowTo => m_Wrapper.m_PlayerActions_OpenHowTo;
+        public InputAction @CloseHowTo => m_Wrapper.m_PlayerActions_CloseHowTo;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -499,6 +545,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SkipTutorial.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSkipTutorial;
                 @SkipTutorial.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSkipTutorial;
                 @SkipTutorial.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSkipTutorial;
+                @OpenHowTo.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnOpenHowTo;
+                @OpenHowTo.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnOpenHowTo;
+                @OpenHowTo.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnOpenHowTo;
+                @CloseHowTo.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnCloseHowTo;
+                @CloseHowTo.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnCloseHowTo;
+                @CloseHowTo.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnCloseHowTo;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -524,6 +576,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SkipTutorial.started += instance.OnSkipTutorial;
                 @SkipTutorial.performed += instance.OnSkipTutorial;
                 @SkipTutorial.canceled += instance.OnSkipTutorial;
+                @OpenHowTo.started += instance.OnOpenHowTo;
+                @OpenHowTo.performed += instance.OnOpenHowTo;
+                @OpenHowTo.canceled += instance.OnOpenHowTo;
+                @CloseHowTo.started += instance.OnCloseHowTo;
+                @CloseHowTo.performed += instance.OnCloseHowTo;
+                @CloseHowTo.canceled += instance.OnCloseHowTo;
             }
         }
     }
@@ -659,6 +717,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRevive(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
         void OnSkipTutorial(InputAction.CallbackContext context);
+        void OnOpenHowTo(InputAction.CallbackContext context);
+        void OnCloseHowTo(InputAction.CallbackContext context);
     }
     public interface IDefenderActionsActions
     {

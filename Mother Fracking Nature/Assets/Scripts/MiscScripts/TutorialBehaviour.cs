@@ -14,7 +14,7 @@ using UnityEngine.SceneManagement;
 
 public class TutorialBehaviour : MonoBehaviour
 {
-    public Sprite[] spriteArray = new Sprite[4];
+    public Sprite[] spriteArray = new Sprite[6];
 
     public SpriteRenderer spriteRenderer;
 
@@ -26,22 +26,38 @@ public class TutorialBehaviour : MonoBehaviour
     public GameObject attackerText;
 
     InputActionAsset inputAsset4;
+    InputActionAsset inputAsset5;
     InputActionMap playerActions;
+    InputActionMap attackerActions;
     InputAction joinButton;
     InputAction startGame;
+    InputAction basicAttack;
+    InputAction ability;
 
-    public float joinTimer = 5;
+    private float joinTimer = 5;
     public float joinCountdown;
+
+    private float attackerTimer = 5;
+    public float attackerCountdown;
 
     private bool startTutorial;
 
-    private bool attackerTutorial = false;
+    public bool attackerTutorial;
+
+    public int attackerNum;
 
 
     private void Awake()
     {
         inputAsset4 = playerPrefab.GetComponent<PlayerInput>().actions;
         playerActions = inputAsset4.FindActionMap("PlayerActions");
+
+        inputAsset5 = playerPrefab.GetComponent<PlayerInput>().actions;
+        attackerActions = inputAsset5.FindActionMap("AttackerActions");
+
+        basicAttack = attackerActions.FindAction("Attack");
+
+        ability = attackerActions.FindAction("Ability");
 
         joinButton = playerActions.FindAction("Join");
         joinButton.performed += ctx => OnJoin();
@@ -65,6 +81,7 @@ public class TutorialBehaviour : MonoBehaviour
         spriteRenderer.sprite = spriteArray[0];
 
         joinCountdown = joinTimer;
+        attackerCountdown = attackerTimer;
 
         startTutorial = false;
 
@@ -72,6 +89,7 @@ public class TutorialBehaviour : MonoBehaviour
         defednerCircle.SetActive(false);
 
         attackerText.SetActive(false);
+        attackerTutorial = false;
     }
 
     /// <summary>
@@ -79,6 +97,7 @@ public class TutorialBehaviour : MonoBehaviour
     /// </summary>
     void Update()
     {
+
         if (startTutorial == true)
         {
             joinCountdown -= Time.deltaTime;
@@ -90,7 +109,7 @@ public class TutorialBehaviour : MonoBehaviour
                 spriteRenderer.sprite = spriteArray[1];
             }
 
-            else if (joinCountdown <= -5 && joinCountdown <= 0)
+            else if (joinCountdown <= 0)
             {
                 spriteRenderer.sprite = spriteArray[2];
 
@@ -98,52 +117,39 @@ public class TutorialBehaviour : MonoBehaviour
                 //player selects a role
                 if (attackerCircle == null)
                 {
-                    attackerTutorial = true;
-                    return;
+                    attackerCountdown -= Time.deltaTime;
+                    if (attackerCountdown <= 0)
+                    {
+                        attackerText.SetActive(true);
+                        spriteRenderer.sprite = spriteArray[3];
+
+                        if (basicAttack.triggered)
+                        {
+                            spriteRenderer.sprite = spriteArray[4];
+                        }
+
+                        if (ability.triggered)
+                        {
+                            spriteRenderer.sprite = spriteArray[5];
+                        }
+
+                    }
+
+                    
                 }
 
                 else if (defednerCircle == null)
                 {
                     return;
                 }
+
                 else
                 {
                     attackerCircle.SetActive(true);
                     defednerCircle.SetActive(true);
                 }
             }
-
-            //Attacker tutorial
-            else if (attackerTutorial == true && joinCountdown <= 0)
-            {
-                Debug.Log("Goober");
-                joinCountdown = joinTimer;
-
-                attackerText.SetActive(true);
-
-                spriteRenderer.sprite = spriteArray[3];
-
-            }
         }
-
-        
-
-        //Spawn static enemy
-        //When attacker destroys enemy move onto next instructions
-        //Give attacker instructions first
-
-        //Down the attackeer and give defender time to defeat an enemy
-        //Spawn enemy close to oil rig so it will damage the rig 
-        //Give Defender instructions
-
-        //Include skip(Side of right D - Pad)
-
-        //New scene with a fade-in/out for tutorial
-
-        //Change repair rig to B
-
-        //X to revive 
-
     }
 
     /// <summary>
@@ -153,4 +159,20 @@ public class TutorialBehaviour : MonoBehaviour
     {
         startTutorial = true;
     }
+
+    //Spawn static enemy
+    //When attacker destroys enemy move onto next instructions
+    //Give attacker instructions first
+
+    //Down the attackeer and give defender time to defeat an enemy
+    //Spawn enemy close to oil rig so it will damage the rig 
+    //Give Defender instructions
+
+    //Include skip(Side of right D - Pad)
+
+    //New scene with a fade-in/out for tutorial
+
+    //Change repair rig to B
+
+    //X to revive 
 }
