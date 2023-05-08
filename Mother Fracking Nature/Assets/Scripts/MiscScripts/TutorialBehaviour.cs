@@ -29,10 +29,6 @@ public class TutorialBehaviour : MonoBehaviour
     public GameObject attackerText;
     public GameObject defenderText;
 
-    public GameObject enemy1;
-    public GameObject enemy2;
-    public GameObject enemy3;
-
     InputActionAsset inputAsset4;
     InputActionMap playerActions;
     InputAction joinButton;
@@ -90,10 +86,6 @@ public class TutorialBehaviour : MonoBehaviour
 
         towerHealthBar.SetActive(false);
         towerBarBackground.SetActive(false);
-
-        enemy1.SetActive(false);
-        enemy2.SetActive(false);
-        enemy3.SetActive(false);
 
         startEnemies = false;
     }
@@ -175,13 +167,10 @@ public class TutorialBehaviour : MonoBehaviour
                             spriteRenderer.sprite = spriteArray[10];
                             towerBarBackground.SetActive(true);
                             towerHealthBar.SetActive(true);
-                            enemy1.SetActive(true);
-                            enemy2.SetActive(true);
-                            enemy3.SetActive(true);
                             startEnemies = true;
                         }
 
-                        if (enemy1 == null && enemy2 == null && enemy3 == null && startEnemies == true)
+                        if (startEnemies == true)
                         {
                             SceneManager.LoadScene("SceneOne");
                         }

@@ -12,9 +12,7 @@ using UnityEngine.UI;
 
 public class TutorialGameController : MonoBehaviour
 {
-    public AudioClip attackerTakeDamage;
-    public AudioClip defenderTakeDamage;
-    public AudioClip towerTakeDamage;
+    
 
     //public AudioClip gameMusic;
     //public AudioClip loseMusic;
@@ -36,8 +34,6 @@ public class TutorialGameController : MonoBehaviour
         endScreen.SetActive(false);
         //GameObject.Find("GameMusic").GetComponent<ParticleSystem>().Play();
         GameObject.Find("LoseMusic").GetComponent<AudioSource>().Stop();
-
-       
 
     }
 
